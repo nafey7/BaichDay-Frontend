@@ -16,6 +16,12 @@ function Product() {
     
   }
   return (
-    <></>
+    <div style={{width: '100%', height: '100%', display:'flex', maxWidth: '1200px', flexWrap: 'wrap'}}>
+      <div>
+        <p>Ye nahi hona</p>
+      </div>
+    </div>
   )
 }
+
+export default Product

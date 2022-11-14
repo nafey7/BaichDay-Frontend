@@ -23,12 +23,14 @@ function Login() {
         password: values.password
       })
       .then(function (response) {
-        if(response.message === "success")
+        console.log(response)
+        if(response.data.message === "success")
         {
-          reactLocalStorage.set('userID',response.data._id);
-          reactLocalStorage.set('token',response.token)
-          console.log(response.token);
-          navigate('/');
+          reactLocalStorage.set('userID',response.data.data._id);
+          reactLocalStorage.set('token',response.data.token);
+          console.log(response.data.token);
+          alert(response.data.message);
+          navigate('/')
         }
         else
         {
@@ -38,7 +40,7 @@ function Login() {
       })
       .catch(function (error) {
         console.log(error);
-        navigate('/error');
+        navigate('/');
       });
     },
   });
@@ -59,16 +61,13 @@ function Login() {
         password: values.password
       })
       .then(function (response) {
-        console.log(response);
-        if (response.message === "success") {
+        if (response.data.message === "success") {
         navigate("/verify")
-        alert(response.message)
-        navigate('/');
-        
-        // setCheck(false)
+        alert(response.data.message)
+        navigate('/login');
       }
       else{
-        alert(response.message)
+        alert(response.data.message)
       }
       })
       .catch(function (error) {
@@ -81,8 +80,9 @@ function Login() {
   return (
     <div style={{ height: '195%' }}>
     <div className="split left">
-    <div class="centered">
+    <div className="centered">
       <img style ={{width:"110vh",height:"100vh"}} src='https://www.rcrwireless.com/wp-content/uploads/2021/11/95542665_s.jpg' alt="Avatar woman"/>
+    </div>
     </div>
 
     <div className="split right">
@@ -91,10 +91,10 @@ function Login() {
     <form id = "signup_form" onSubmit={formikRegister.handleSubmit} style={{width: '400px', height: '100%', margin: '20px 0 0 0px', padding: '20px', background: 'white'}} >
       <h2 style={{margin:"0 0 30px 0", textAlign:'left'}}>Sign Up</h2>
       <div className="form-group">
-                      <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.firstName} name="fistname" id="firstname" placeholder="First Name" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
+                      <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.firstName} name="firstName" id="firstName" placeholder="First Name" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
                   </div>
                   <div className="form-group">
-                      <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.lastName} name="lastname" id="lastname" placeholder="Last Name" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
+                      <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.lastName} name="lastName" id="lastName" placeholder="Last Name" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
                   </div>
                   <div className="form-group">
                       <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.email} name="email" id="email" placeholder="Email" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
@@ -123,7 +123,6 @@ function Login() {
           <br></br>
           <p>Don't have an account? <a href="#" style={{color: '#a7ac38'}} onClick={()=>{setCheck(true)}} >Sign Up</a></p>
       </form>)}    
-    </div>
     </div>
     </div>
     </div>
