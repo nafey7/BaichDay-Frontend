@@ -13,13 +13,13 @@ function Login() {
 
   const formik = useFormik({
     initialValues: {
-      username: '',
+      email: '',
       password: '',
     },
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
-      axios.post('localhost:8000/login', {
-        username: values.username,
+      axios.post('https://pacific-sands-58031.herokuapp.com/user/login', {
+        emailAddress: values.email,
         password: values.password
       })
       .then(function (response) {
@@ -44,21 +44,17 @@ function Login() {
 
   const formikRegister = useFormik({
     initialValues: {
-      name: '',
-      username: '',
+      firstName: '',
+      lastName: '',
       email: '',
-      address: '',
-      contact: '',
       password: '',
     },
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
-      axios.post('localhost:8000/signup', {
-        username: values.username,
-        name: values.name,
-        email: values.email,
-        contact: values.contact,
-        address: values.address,
+      axios.post('https://pacific-sands-58031.herokuapp.com/user/signup', {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        emailAddress: values.email,
         password: values.password
       })
       .then(function (response) {

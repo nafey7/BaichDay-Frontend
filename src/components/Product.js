@@ -9,7 +9,10 @@ function Product() {
   const location = useLocation();
   const [props, setProps] = React.useState(location.state)
   console.log(props)
-
+  
+  const placeBid = () => {
+    
+  }
   return (
     <></>
   )
