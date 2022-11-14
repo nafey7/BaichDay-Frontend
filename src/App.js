@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="App" style={{height:"100%", backgroundColor:"white", position:"relative", width:"100%", backgroundSize: "cover"}}>
         <Routes>
-          <Route path="" element={ <><Login/></>}/>
+          <Route path="/" element={ <><Login/></>}/>
         </Routes>
       </div>
     </Router>
