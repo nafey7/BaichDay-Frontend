@@ -1,9 +1,9 @@
 import React from 'react'
 import './Login.css'
-import axios from 'axios'
-import {reactLocalStorage} from 'reactjs-localstorage'
-import { useFormik } from 'formik'
-import { useNavigate } from "react-router-dom"
+import axios from 'axios';
+import {reactLocalStorage} from 'reactjs-localstorage';
+import { useFormik } from 'formik';
+import { useNavigate } from "react-router-dom";
 
 
 
