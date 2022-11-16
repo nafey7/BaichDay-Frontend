@@ -3,6 +3,11 @@ import axios from 'axios'
 import { reactLocalStorage } from 'reactjs-localstorage'
 import { useFormik } from 'formik'
 import {Navigate, useLocation} from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import BasicModal from './Modal';
 
 var test = {
   name : "Ferrari",
@@ -37,7 +42,7 @@ function Product() {
             </div>
           </div>
           <div className='d-flex justify-content-center'>
-            <button type="button" className="btn btn-success btn-lg" onClick={()=>{placeBid()}} style={{ margin:"10px"}}><b>Place Bid</b></button>
+          <Button onClick={() => {React.render(<BasicModal/>)}}>Place Bid</Button>
           </div>
         </div>
       </div>
