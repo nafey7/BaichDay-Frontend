@@ -12,7 +12,7 @@ export default function ActionAreaCard(props) {
         <CardMedia
           component="img"
           height="140"
-          image={props.pic}
+          image={props.image}
           alt="Item"
         />
         <CardContent>
@@ -21,12 +21,11 @@ export default function ActionAreaCard(props) {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <div style={{fontSize: "150%"}}>
-                <b>${props.curr_bid}</b>
+                {/* <b>${props.bid[props.bid.length-1]}</b>
                 <br/>
-                <b>{props.time} hours left</b>
+                <b>{props.bid.length} Bids Currently</b> */}
+                {/* <b>{props.time} hours left</b> */}
             </div>
-          
-          
           </Typography>
         </CardContent>
       </CardActionArea>
