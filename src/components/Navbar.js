@@ -43,7 +43,7 @@ function Navbar(props) {
                 <Link to={{pathname: "/Art"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Art</Link>
               </li>
               <li className="nav-item">
-                <Link to={{pathname: "/Electronics"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Electronics</Link>
+                <Link to={{pathname: "/AddProduct"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Add Product</Link>
               </li>
             </ul>
             
