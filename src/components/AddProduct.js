@@ -1,11 +1,6 @@
-import Navbar from './Navbar';
 import axios from 'axios';
-import { useFormik } from 'formik';
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import React from 'react'
-
- 
-
 
 function AddProduct() {
     let navigate = useNavigate();
@@ -18,28 +13,28 @@ function AddProduct() {
     })
     
     function changeCost(e){
-        let x = cust;
-        x.cost= e;
-        setCust(x)
+        let product = cust;
+        product.cost= e;
+        setCust(product)
     }
     function changeDescription(e){
-        let x = cust;
-        x.description = e;
-        setCust(x)
+        let product = cust;
+        product.description = e;
+        setCust(product)
     }
     function changeName(e){
-        let x = cust;
-        x.name = e;
-        setCust(x)
+        let product = cust;
+        product.name = e;
+        setCust(product)
     }
     function changeImage(e){
-        let x = cust;
-        x.image = e;
-        setCust(x)
+        let product = cust;
+        product.image = e;
+        setCust(product)
     }
 
-    function done(){
-        axios.post('https://pacific-sands-58031.herokuapp.com/user/AddProduct', {
+    function postProductDetails(){
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/addproduct', {
           cost: cust.cost,
           description: cust.description,
           name: cust.name, 
@@ -47,8 +42,8 @@ function AddProduct() {
           })
           .then(function (response) {
             alert(response.data)
-            if(response.data==="Success"){
-            navigate('/adminHome')}
+            if(response.data.message==="success"){
+            navigate('/home')}
             
           })
           .catch(function (error) {
@@ -85,7 +80,7 @@ function AddProduct() {
             <input class="form-control" type="text" placeholder="cost" aria-label="cost" onChange={(e)=>{changeCost(e.target.value)}} id= "6" name ="6" />
             <br></br>
             
-            <button type="button" class="btn" onClick={()=>{done()}} style = {{fontSize:"18px",backgroundColor:"#aca738",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
+            <button type="button" class="btn" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#aca738",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
             </div>
             </div>
             </div>
