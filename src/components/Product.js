@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { reactLocalStorage } from 'reactjs-localstorage'
 import { useFormik } from 'formik'
-import {useLocation} from 'react-router-dom';
+import {Navigate, useLocation} from 'react-router-dom';
 
 var test = {
   name : "Ferrari",
