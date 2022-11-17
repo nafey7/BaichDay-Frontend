@@ -13,6 +13,7 @@ function App() {
       <div className="App" style={{height:"100%", backgroundColor:"white", position:"relative", width:"100%", backgroundSize: "cover"}}>
         <Routes>
           <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/> </>}/>
+          <Route path="/home" element={<> <Navbar/> <UserHome title="Featured Products"/> </>}/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/product' element={<><Navbar/> <Product/> </>}/>
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/> </>}/>
