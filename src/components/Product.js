@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import {useLocation} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -26,26 +26,30 @@ function Product() {
   const handleClose = () => setOpen(false);
   // const [bid, setBid] = React.useState()
   const location = useLocation();
-  console.log(location)
   const [prop, setProp] = React.useState(location.state)
-  
+  let navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      bidCost: prop.bid[prop.bid.length - 1],
+      bidCost: prop.bid[prop.bid.length - 1].bidCost,
     },
     onSubmit: values => {
+      console.log(values)
       // alert(JSON.stringify(values, null, 2));
+      console.log(prop._id)
+      console.log(reactLocalStorage.get('userID', "", true))
       axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
         userID: reactLocalStorage.get('userID', "", true),
-        productID: prop.ID,
-        bidCost: values.amount
-      })
+        productID: prop._id,
+        bidCost: values.bidCost
+      }
+      )
       .then(function (response) {
         console.log(response)
         if(response.data.message === "success")
         {
           console.log(response.data.token);
           alert(response.data.message);
+          navigate('/');
         }
         else
         {
@@ -73,7 +77,7 @@ function Product() {
           <form id = "signup_form" onSubmit={formik.handleSubmit} style={{align: 'center'}}>
             <h2 style={{margin:"0 0 30px 0", textAlign:'left'}}>Place Bid</h2>
             <div className="form-group">
-              <input type="text" className="form-control" onChange={formik.handleChange} value={formik.values.bidCost +1 } name="Amount" id="Amount" placeholder={prop.bid[prop.bid.length - 1]} style={{width: '100px', height: '40px'}}/>
+              <input type="text" className="form-control" onChange={formik.handleChange} name="bidCost" id="bidCost" placeholder={prop.bid[prop.bid.length - 1].bidCost} style={{width: '100px', height: '40px'}}/>
             </div>
 
             <button type="submit" id="log" className="btn" style={{color:"white",backgroundColor:"#a7ac38", width:"100px", display: "block", margin: '30px auto', textAlign: 'center'}}>BID</button>

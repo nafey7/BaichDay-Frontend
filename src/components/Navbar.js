@@ -2,6 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {reactLocalStorage} from 'reactjs-localstorage';
 import {useLocation, useNavigate} from "react-router-dom";
+import axios from 'axios'
+import { useFormik } from 'formik'
 
 
 function Navbar(props) {
@@ -20,6 +22,47 @@ function Navbar(props) {
 
   }, username)
   
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+    },
+    onSubmit: values => {
+      console.log(values)
+
+      axios.post('https://pacific-sands-58031.herokuapp.com/product/search', {
+        name: values.name
+      }
+      )
+      .then(function (response) {
+        console.log(response)
+        if(response.data.message === "success")
+        {
+          if(response.data.length===0){
+            alert("Item not Found")
+          }
+          else{
+            console.log(response.data)
+            navigate('/product',{ state: {
+              _id: response.data.data[0]._id,
+              name: response.data.data[0].name,
+              image: response.data.data[0].image,
+              bid: response.data.data[0].bid,
+            }})
+          }
+        }
+        else
+        {
+          alert("Object Not Found");
+        }
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("Error")
+      });
+    },
+  });
+
 
   return (
       <>
@@ -50,8 +93,8 @@ function Navbar(props) {
           </div>
           
           <div className='justify-content-end'>
-          <form  id="search" className="d-flex" style={{display:'inline-flex'}}>
-                <input id="searchbar" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{borderRadius: '15px', margin: "5px 0px 0px 0px"}}/>
+          <form  id="search" className="d-flex" onSubmit={formik.handleSubmit} style={{display:'inline-flex'}}>
+                <input onChange={formik.handleChange} name="name" id="name" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{borderRadius: '15px', margin: "5px 0px 0px 0px"}}/>
                 <button className="btn btn-outline-success" type="submit"><i className="material-icons" style={{fontSize:"25px",color:"white"}}>search</i></button>
           </form>
           </div>

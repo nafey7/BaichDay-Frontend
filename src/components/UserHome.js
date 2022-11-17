@@ -103,7 +103,7 @@ function UserHome(props){
                     </ListItemButton>
                 </List>
                     
-                <DisplayCards test={test}/>
+                <DisplayCards test={dataprops}/>
                 <div style={{backgroundColor: 'green', width: '20%',marginTop: '12px'}}>
                     <br/>
                     <h3>Advert</h3>
