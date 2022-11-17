@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
@@ -13,7 +12,7 @@ function App() {
     <Router>
       <div className="App" style={{height:"100%", backgroundColor:"white", position:"relative", width:"100%", backgroundSize: "cover"}}>
         <Routes>
-          <Route path="/" element={<> <Navbar/> <UserHome/> </>}/>
+          <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/> </>}/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/product' element={<><Navbar/> <Product/> </>}/>
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/> </>}/>
