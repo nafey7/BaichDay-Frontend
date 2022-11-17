@@ -41,14 +41,14 @@ function AddProduct() {
           image: cust.image,
           })
           .then(function (response) {
-            
-            if(response.data.message==="success"){
             alert(response.data.message)
+            //console.log(response)
+            if(response.data.message==="success"){
             navigate('/')}
             
           })
           .catch(function (error) {
-            alert(error);
+            navigate('/home')
           });
     }
     
