@@ -23,7 +23,7 @@ export default function ActionAreaCard(props) {
             </Typography>
             <Typography variant="body2" color="text.secondary">
               <div style={{fontSize: "150%"}}>
-                  <b>${props.bid[props.bid.length-1]}</b>
+                  <b>${props.bid[props.bid.length-1].bidCost}</b>
                   <br/>
                   <b>{props.bid.length} Bids Currently</b>
                   {/* <b>{props.time} hours left</b> */}

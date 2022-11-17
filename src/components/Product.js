@@ -35,7 +35,7 @@ function Product() {
     },
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
-      axios.post('https://pacific-sands-58031.herokuapp.com/bid', {
+      axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
         userID: reactLocalStorage.get('userID', "", true),
         productID: prop.ID,
         bidCost: values.amount
@@ -93,7 +93,7 @@ function Product() {
           <div style={{width: "30rem"}}>
             <div className="card-body" style={{backgroundColor:"white"}}>
               <div className='card-text row' style={{textAlign:"left", height:"180px"}}>
-                <h5>Current Bid: ${prop.bid[prop.bid.length-1]}</h5>
+                <h5>Current Bid: ${prop.bid[prop.bid.length-1].bidCost}</h5>
                 <h5>Number of Bids: {prop.bid.length}</h5>
               </div>
             </div>

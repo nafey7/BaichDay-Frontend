@@ -33,16 +33,16 @@ function Navbar(props) {
               <li className="nav-item">
                 <Link to={{pathname: "/"}} style={{margin:"0 20px", fontSize:"18px", color: "#a7ac38"}}>Home</Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to={{pathname: "/Sports"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Sports</Link>
               </li>
               <li className="nav-item">
                 <Link to={{pathname: "/Fashion"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Fashion</Link>
-              </li>
-              <li className="nav-item">
+              </li> */}
+              {/* <li className="nav-item">
                 <Link to={{pathname: "/Art"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Art</Link>
-              </li>
-              <li className="nav-item">
+              </li> */}
+              <li className="nav-item" style ={{margin:"0 0px 0 300px"}}>
                 <Link to={{pathname: "/AddProduct"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Add Product</Link>
               </li>
             </ul>
