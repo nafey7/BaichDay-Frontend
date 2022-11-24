@@ -34,6 +34,7 @@ function AddProduct() {
     }
 
     function postProductDetails(){
+        console.log(cust)
         axios.post('https://pacific-sands-58031.herokuapp.com/user/addproduct', {
           cost: cust.cost,
           description: cust.description,
@@ -48,7 +49,7 @@ function AddProduct() {
             
           })
           .catch(function (error) {
-            navigate('/home')
+            navigate('/')
           });
     }
     
@@ -72,8 +73,22 @@ function AddProduct() {
             <br></br>
             <input class="form-control" type="text" placeholder="Product Description" id= "4" name ="4" onChange={(e)=>{changeDescription(e.target.value)}} aria-label="Product Description"  rows="3"/>            
             <br></br>
-            <input class="form-control" type="text" placeholder="url" aria-label="url" id= "5" onChange={(e)=>{changeImage(e.target.value)}} name ="5" />
+            {/* <input class="form-control" type="text" placeholder="url" aria-label="url" id= "5" onChange={(e)=>{changeImage(e.target.value)}} name ="5" /> */}
+            <input id="5" type="file" onChange={(e)=>{ 
+                var file = e.target.files[0]
+                // changeImage(FR.readAsDataURL(e.target.files[0]))
+                var FR = new FileReader();
+                var baseString;
+                FR.onloadend = function () {
+                    baseString = FR.result;
+                    console.log(baseString); 
+                    changeImage(baseString)
+                };
+                FR.readAsDataURL(file);
+                // console.log(baseString);
+                // changeImage(FR.readAsDataURL(file));
 
+            }}/>
                  
             </div>
             <div class="col-5" style={{margin:"0px 0 0 40px "}}>

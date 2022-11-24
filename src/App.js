@@ -15,7 +15,7 @@ function App() {
       <div className="App" style={{height:"100%", backgroundColor:"white", position:"relative", width:"100%", backgroundSize: "cover"}}>
         <Routes>
           <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/><Footer/> </>}/>
-          <Route path="/home" element={<> <Navbar/> <UserHome title="Featured Products"/><Footer/> </>}/>
+          <Route path="/category" element={<> <Navbar/> <UserHome title="Browse"/><Footer/> </>}/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/product' element={<><Navbar/> <Product/><Footer/> </>}/>
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><Footer/> </>}/>

@@ -9,7 +9,7 @@ export default function Footer() {
     let navigate = useNavigate();
 
   return (
-    <Box sx={{ flexGrow: 1, bottom: 0, height:"11%",width:"100%", position:"fixed"}}>
+    <Box sx={{ flexGrow: 1, bottom: 0, height:"11%",width:"100%", position:"sticky"}}>
       <AppBar position="sticky" sx={{bottom: 0, height:"100%"}}>
         <Toolbar>
           
