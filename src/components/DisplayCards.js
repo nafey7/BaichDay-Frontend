@@ -21,7 +21,7 @@ function DisplayCards(props){
                 {props.test.map(function(object, i){ 
                     return(
                         <Grid item xs="12" sm="6" md="4" sx={cardStyles}>
-                            <ActionAreaCard {... object} />;
+                            <ActionAreaCard {... object} /> 
                         </Grid>
                     ) 
                             

@@ -1,12 +1,32 @@
-import React from 'react'
+import * as React from 'react';
+import { styled} from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import {Link} from 'react-router-dom'
 import {reactLocalStorage} from 'reactjs-localstorage';
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from 'axios'
-import { useFormik } from 'formik'
+import { useFormik } from 'formik';
+import Input from '@mui/material/Input';
+import FormControl from '@mui/material/FormControl';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import Drawer from '@mui/material/Drawer';
+import HomeIcon from '@mui/icons-material/Home';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 
-function Navbar(props) {
+export default function Navbar() {
   const [Check, setCheck] = React.useState(false);
   let navigate = useNavigate();
   function logout(){
@@ -62,54 +82,142 @@ function Navbar(props) {
       });
     },
   });
+  const [open, setOpen] = React.useState(false);
 
+  const handleDrawerOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleDrawerClose = () => {
+      setOpen(false);
+    };
+   
+    const DrawerHeader = styled('div')(({ theme }) => ({
+      display: 'flex',
+      alignItems: 'center',
+      padding: theme.spacing(0, 1),
+      // necessary for content to be below app bar
+      ...theme.mixins.toolbar,
+      justifyContent: 'flex-end',
+    }));
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openMenu = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
   return (
-      <>
-      <nav className="navbar sticky-top navbar-expand-lg navbar-dark" style={{backgroundColor:"black"}}>
-        <div className="container-fluid">
-          <button className="navbar-toggler" type="button" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav" style= {{backgroundColor:"",margin:"0 40px 0px"}}>
-            <ul className="navbar-nav"style= {{backgroundColor:"",margin:"0 225px 0px"}}>
-              <li className="nav-item">
-                <Link to={{pathname: "/"}} style={{margin:"0 20px", fontSize:"18px", color: "#a7ac38"}}>Home</Link>
-              </li>
-              {/* <li className="nav-item">
-                <Link to={{pathname: "/Sports"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Sports</Link>
-              </li>
-              <li className="nav-item">
-                <Link to={{pathname: "/Fashion"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Fashion</Link>
-              </li> */}
-              {/* <li className="nav-item">
-                <Link to={{pathname: "/Art"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Art</Link>
-              </li> */}
-              <li className="nav-item" style ={{margin:"0 0px 0 300px"}}>
-                <Link to={{pathname: "/AddProduct"}} style={{margin:"0 20px", fontSize:"18px", color: "white"}}>Add Product</Link>
-              </li>
-            </ul>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed" sx={{backgroundColor:"black"}}>
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            sx={{ mr: 2, ...(open && { display: 'none' })}}
+          >
+            <MenuIcon sx={{fontSize: "200%"}} />
+          </IconButton>
+          <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
+          <Drawer
+                  sx={{
+                    width: 150,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                      width: 150,
+                      backgroundColor:"white",
+                      boxSizing: 'border-box',
+                    },
+                  }}
+                  variant="persistent"
+                  anchor="left"
+                  open={open}
+                >
+                  <DrawerHeader>
+                    <IconButton onClick={handleDrawerClose}>
+                      <ChevronLeftIcon sx= {{fontSize:30}}/>
+                    </IconButton>
+                  </DrawerHeader>
+                  <List>
+                    {['Art', 'Antiques','Automobiles', 'Books', 'Electronics', 'Fashion','NFTs', 'Pets','Real Estate','WholeSale', 'Others'].map((text, index) => (
+                      <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                          <ListItemText primary={text} sx={{color: 'black'}}/>
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Drawer>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block',  fontSize: '250%'} }}
+          >
+            BaichDay
+          </Typography>
+          <FormControl sx={{ width: '10%', backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
+          <Input
+            type={'text'}
+            id="name"
+            disableUnderline = "false"
+            placeholder="   Search Keyword"
+            onChange={formik.handleChange}
+            endAdornment={
+                <IconButton
+                  onClick={formik.handleSubmit}
+                  // onKeyDown={(e)=>{
+                  //   if(e.key === "Enter"){
+                  //     formik.handleSubmit();
+                  //   }
+                  // }}
+                >
+                <SearchIcon/>
+                </IconButton>
+            }
+            label="search"
+          />
+        </FormControl>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleClick}
+            color="inherit"
+          >
+            <AccountCircle sx={{fontSize: "200%"}} />
+          </IconButton>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={openMenu}
+            onClose={handleCloseMenu}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem>My Profile</MenuItem>
+            <MenuItem>My Notifications</MenuItem>
+            <MenuItem>My Orders</MenuItem>
+            <MenuItem>My History</MenuItem>
+            <MenuItem onClick={logout}>Logout</MenuItem>
+          </Menu>
             
-          </div>
-          
-          <div className='justify-content-end'>
-          <form  id="search" className="d-flex" onSubmit={formik.handleSubmit} style={{display:'inline-flex'}}>
-                <input onChange={formik.handleChange} name="name" id="name" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{borderRadius: '15px', margin: "5px 0px 0px 0px"}}/>
-                <button className="btn btn-outline-success" type="submit"><i className="material-icons" style={{fontSize:"25px",color:"white"}}>search</i></button>
-          </form>
-          </div>
-          <div>
-          <Link to={{pathname: "/cart",}}
-            ><button className='btn btn-outline-success' style={{fontSize:"20px"}}><i className="glyphicon glyphicon-shopping-cart" style={{fontSize:"20px",color:"white"}}></i></button></Link>
-          <Link to={{pathname: "/login"}} style={{backgroundColor:"",margin:"0 20px", fontSize:"18px"}}>
-          <button className='btn btn-primary' style={{fontSize:"10px"}}>Sign In</button></Link>
-
-          </div>
-        </div>
-      </nav>
-
-    </>
-  )
+        </Toolbar>
+      </AppBar>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+    </Box>
+    
+  );
 }
-
-export default Navbar
