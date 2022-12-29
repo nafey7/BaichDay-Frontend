@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Login from './components/Login';
@@ -10,6 +10,7 @@ import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
 import AdminHome from './components/AdminHome.js';
 import CustomerProfile from './components/CustomerProfile';
+import History from './components/History';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><Footer/> </>}/>
           <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><Footer/></>}/>
           <Route path='/Admin' element={<AdminHome/>}/>
+          <Route path='/history' element={<><Navbar/><History/><Footer/></>}/>
         </Routes>
       </div>
     </Router>
