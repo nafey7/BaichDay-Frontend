@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import AddProduct from './components/AddProduct';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
+import AdminHome from './components/AdminHome.js';
 import CustomerProfile from './components/CustomerProfile';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><Footer/> </>}/>
           <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><Footer/> </>}/>
           <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><Footer/></>}/>
+          <Route path='/Admin' element={<AdminHome/>}/>
         </Routes>
       </div>
     </Router>
