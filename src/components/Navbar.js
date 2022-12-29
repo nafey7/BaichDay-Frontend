@@ -33,6 +33,9 @@ export default function Navbar() {
     reactLocalStorage.remove('username');
     navigate("/login")
   }
+  function viewprofile(){
+    navigate('/CustomerProfile')
+  }
   let username
   React.useEffect(() => {
     username = reactLocalStorage.get('username', "", true);
@@ -202,7 +205,7 @@ export default function Navbar() {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem>My Profile</MenuItem>
+            <MenuItem onClick={viewprofile}>My Profile</MenuItem>
             <MenuItem>My Notifications</MenuItem>
             <MenuItem>My Orders</MenuItem>
             <MenuItem>My History</MenuItem>

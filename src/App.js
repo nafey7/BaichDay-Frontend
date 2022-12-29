@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import AddProduct from './components/AddProduct';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
+import CustomerProfile from './components/CustomerProfile';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/product' element={<><Navbar/> <Product/><Footer/> </>}/>
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><Footer/> </>}/>
           <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><Footer/> </>}/>
+          <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><Footer/></>}/>
         </Routes>
       </div>
     </Router>
