@@ -24,6 +24,7 @@ import Drawer from '@mui/material/Drawer';
 import HomeIcon from '@mui/icons-material/Home';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import History from './History';
 
 
 export default function Navbar() {
@@ -35,6 +36,9 @@ export default function Navbar() {
   }
   function viewprofile(){
     navigate('/CustomerProfile')
+  }
+  function history(){
+    navigate('/History')
   }
   let username
   React.useEffect(() => {
@@ -208,7 +212,7 @@ export default function Navbar() {
             <MenuItem onClick={viewprofile}>My Profile</MenuItem>
             <MenuItem>My Notifications</MenuItem>
             <MenuItem>My Orders</MenuItem>
-            <MenuItem>My History</MenuItem>
+            <MenuItem onClick={history}>My History</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>
             
