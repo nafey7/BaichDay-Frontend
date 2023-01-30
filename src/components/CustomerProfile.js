@@ -14,22 +14,26 @@ function CustomerProfile() {
         phoneNumber: '',
         address: '',
         city: '',
-        state: '',
-        country: '',
-        zipcode: '',
-        userID: userID
-
+        country: ''
     })
 
-    // function deleteaccount() {
-    //     axios.post('http://localhost:8000/deactivate_account',{username: username})
-    //         .then(function(res) {
-    //             reactLocalStorage.remove('username');
-    //             navigate("/")
-    //             alert(res);                       
-    //         })
-            
-    // }
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
+        userID: userID
+    })
+    .then(function(response) {
+        if (response.data.message === 'success'){
+            let d = response.data.data;
+            let x = cust;
+            x.firstName = d.firstName
+            x.lastName = d.lastName
+            x.emailAddress = d.emailAddress
+            x.phoneNumber = d.phoneNumber
+            x.address = d.address
+            x.city = d.city
+            x.country = d.country
+            setCust(x)
+        }
+    })
 
     function changeFirstName(e){
         let x = cust;
