@@ -5,30 +5,37 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 
 function History() {
     let userID = reactLocalStorage.get('userID', "", true);
-    let data = []
+    const [data, setData] = React.useState(null);
     axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
         userID: userID
     })
     .then(function (response) {
         if(response.data.message == 'success')
         {
+            let x = data;
             let dummy = response.data.data
-            dummy.map((d) => {
+            let a = new Array(dummy.size())
+            dummy.map((d, index) => {
                 let dict = {
                     item: d.name,
                     bid: d.cost
                 }
-                if (d.sold === 'true'){
+                if(d.sold === 'true'){
                     dict.status = 'Success'
                 }
                 else{
                     dict.status = 'In Progress'
                 }
-                data.append(dict)
+                a[index] = dict
             })
-            console.log(data)
+            x = a
+            setData(x)
+        }
+        else{
+            alert(response.data.message)
         }
     })
+    console.log(data)
     const dummydata = [
         {item: "Phone", bid: 3200, status: "Success"},
         {item: "Car", bid: 7000, status: "Failed"},
