@@ -11,21 +11,22 @@ import Footer from './components/Footer';
 import AdminHome from './components/AdminHome.js';
 import CustomerProfile from './components/CustomerProfile';
 import History from './components/History';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
     <Router>
       <div className="App" style={{height:"100%", backgroundColor:"white", position:"relative", width:"100%", backgroundSize: "cover"}}>
         <Routes>
-          <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/><Footer/> </>}/>
-          <Route path="/category" element={<> <Navbar/> <UserHome title="Browse"/><Footer/> </>}/>
+          <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
+          <Route path="/category" element={<> <Navbar/> <UserHome title="Browse"/><ChatBot/><Footer/> </>}/>
           <Route path='/login' element={ <Login/> }/>
-          <Route path='/product' element={<><Navbar/> <Product/><Footer/> </>}/>
-          <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><Footer/> </>}/>
-          <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><Footer/> </>}/>
-          <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><Footer/></>}/>
+          <Route path='/product' element={<><Navbar/> <Product/><ChatBot/><Footer/> </>}/>
+          <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><ChatBot/><Footer/> </>}/>
+          <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><ChatBot/><Footer/> </>}/>
+          <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><ChatBot/><Footer/></>}/>
           <Route path='/Admin' element={<AdminHome/>}/>
-          <Route path='/history' element={<><Navbar/><History/><Footer/></>}/>
+          <Route path='/history' element={<><Navbar/><History/><ChatBot/><Footer/></>}/>
         </Routes>
       </div>
     </Router>
