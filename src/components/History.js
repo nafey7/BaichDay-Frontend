@@ -14,8 +14,19 @@ function History() {
         {
             let dummy = response.data.data
             dummy.map((d) => {
-                console.log(d)
+                let dict = {
+                    item: d.name,
+                    bid: d.cost
+                }
+                if (d.sold === 'true'){
+                    dict.status = 'Success'
+                }
+                else{
+                    dict.status = 'In Progress'
+                }
+                data.append(dict)
             })
+            console.log(data)
         }
     })
     const dummydata = [

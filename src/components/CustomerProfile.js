@@ -2,15 +2,40 @@ import Avatar from '@mui/material/Avatar';
 import React from 'react'
 import {useNavigate} from "react-router-dom";
 import {reactLocalStorage} from 'reactjs-localstorage';
+import { useFormik } from 'formik';
 import axios from 'axios';
 
 function CustomerProfile() {
     let userID = reactLocalStorage.get('userID', "", true);
+    const [cust, setCust] = React.useState({
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
+        password: 'password',
+        phoneNumber: '',
+        address: '',
+        city: '',
+        country: ''
+    })
     axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
         userID: userID
     })
     .then(function (response){
-        console.log(response)
+        if(response.data.message === 'success'){
+            let d = response.data.data
+            let x = cust;
+            x.firstName = d.firstName
+            x.lastName = d.lastName
+            x.emailAddress = d.emailAddress
+            x.phoneNumber = d.phoneNumber
+            x.address = d.address
+            x.city = d.city
+            x.country = d.country
+            setCust(x)
+        }
+        else{
+            alert(response.data.message)
+        }
     })
 
     return (
