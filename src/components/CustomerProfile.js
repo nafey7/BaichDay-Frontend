@@ -1,26 +1,26 @@
 import Avatar from '@mui/material/Avatar';
 import React from 'react'
 import {useNavigate} from "react-router-dom";
-import reactLocalStorage from 'reactjs-localstorage';
+import {reactLocalStorage} from 'reactjs-localstorage';
 import axios from 'axios';
 
 function CustomerProfile() {
-    // let userID = reactLocalStorage.get('userID', "", true);
-    // const navigate = useNavigate();
-    // const [cust, setCust] = React.useState({
-    //     firstName: '',
-    //     lastName: '',
-    //     emailAddress: '',
-    //     password: 'password',
-    //     phoneNumber: '',
-    //     address: '',
-    //     city: '',
-    //     state: '',
-    //     country: '',
-    //     zipcode: '',
-    //     userID: userID
+    let userID = reactLocalStorage.get('userID', "", true);
+    const navigate = useNavigate();
+    const [cust, setCust] = React.useState({
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
+        password: 'password',
+        phoneNumber: '',
+        address: '',
+        city: '',
+        state: '',
+        country: '',
+        zipcode: '',
+        userID: userID
 
-    // })
+    })
 
     // function deleteaccount() {
     //     axios.post('http://localhost:8000/deactivate_account',{username: username})
@@ -32,60 +32,60 @@ function CustomerProfile() {
             
     // }
 
-    // function changeFirstName(e){
-    //     let x = cust;
-    //     x.firstName = e;
-    //     setCust(x)
-    // }
-    // function changeLastName(e){
-    //     let x = cust;
-    //     x.lastName = e;
-    //     setCust(x)
-    // }
-    // function changeEmail(e){
-    //     let x = cust;
-    //     x.emailAddress = e;
-    //     setCust(x)
-    // }
-    // function changePassword(e){
-    //     let x = cust;
-    //     x.address = e;
-    //     setCust(x)
-    // }
-    // function changePhoneNumber(e){
-    //     let x = cust;
-    //     x.phoneNumber = e;
-    //     setCust(x)
-    // }
-    // function changeAddress(e){
-    //     let x = cust;
-    //     x.address = e;
-    //     setCust(x)
-    // }
-    // function changeCity(e){
-    //     let x = cust;
-    //     x.city = e;
-    //     setCust(x)
-    // }
-    // function changeState(e){
-    //     let x = cust;
-    //     x.state = e;
-    //     setCust(x)
-    // }
-    // function changeCountry(e){
-    //     let x = cust;
-    //     x.country = e;
-    //     setCust(x)
-    // }
-    // function done(){
-    //     axios.post('http://localhost:8000/update_customer_info',cust)
-    //         .then(function(res) {
-    //             console.log(res)
-    //             alert(res);                        
-    //         })
-    //         .catch(function(err) {
-    //             console.log(err);
-    //     })}
+    function changeFirstName(e){
+        let x = cust;
+        x.firstName = e;
+        setCust(x)
+    }
+    function changeLastName(e){
+        let x = cust;
+        x.lastName = e;
+        setCust(x)
+    }
+    function changeEmail(e){
+        let x = cust;
+        x.emailAddress = e;
+        setCust(x)
+    }
+    function changePassword(e){
+        let x = cust;
+        x.address = e;
+        setCust(x)
+    }
+    function changePhoneNumber(e){
+        let x = cust;
+        x.phoneNumber = e;
+        setCust(x)
+    }
+    function changeAddress(e){
+        let x = cust;
+        x.address = e;
+        setCust(x)
+    }
+    function changeCity(e){
+        let x = cust;
+        x.city = e;
+        setCust(x)
+    }
+    function changeState(e){
+        let x = cust;
+        x.state = e;
+        setCust(x)
+    }
+    function changeCountry(e){
+        let x = cust;
+        x.country = e;
+        setCust(x)
+    }
+    function done(){
+        axios.post('http://localhost:8000/update_customer_info',cust)
+            .then(function(res) {
+                console.log(res)
+                alert(res);                        
+            })
+            .catch(function(err) {
+                console.log(err);
+        })}
 
     return (
         <div className="container" style={{ margin: "50px 150px", height:"50%", backgroundColor:"white", position:"relative", width:"100%"}}>
@@ -102,39 +102,42 @@ function CustomerProfile() {
         
         <div className="row">
             <label for="nameInput" className="form-label">First Name</label>
-            <input className="form-control" type="text" id = "nameInput" name= "nameInput" /*onChange={(e)=>{changename(e.target.value)}}*/ placeholder="firstname lastname"/>
+            <input className="form-control" type="text" onChange={(e)=>{changeFirstName(e.target.value)}} placeholder="firstname"/>
             <br></br>
             <label for="nameInput" className="form-label">Last Name</label>
-            <input className="form-control" type="text" id = "nameInput" name= "nameInput" /*onChange={(e)=>{changename(e.target.value)}}*/ placeholder="firstname lastname"/>
+            <input className="form-control" type="text" onChange={(e)=>{changeLastName(e.target.value)}} placeholder="Lastname"/>
+            <br></br>
+            <label for="nameInput" className="form-label">Email</label>
+            <input className="form-control" type="text" onChange={(e)=>{changeEmail(e.target.value)}} placeholder="Email"/>
             <br></br>
             <label for="passwordInput" className="form-label">Password</label>
-            <input className="form-control" type="password" id = "passwordInput" name= "passwordInput" /*onChange={(e)=>{changepassword(e.target.value)}}*/ placeholder="********"/>
+            <input className="form-control" type="password" onChange={(e)=>{changePassword(e.target.value)}} placeholder="********"/>
             <br></br>
             
             <label for="contactInput" className="form-label">Contact</label>
-            <input className="form-control" id = "contactInput" name="contactInput" /*onChange={(e)=>{changecontact(e.target.value)}}*/  type="text" placeholder="+92 300 *******" />
+            <input className="form-control" type="text" onChange={(e)=>{changePhoneNumber(e.target.value)}} placeholder="+92 300 *******" />
             <br></br>
             
             <label for="addressInput" className="form-label">House Address</label>
-            <input className="form-control" type="text" id = "addressInput" name= "addressInput" /*onChange={(e)=>{changeaddress(e.target.value)}}*/  placeholder="House#, City"/>
+            <input className="form-control" type="text" onChange={(e)=>{changeAddress(e.target.value)}}  placeholder="House Address"/>
             <br></br>
             
             <br></br>
             
             <label for="addressInput" className="form-label">City</label>
-            <input className="form-control" type="text" id = "addressInput" name= "addressInput" /*onChange={(e)=>{changeaddress(e.target.value)}}*/  placeholder="House#, City"/>
+            <input className="form-control" type="text" onChange={(e)=>{changeCity(e.target.value)}}  placeholder="City"/>
             <br></br>
             <label for="contactInput" className="form-label">State</label>
-            <input className="form-control" id = "contactInput" name="contactInput" /*onChange={(e)=>{changecontact(e.target.value)}}*/  type="text" placeholder="+92 300 *******" />
+            <input className="form-control" onChange={(e)=>{changeState(e.target.value)}}  type="text" placeholder="State" />
             <br></br>
 
             <br></br>
             
             <label for="addressInput" className="form-label">Country</label>
-            <input className="form-control" type="text" id = "addressInput" name= "addressInput" /*onChange={(e)=>{changeaddress(e.target.value)}}*/  placeholder="House#, City"/>
+            <input className="form-control" type="text" onChange={(e)=>{changeCountry(e.target.value)}} placeholder="Country"/>
             <br></br>
 
-            <button type="button" /*onClick={done}*/ className="btn btn-success">Apply</button>
+            <button type="button" onClick={done} className="btn btn-success">Apply</button>
             <br></br>
             
             <br></br>
