@@ -1,59 +1,17 @@
 import Avatar from '@mui/material/Avatar';
 import React from 'react'
 import {useNavigate} from "react-router-dom";
-import reactLocalStorage from 'reactjs-localstorage';
+import {reactLocalStorage} from 'reactjs-localstorage';
 import axios from 'axios';
 
 function CustomerProfile() {
-    // let userID = reactLocalStorage.get('userID', "", true);
-    // const navigate = useNavigate();
-    // const [cust, setCust] = React.useState({
-    //     // address: '',
-    //     // contact: '',
-    //     userID: username,
-    //     // password: 'password',
-    //     // name: '',
-    // })
-
-    // function deleteaccount() {
-    //     axios.post('http://localhost:8000/deactivate_account',{username: username})
-    //         .then(function(res) {
-    //             reactLocalStorage.remove('username');
-    //             navigate("/")
-    //             alert(res);                       
-    //         })
-            
-    // }
-
-    // function changepassword(e){
-    //     let x = cust;
-    //     x.password = e;
-    //     setCust(x)
-    // }
-    // function changeaddress(e){
-    //     let x = cust;
-    //     x.address = e;
-    //     setCust(x)
-    // }
-    // function changename(e){
-    //     let x = cust;
-    //     x.name = e;
-    //     setCust(x)
-    // }
-    // function changecontact(e){
-    //     let x = cust;
-    //     x.contact = e;
-    //     setCust(x)
-    // }
-    // function done(){
-    //     axios.post('http://localhost:8000/update_customer_info',cust)
-    //         .then(function(res) {
-    //             console.log(res)
-    //             alert(res);                        
-    //         })
-    //         .catch(function(err) {
-    //             console.log(err);
-    //     })}
+    let userID = reactLocalStorage.get('userID', "", true);
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
+        userID: userID
+    })
+    .then(function (response){
+        console.log(response)
+    })
 
     return (
         <div className="container" style={{ margin: "50px 150px", height:"50%", backgroundColor:"white", position:"relative", width:"100%"}}>
