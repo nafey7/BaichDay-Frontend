@@ -20,13 +20,12 @@ function History() {
             alert(response.data.message)
         }
     })
-    console.log(data)
     const dummydata = [
         {item: "Phone", bid: 3200, status: "Success"},
         {item: "Car", bid: 7000, status: "Failed"},
         {item: "Bike", bid: 4100, status: "In Progress"},
     ];
-
+    console.log(data)
     return (
         <div style={{width: '100%', height: '100%'}}>
             <div className='centered'>
