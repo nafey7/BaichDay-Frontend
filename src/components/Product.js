@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import {useNavigate, useLocation} from 'react-router-dom';
+import Timer from './Timer'
 
 const style = {
   position: 'absolute',
@@ -27,6 +28,9 @@ function Product() {
   // const [bid, setBid] = React.useState()
   const location = useLocation();
   const [prop, setProp] = React.useState(location.state)
+  const date = new Date(prop.createdAt);
+  const current = new Date
+  const seconds = Math.floor(date.getTime() / 1000);
   let navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -99,6 +103,7 @@ function Product() {
               <div className='card-text row' style={{textAlign:"left", height:"180px"}}>
                 <h5>Current Bid: ${prop.bid[prop.bid.length-1].bidCost}</h5>
                 <h5>Number of Bids: {prop.bid.length}</h5>
+                <Timer duration={500}/>
               </div>
             </div>
           </div>
