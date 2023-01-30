@@ -5,7 +5,7 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 
 function History() {
     let userID = reactLocalStorage.get('userID', "", true);
-    let data =[]
+    let data = []
     axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
         userID: userID
     })
