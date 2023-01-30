@@ -2,11 +2,11 @@ import Avatar from '@mui/material/Avatar';
 import React from 'react'
 import {useNavigate} from "react-router-dom";
 import {reactLocalStorage} from 'reactjs-localstorage';
+import { useFormik } from 'formik';
 import axios from 'axios';
 
 function CustomerProfile() {
     let userID = reactLocalStorage.get('userID', "", true);
-    const navigate = useNavigate();
     const [cust, setCust] = React.useState({
         firstName: '',
         lastName: '',
