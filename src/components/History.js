@@ -10,25 +10,10 @@ function History() {
         userID: userID
     })
     .then(function (response) {
-        if(response.data.message == 'success')
+        if(response.data.message === 'success')
         {
             let x = data;
-            let dummy = response.data.data
-            let a = new Array(dummy.size())
-            dummy.map((d, index) => {
-                let dict = {
-                    item: d.name,
-                    bid: d.cost
-                }
-                if(d.sold === 'true'){
-                    dict.status = 'Success'
-                }
-                else{
-                    dict.status = 'In Progress'
-                }
-                a[index] = dict
-            })
-            x = a
+            x = response.data.data
             setData(x)
         }
         else{
