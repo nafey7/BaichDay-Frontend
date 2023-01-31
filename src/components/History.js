@@ -5,7 +5,7 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 
 function History() {
     let userID = reactLocalStorage.get('userID', "", true);
-    const [data, setData] = React.useState(null);
+    const [data, setData] = React.useState([]);
     axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
         userID: userID
     })
@@ -46,10 +46,3 @@ function History() {
 
 
 export default History;
-
-
-// const dummydata = [
-//     {item: "Phone", bid: 3200, status: "Success"},
-//     {item: "Car", bid: 7000, status: "Failed"},
-//     {item: "Bike", bid: 4100, status: "In Progress"},
-// ];
