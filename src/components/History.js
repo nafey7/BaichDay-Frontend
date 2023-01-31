@@ -30,11 +30,11 @@ function History() {
         <div style={{width: '100%', height: '100%'}}>
             <div className='centered'>
                 <h2 style={{margin:"0 0 30px 0", textAlign:'left'}}>Your History</h2>
-                {dummydata.map((data) => (
+                {dummydata.map((d) => (
                     <div className="card" style={{width: "22rem", outline: "3px ridge grey"}}>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Item:{data.item}</h2>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Bid:{data.bid}</h2>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Status:{data.status}</h2>
+                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Item: {d.item}</h2>
+                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Bid: {d.bid}</h2>
+                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Status: {d.status}</h2>
                     </div>
                 ))}
             </div>
