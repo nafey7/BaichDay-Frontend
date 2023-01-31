@@ -19,22 +19,24 @@ function History() {
         else{
             alert(response.data.message)
         }
-    })
-    const dummydata = [
-        {item: "Phone", bid: 3200, status: "Success"},
-        {item: "Car", bid: 7000, status: "Failed"},
-        {item: "Bike", bid: 4100, status: "In Progress"},
-    ];
-    console.log(data)
+    });
+    function Status(sold){
+        if(sold === true){
+            return 'Success';
+        }
+        else{
+            return 'In Progress';
+        }
+    };
     return (
         <div style={{width: '100%', height: '100%'}}>
             <div className='centered'>
                 <h2 style={{margin:"0 0 30px 0", textAlign:'left'}}>Your History</h2>
-                {dummydata.map((d) => (
+                {data.map((d) => (
                     <div className="card" style={{width: "22rem", outline: "3px ridge grey"}}>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Item: {d.item}</h2>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Bid: {d.bid}</h2>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Status: {d.status}</h2>
+                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Item: {d.name}</h2>
+                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Bid: {d.cost}</h2>
+                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Status: {Status(d.sold)}</h2>
                     </div>
                 ))}
             </div>
@@ -44,3 +46,10 @@ function History() {
 
 
 export default History;
+
+
+// const dummydata = [
+//     {item: "Phone", bid: 3200, status: "Success"},
+//     {item: "Car", bid: 7000, status: "Failed"},
+//     {item: "Bike", bid: 4100, status: "In Progress"},
+// ];
