@@ -141,6 +141,7 @@ function CustomerProfile() {
             <br></br>
             <div>
             <br/>
+            
             <button type="button"style = {{margin: 'auto', width:"100px"}} onClick={done} className="btn btn-success">Apply</button>
             <br></br>
             </div>
