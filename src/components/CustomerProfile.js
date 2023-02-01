@@ -8,6 +8,9 @@ import { useEffect } from 'react';
 function CustomerProfile() {
     let userID = reactLocalStorage.get('userID', "", true);
     const [cust, setCust] = React.useState({})
+    const [chan, setChan] = React.useState({
+        userID: userID
+    })
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -18,6 +21,7 @@ function CustomerProfile() {
             if (response.data.message === 'success'){
                 let x = cust
                 x = response.data.data
+                x.userID = userID
                 x.password = '********'
                 setCust(x)
             }
@@ -26,54 +30,81 @@ function CustomerProfile() {
             }
         }, cust)
     }, []);
-    
-    console.log(cust)
 
     function changeFirstName(e){
         let x = cust;
         x.firstName = e;
         setCust(x)
+        let a = chan;
+        a.firstName = e;
+        setChan(a)
     }
     function changeLastName(e){
         let x = cust;
         x.lastName = e;
         setCust(x)
+        let a = chan;
+        a.lastName = e;
+        setChan(a)
     }
     function changeEmail(e){
         let x = cust;
         x.emailAddress = e;
         setCust(x)
+        let a = chan;
+        a.emailAddress = e;
+        setChan(a)
     }
     function changePassword(e){
         let x = cust;
         x.password = e;
         setCust(x)
+        let a = chan;
+        a.password = e;
+        setChan(a)
     }
     function changePhoneNumber(e){
         let x = cust;
         x.phoneNumber = e;
         setCust(x)
+        let a = chan;
+        a.phoneNumber = e;
+        setChan(a)
     }
     function changeAddress(e){
         let x = cust;
         x.address = e;
         setCust(x)
+        let a = chan;
+        a.address = e;
+        setChan(a)
     }
     function changeCity(e){
         let x = cust;
         x.city = e;
         setCust(x)
+        let a = chan;
+        a.city = e;
+        setChan(a)
     }
     function changeCountry(e){
         let x = cust;
         x.country = e;
         setCust(x)
+        let a = chan;
+        a.country = e;
+        setChan(a)
     }
     function done(){
-        axios.post('https://pacific-sands-58031.herokuapp.com/user/editprofile', cust)
+        console.log(chan)
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/editprofile', chan)
             .then(function(res) {
-                console.log(res)
-                alert(res);                        
+                if(res.data.message === 'success'){
+                    console.log(res)
+                }
+                else{
+                    alert(res.data.message)
+                }                      
             })
             .catch(function(err) {
                 console.log(err);
