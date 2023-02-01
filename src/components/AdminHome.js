@@ -1,12 +1,8 @@
 import React from 'react'
 import axios from 'axios';
-import {Link} from 'react-router-dom'
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import DisplayCards from './DisplayCards';
 import Box from '@mui/material/Box';
-
-
-
 
 
 function AdminHome() {
@@ -37,10 +33,10 @@ function AdminHome() {
 
         <Box sx={{ display: 'flex' }}>
           <DisplayCards test={dataprops}/>
-          <div>
-            <button className="btn" style={{margin: '0 0 0 0%', width:"200px", fontSize:"150%", borderRadius:"15px", color:"white", backgroundColor:"#aca738"}}>Add to Featured Products</button>
-            <button className="btn" style={{margin: '10px 0 0 0%', width:"200px", fontSize:"150%", borderRadius:"15px", color:"white", backgroundColor:"#aca738"}}>Ban Users</button>
-            <button className="btn" style={{margin: '10px 0 0 0%', width:"200px", fontSize:"150%", borderRadius:"15px", color:"white", backgroundColor:"#aca738"}}>View Banned Users</button>
+          <div class="card">
+            <button className="btn btn-success btn-lg" >Add to Featured Products</button>
+            <button className="btn btn-success mt-3 btn-lg" >Ban Users</button>
+            <button className="btn btn-success mt-3 btn-lg" >View Banned Users</button>
           </div>
         </Box>
       </div>

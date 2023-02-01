@@ -80,15 +80,15 @@ function CustomerProfile() {
         x.country = e;
         setCust(x)
     }
-    function done(){
-        axios.post('http://localhost:8000/update_customer_info',cust)
-            .then(function(res) {
-                console.log(res)
-                alert(res);                        
-            })
-            .catch(function(err) {
-                console.log(err);
-        })}
+    // function done(){
+    //     axios.post('http://localhost:8000/update_customer_info',cust)
+    //         .then(function(res) {
+    //             console.log(res)
+    //             alert(res);                        
+    //         })
+    //         .catch(function(err) {
+    //             console.log(err);
+    //     })}
 
     return (
         <div className="container" style={{ margin: "50px 150px", height:"50%", backgroundColor:"white", position:"relative", width:"100%"}}>
@@ -142,7 +142,7 @@ function CustomerProfile() {
             <div>
             <br/>
             
-            <button type="button"style = {{margin: 'auto', width:"100px"}} onClick={done} className="btn btn-success">Apply</button>
+            <button type="button"style = {{margin: 'auto', width:"100px"}} /*onClick={done}*/ className="btn btn-success">Apply</button>
             <br></br>
             </div>
             <br></br>

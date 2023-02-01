@@ -27,7 +27,7 @@ import MenuItem from '@mui/material/MenuItem';
 import History from './History';
 
 
-export default function Navbar() {
+export default function AdminNavbar() {
   const [Check, setCheck] = React.useState(false);
   let navigate = useNavigate();
   function logout(){
@@ -209,11 +209,9 @@ export default function Navbar() {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem onClick={viewprofile}>Profile</MenuItem>
-            <MenuItem>Notifications</MenuItem>
-            <MenuItem>Active Bids</MenuItem>
-            <MenuItem>Auction Items</MenuItem>
-            <MenuItem onClick={history}>Bidding History</MenuItem>
+            <MenuItem onClick={viewprofile}>Admin Profile</MenuItem>
+            <MenuItem>My Notifications</MenuItem>
+            <MenuItem>View Active Items</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>
             
