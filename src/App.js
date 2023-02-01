@@ -7,6 +7,7 @@ import UserHome from './components/UserHome';
 import Navbar from './components/Navbar';
 import AddProduct from './components/AddProduct';
 import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 import AdminHome from './components/AdminHome.js';
 import CustomerProfile from './components/CustomerProfile';
@@ -24,6 +25,7 @@ function App() {
           <Route path='/product' element={<><Navbar/> <Product/><ChatBot/><Footer/> </>}/>
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><ChatBot/><Footer/> </>}/>
           <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><ChatBot/><Footer/> </>}/>
+          <Route path='/ContactUs' element={<><Navbar/> <ContactUs/><Footer/> </>}/>
           <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><ChatBot/><Footer/></>}/>
           <Route path='/Admin' element={<AdminHome/>}/>
           <Route path='/history' element={<><Navbar/><History/><ChatBot/><Footer/></>}/>

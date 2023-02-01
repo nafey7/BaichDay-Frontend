@@ -139,14 +139,25 @@ function CustomerProfile() {
             <label for="addressInput" className="form-label">Country</label>
             <input className="form-control" type="text" onChange={(e)=>{changeCountry(e.target.value)}} placeholder="Country"/>
             <br></br>
-
-            <button type="button" onClick={done} className="btn btn-success">Apply</button>
+            <div>
+            <br/>
+            <button type="button"style = {{margin: 'auto', width:"100px"}} onClick={done} className="btn btn-success">Apply</button>
             <br></br>
-            
+            </div>
             <br></br>
-            <button style = {{margin: '24px 0px 0px 0px'}}type="button" className="btn btn-danger" /*onClick={()=>{deleteaccount()}}*/>Delete My Account</button>
+            <button style = {{margin: 'auto', width:"100px"}}type="button" className="btn btn-danger" /*onClick={()=>{deleteaccount()}}*/>Delete My Account</button>
+            <br></br>
+            <br></br>
+        </div>
+        <div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
         </div>   
+        
     )
 }
 
