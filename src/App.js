@@ -13,6 +13,7 @@ import AdminHome from './components/AdminHome.js';
 import CustomerProfile from './components/CustomerProfile';
 import History from './components/History';
 import ChatBot from './components/ChatBot';
+import AdminNavbar from './components/AdminNavbar';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><ChatBot/><Footer/> </>}/>
           <Route path='/ContactUs' element={<><Navbar/> <ContactUs/><Footer/> </>}/>
           <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><ChatBot/><Footer/></>}/>
-          <Route path='/Admin' element={<AdminHome/>}/>
+          <Route path='/Admin' element={<><AdminNavbar/><AdminHome/></>}/>
           <Route path='/history' element={<><Navbar/><History/><ChatBot/><Footer/></>}/>
         </Routes>
       </div>
