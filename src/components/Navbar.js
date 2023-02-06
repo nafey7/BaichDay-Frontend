@@ -31,8 +31,9 @@ export default function Navbar() {
   const [Check, setCheck] = React.useState(false);
   let navigate = useNavigate();
   function logout(){
-    reactLocalStorage.remove('username');
-    navigate("/login")
+    reactLocalStorage.remove('token');
+    reactLocalStorage.remove('userID');
+    navigate("/")
   }
   function viewprofile(){
     navigate('/CustomerProfile')
@@ -42,7 +43,7 @@ export default function Navbar() {
   }
   let username
   React.useEffect(() => {
-    username = reactLocalStorage.get('username', "", true);
+    username = reactLocalStorage.get('userID', "", true);
     if(username !== ""){
       setCheck(true);
     }
@@ -130,7 +131,7 @@ export default function Navbar() {
           >
             <MenuIcon sx={{fontSize: "200%"}} />
           </IconButton>
-          <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
+          <Link to={{pathname: "/home"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
           <Drawer
                   sx={{
                     width: 150,
@@ -190,7 +191,8 @@ export default function Navbar() {
             label="search"
           />
         </FormControl>
-          <IconButton
+        {Check?(
+        <IconButton
             size="large"
             aria-label="account of current user"
             aria-controls="menu-appbar"
@@ -200,6 +202,8 @@ export default function Navbar() {
           >
             <AccountCircle sx={{fontSize: "200%"}} />
           </IconButton>
+          ):(
+            <button className="btn btn-dark" onClick={() =>{navigate("/")}} style={{fontSize:"100%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px"}}>Sign In</button>)}
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}
@@ -216,7 +220,7 @@ export default function Navbar() {
             <MenuItem onClick={history}>Bidding History</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>
-            
+
         </Toolbar>
       </AppBar>
       <br></br>

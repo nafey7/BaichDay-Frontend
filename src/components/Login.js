@@ -30,7 +30,7 @@ function Login() {
           reactLocalStorage.set('token',response.data.token);
           console.log(response.data.token);
           alert(response.data.message);
-          navigate('/')
+          navigate('/home')
         }
         else
         {
