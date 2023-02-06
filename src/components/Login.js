@@ -62,9 +62,8 @@ function Login() {
       })
       .then(function (response) {
         if (response.data.message === "success") {
-        navigate("/verify")
         alert(response.data.message)
-        navigate('/login');
+        navigate('/');
       }
       else{
         alert(response.data.message)
