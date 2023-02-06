@@ -40,7 +40,7 @@ function Login() {
       })
       .catch(function (error) {
         console.log(error);
-        navigate('/home');
+        navigate('/');
       });
     },
   });
