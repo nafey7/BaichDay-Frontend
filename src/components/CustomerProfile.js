@@ -109,7 +109,7 @@ function CustomerProfile() {
             .catch(function(err) {
                 console.log(err);
         })
-        navigate('/')
+        navigate('/home')
     }
 
     return (
