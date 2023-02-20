@@ -28,10 +28,21 @@ function Product() {
   // const [bid, setBid] = React.useState()
   const location = useLocation();
   const [prop, setProp] = React.useState(location.state)
-  const date = new Date(prop.createdAt);
-  const current = new Date
-  const seconds = Math.floor(date.getTime() / 1000);
+  const [time, setTime] = React.useState(0)
   let navigate = useNavigate();
+
+  
+  React.useEffect(()=> {
+
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/product/single/', {productID: prop.productID})
+    .then(function(res) {
+        setTime(res.data.timeRemaining)          
+    }, time)
+    .catch(function(err) {
+        console.log(err);
+  })},[])
+
+
   const formik = useFormik({
     initialValues: {
       bidCost: prop.bid[prop.bid.length - 1].bidCost,
@@ -103,7 +114,7 @@ function Product() {
               <div className='card-text row' style={{textAlign:"left", height:"180px"}}>
                 <h5>Current Bid: ${prop.bid[prop.bid.length-1].bidCost}</h5>
                 <h5>Number of Bids: {prop.bid.length}</h5>
-                <Timer duration={500}/>
+                <Timer duration={time}/>
               </div>
             </div>
           </div>

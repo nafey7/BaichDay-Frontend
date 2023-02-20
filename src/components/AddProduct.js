@@ -32,6 +32,11 @@ function AddProduct() {
         product.image = e;
         setCust(product)
     }
+    function changeDuration(e){
+        let product = cust;
+        product.duration = e;
+        setCust(product)
+    }
 
     function postProductDetails(){
         console.log(cust)
@@ -40,6 +45,7 @@ function AddProduct() {
           description: cust.description,
           name: cust.name, 
           image: cust.image,
+          duration: cust.duration
           })
           .then(function (response) {
             alert(response.data.message)
@@ -73,10 +79,10 @@ function AddProduct() {
             <br></br>
             <input class="form-control" type="text" placeholder="Product Description" id= "4" name ="4" onChange={(e)=>{changeDescription(e.target.value)}} aria-label="Product Description"  rows="3"/>            
             <br></br>
-            {/* <input class="form-control" type="text" placeholder="url" aria-label="url" id= "5" onChange={(e)=>{changeImage(e.target.value)}} name ="5" /> */}
+            <input class="form-control" type="number" placeholder="Duration in hours" id= "4" name ="4" min="1" max="10" onChange={(e)=>{changeDuration(e.target.value)}} aria-label="Duration"  rows="3"/>            
+            <br></br>
             <input id="5" type="file" onChange={(e)=>{ 
                 var file = e.target.files[0]
-                // changeImage(FR.readAsDataURL(e.target.files[0]))
                 var FR = new FileReader();
                 var baseString;
                 FR.onloadend = function () {
@@ -85,8 +91,6 @@ function AddProduct() {
                     changeImage(baseString)
                 };
                 FR.readAsDataURL(file);
-                // console.log(baseString);
-                // changeImage(FR.readAsDataURL(file));
 
             }}/>
                  

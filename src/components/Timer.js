@@ -5,16 +5,20 @@ function CountdownTimer({ duration }) {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setSeconds(seconds - 1);
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
     }, 1000);
     return () => clearInterval(intervalId);
   }, [seconds]);
-  const hours = Math.floor(seconds/3600);
-  const minutes = Math.floor(seconds / 60);
+
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
   const secondsLeft = seconds % 60;
-  return(
+
+  return (
     <div>
-        {hours}:{minutes}:{secondsLeft} remaining
+      <b>{hours}:{minutes}:{secondsLeft} remaining</b>
     </div>
   );
 }
