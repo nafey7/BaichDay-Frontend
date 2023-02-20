@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 function CustomerProfile() {
     let userID = reactLocalStorage.get('userID', "", true);
     const [cust, setCust] = React.useState({})
-    const [chan, setChan] = React.useState({
+    const [user, setUser] = React.useState({
         userID: userID
     })
     let navigate = useNavigate();
@@ -35,69 +35,68 @@ function CustomerProfile() {
         let x = cust;
         x.firstName = e;
         setCust(x)
-        let a = chan;
+        let a = user;
         a.firstName = e;
-        setChan(a)
+        setUser(a)
     }
     function changeLastName(e){
         let x = cust;
         x.lastName = e;
         setCust(x)
-        let a = chan;
+        let a = user;
         a.lastName = e;
-        setChan(a)
+        setUser(a)
     }
     function changeEmail(e){
         let x = cust;
         x.emailAddress = e;
         setCust(x)
-        let a = chan;
+        let a = user;
         a.emailAddress = e;
-        setChan(a)
+        setUser(a)
     }
     function changePassword(e){
         let x = cust;
         x.password = e;
         setCust(x)
-        let a = chan;
+        let a = user;
         a.password = e;
-        setChan(a)
+        setUser(a)
     }
     function changePhoneNumber(e){
         let x = cust;
         x.phoneNumber = e;
         setCust(x)
-        let a = chan;
+        let a = user;
         a.phoneNumber = e;
-        setChan(a)
+        setUser(a)
     }
     function changeAddress(e){
         let x = cust;
         x.address = e;
         setCust(x)
-        let a = chan;
+        let a = user;
         a.address = e;
-        setChan(a)
+        setUser(a)
     }
     function changeCity(e){
         let x = cust;
         x.city = e;
         setCust(x)
-        let a = chan;
+        let a = user;
         a.city = e;
-        setChan(a)
+        setUser(a)
     }
     function changeCountry(e){
         let x = cust;
         x.country = e;
         setCust(x)
-        let a = chan;
+        let a = user;
         a.country = e;
-        setChan(a)
+        setUser(a)
     }
     function done(){
-        console.log(chan)
-        axios.post('https://pacific-sands-58031.herokuapp.com/user/editprofile', chan)
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/editprofile', user)
             .then(function(res) {
                 if(res.data.message === 'success'){
                     console.log(res)
@@ -109,11 +108,11 @@ function CustomerProfile() {
             .catch(function(err) {
                 console.log(err);
         })
-        navigate('/home')
+        navigate('/CustomerProfile')
     }
 
     return (
-        <div className="container" style={{ margin: "50px 150px", height:"50%", backgroundColor:"white", position:"relative", width:"100%"}}>
+    <div className="container" style={{ margin: "50px 150px", height:"50%", backgroundColor:"white", position:"relative", width:"100%"}}>
         <div className="row">
             <h1 style={{color: '#a7ac38', }}>My Profile</h1>
         </div>
@@ -121,8 +120,6 @@ function CustomerProfile() {
             <Avatar
                 alt="Remy Sharp"
                 sx={{ width: 128, height: 128 }}>H</Avatar>
-
-            
         </div>
         
         <div className="row">
@@ -169,7 +166,7 @@ function CustomerProfile() {
             <br></br>
             <br></br>
         </div>
-        </div>   
+    </div>   
         
     )
 }
