@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -21,12 +22,22 @@ export default function ActionAreaCard(props) {
             {props.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              <div style={{fontSize: "150%"}}>
+            <Box sx={{fontSize: "120%", display: "flex", justifyContent:"space-between", paddingLeft: '30px', paddingRight: '30px', marginTop: '0px 0px 0px 0px'}}>
+              <Box flexGrow={1} marginRight={1}>
+                <div >
                   <b>${props.bid[props.bid.length-1].bidCost}</b>
-                  <br/>
-                  <b>{props.bid.length-1} Bids Currently</b>
-                  {/* <b>{props.time} hours left</b> */}
+              </div> 
+              </Box>
+              <Box flexGrow={1} marginRight={1}>
+                <div >
+              <b>{props.bid.length-1} Bids</b>
               </div>
+              </Box>
+              <Box flexGrow={1}>
+                <b>hours left</b>
+              </Box>
+            </Box>
+
             </Typography>
           </CardContent>
         </CardActionArea>
