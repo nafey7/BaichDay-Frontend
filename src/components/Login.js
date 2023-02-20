@@ -32,13 +32,10 @@ function Login() {
           alert(response.data.message);
           navigate('/home')
         }
-        else
-        {
-          alert("Incorrect Fields");
-        }
         
       })
       .catch(function (error) {
+        alert("Incorrect Fields");
         console.log(error);
         navigate('/');
       });
@@ -62,9 +59,8 @@ function Login() {
       })
       .then(function (response) {
         if (response.data.message === "success") {
-        navigate("/verify")
         alert(response.data.message)
-        navigate('/login');
+        navigate('/');
       }
       else{
         alert(response.data.message)
@@ -91,16 +87,16 @@ function Login() {
           <form id = "signup_form" onSubmit={formikRegister.handleSubmit} style={{width: '400px', height: '100%', margin: '20px 0 0 0px', padding: '20px', background: 'white'}} >
             <h2 style={{margin:"0 0 30px 0", textAlign:'left'}}>Sign Up</h2>
             <div className="form-group">
-              <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.firstName} name="firstName" id="firstName" placeholder="First Name" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
+              <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.firstName} name="firstName" id="firstName" placeholder="First Name" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}} required/>
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.lastName} name="lastName" id="lastName" placeholder="Last Name" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
+              <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.lastName} name="lastName" id="lastName" placeholder="Last Name" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}} required/>
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.email} name="email" id="email" placeholder="Email" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
+              <input type="text" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.email} name="email" id="email" placeholder="Email" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}} required/>
             </div>
             <div className="form-group">
-              <input type="password" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.password} name="password" id="password" placeholder="Password" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}}/>
+              <input type="password" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.password} name="password" id="password" placeholder="Password" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}} required/>
             </div>
 
             <button type="submit" id="log" className="btn" style={{color:"white",backgroundColor:"#a7ac38", width:"100px", display: "block", margin: '30px auto', textAlign: 'center'}}>SIGN UP</button>
