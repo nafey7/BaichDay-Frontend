@@ -53,7 +53,7 @@ function Product() {
         {
           console.log(response.data.token);
           alert(response.data.message);
-          navigate('/');
+          navigate('/home');
         }
         else
         {

@@ -120,46 +120,9 @@ export default function AdminNavbar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{backgroundColor:"black"}}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            sx={{ mr: 2, ...(open && { display: 'none' })}}
-          >
-            <MenuIcon sx={{fontSize: "200%"}} />
-          </IconButton>
+
           <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
-          <Drawer
-                  sx={{
-                    width: 150,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                      width: 150,
-                      backgroundColor:"white",
-                      boxSizing: 'border-box',
-                    },
-                  }}
-                  variant="persistent"
-                  anchor="left"
-                  open={open}
-                >
-                  <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                      <ChevronLeftIcon sx= {{fontSize:30}}/>
-                    </IconButton>
-                  </DrawerHeader>
-                  <List>
-                    {['Art', 'Antiques','Automobiles', 'Books', 'Electronics', 'Fashion','NFTs', 'Pets','Real Estate','WholeSale', 'Others'].map((text, index) => (
-                      <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                          <ListItemText primary={text} sx={{color: 'black'}}/>
-                        </ListItemButton>
-                      </ListItem>
-                    ))}
-                  </List>
-                </Drawer>
+          
           <Typography
             variant="h6"
             noWrap
@@ -178,11 +141,6 @@ export default function AdminNavbar() {
             endAdornment={
                 <IconButton
                   onClick={formik.handleSubmit}
-                  // onKeyDown={(e)=>{
-                  //   if(e.key === "Enter"){
-                  //     formik.handleSubmit();
-                  //   }
-                  // }}
                 >
                 <SearchIcon/>
                 </IconButton>
@@ -211,7 +169,6 @@ export default function AdminNavbar() {
           >
             <MenuItem onClick={viewprofile}>Admin Profile</MenuItem>
             <MenuItem>My Notifications</MenuItem>
-            <MenuItem>View Active Items</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>
             
