@@ -29,7 +29,7 @@ function App() {
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><ChatBot/><Footer/> </>}/>
           <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><ChatBot/><Footer/> </>}/>
           <Route path='/ContactUs' element={<><Navbar/> <ContactUs/><Footer/> </>}/>
-          <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><ChatBot/><Footer/></>}/>
+          <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><ChatBot/></>}/>
           <Route path='/Admin' element={<><AdminNavbar/><AdminHome/></>}/>
           <Route path='/history' element={<><Navbar/><History/><ChatBot/><Footer/></>}/>
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
