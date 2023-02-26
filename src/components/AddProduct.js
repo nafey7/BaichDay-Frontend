@@ -97,7 +97,7 @@ function AddProduct() {
             </div>
             <div class="col-5" style={{margin:"0px 0 0 40px "}}>
             
-            <input class="form-control" type="text" placeholder="cost" aria-label="cost" onChange={(e)=>{changeCost(e.target.value)}} id= "6" name ="6" />
+            <input class="form-control" type="text" placeholder="Reserve Amount" aria-label="cost" onChange={(e)=>{changeCost(e.target.value)}} id= "6" name ="6" />
             <br></br>
             
             <button type="button" class="btn" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#aca738",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>

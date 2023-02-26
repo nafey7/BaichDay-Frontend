@@ -104,7 +104,7 @@ function Product() {
       <div className='row'>
         <div className="col-sm-3" style={{textAlign: "center", padding: '2cm', margin:"30px 5cm 0cm 15%"}}>
           <div className="card" style={{width: "400px", outline: "3px ridge grey", height:"400px"}}>
-            <img className="card-img-top" src={prop.image} alt="Card" style={{height:"400px", width:"400px"}}/>
+            <img className="card-img-top" src={prop.image[0]} alt="Card" style={{height:"400px", width:"400px"}}/>
           </div>
         </div>
         <div className="col-sm-3" style={{textAlign: "center", padding: '2cm', margin:"0 0 0 0"}}>

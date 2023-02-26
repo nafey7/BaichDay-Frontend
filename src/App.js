@@ -20,7 +20,7 @@ import Wallet from './components/Wallet';
 function App() {
   return (
     <Router>
-      <div className="App" style={{height:"100%", backgroundColor:"white", position:"relative", width:"100%", backgroundSize: "cover"}}>
+      <div className="App" style={{height:"100%", backgroundColor:"#d3ebe9", position:"relative", width:"100%", backgroundSize: "cover"}}>
         <Routes>
           <Route path="/home" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
           <Route path="/category" element={<> <Navbar/> <UserHome title="Browse"/><ChatBot/><Footer/> </>}/>
