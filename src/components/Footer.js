@@ -3,7 +3,7 @@ import { Twitter, Facebook, Instagram } from '@material-ui/icons';
 
 export default function Footer() {
   return (
-    <div className='footer-wrap' style={{bottom: 0, left: 0, right: 0, display: 'flex', justifyContent: 'space-evenly', height:"35vh", backgroundColor:"grey"}}>
+    <div className='footer-wrap' style={{bottom: 0, left: 0, right: 0, display: 'flex', justifyContent: 'space-evenly', height:"30vh", backgroundColor:"grey"}}>
       <div className='section' style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
         <h3>Get to Know Us</h3>
         <ul className='navbar-nav'>
