@@ -41,6 +41,9 @@ export default function Navbar() {
   function history(){
     navigate('/History')
   }
+  function wallet(){
+    navigate('/wallet')
+  }
   let username
   React.useEffect(() => {
     username = reactLocalStorage.get('userID', "", true);
@@ -214,6 +217,7 @@ export default function Navbar() {
             }}
           >
             <MenuItem onClick={viewprofile}>Profile</MenuItem>
+            <MenuItem onClick={wallet}>Wallet</MenuItem>
             <MenuItem>Notifications</MenuItem>
             <MenuItem>Active Bids</MenuItem>
             <MenuItem>Auction Items</MenuItem>

@@ -15,6 +15,7 @@ import History from './components/History';
 import ChatBot from './components/ChatBot';
 import AdminNavbar from './components/AdminNavbar';
 import Payment from './components/Payment';
+import Wallet from './components/Wallet';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           <Route path="/home" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
           <Route path="/category" element={<> <Navbar/> <UserHome title="Browse"/><ChatBot/><Footer/> </>}/>
           <Route path='/' element={ <Login/> }/>
-          {/* <Route path='/' element={<><Navbar/><Payment/><Footer/></>}/> */}
+          <Route path='/wallet' element={<><Navbar/><Wallet/><Footer/></>}/>
           <Route path='/product' element={<><Navbar/> <Product/><ChatBot/><Footer/> </>}/>
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><ChatBot/><Footer/> </>}/>
           <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><ChatBot/><Footer/> </>}/>
