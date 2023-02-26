@@ -62,6 +62,15 @@ export default function Payment() {
                     placeholder="CVV"
                   />
                 </MDBCol>
+                <MDBCol size="2">
+                  <MDBInput
+                    label="Amount"
+                    id="form7"
+                    type="text"
+                    size="lg"
+                    placeholder="Enter amount in PKR"
+                  />
+                </MDBCol>
               </MDBRow>
               <MDBBtn color="success" size="lg" block>
                 Confirm Payment
