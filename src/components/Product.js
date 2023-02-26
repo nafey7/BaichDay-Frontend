@@ -36,6 +36,7 @@ function Product() {
 
     axios.post('https://pacific-sands-58031.herokuapp.com/user/product/single/', {productID: prop.productID})
     .then(function(res) {
+        console.log(res.data.timeRemaining)
         setTime(res.data.timeRemaining)          
     }, time)
     .catch(function(err) {
@@ -115,6 +116,7 @@ function Product() {
                 <h5>Current Bid: ${prop.bid[prop.bid.length-1].bidCost}</h5>
                 <h5>Number of Bids: {prop.bid.length}</h5>
                 <Timer duration={time}/>
+                {/* <Timer duration={Math.floor(Math.random() * 10000)}/> */}
               </div>
             </div>
           </div>

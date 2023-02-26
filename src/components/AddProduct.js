@@ -51,11 +51,11 @@ function AddProduct() {
             alert(response.data.message)
             //console.log(response)
             if(response.data.message==="success"){
-            navigate('/')}
+            navigate('/home')}
             
           })
           .catch(function (error) {
-            navigate('/')
+            alert("Unsuccessful attempt")
           });
     }
     
