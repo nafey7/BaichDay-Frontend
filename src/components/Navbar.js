@@ -44,6 +44,9 @@ export default function Navbar() {
   function wallet(){
     navigate('/wallet')
   }
+  function chat(){
+    navigate('/moizchat')
+  }
   let username
   React.useEffect(() => {
     username = reactLocalStorage.get('userID', "", true);
@@ -223,6 +226,7 @@ export default function Navbar() {
             <MenuItem>Auction Items</MenuItem>
             <MenuItem onClick={history}>Bidding History</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
+            <MenuItem onClick={chat}>Chat</MenuItem>
           </Menu>
 
         </Toolbar>

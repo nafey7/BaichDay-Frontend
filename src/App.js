@@ -17,6 +17,8 @@ import AdminNavbar from './components/AdminNavbar';
 import Payment from './components/Payment';
 import Wallet from './components/Wallet';
 
+import MoizChat from './components/MoizChat';
+
 function App() {
   return (
     <Router>
@@ -34,6 +36,8 @@ function App() {
           <Route path='/Admin' element={<><AdminNavbar/><AdminHome/></>}/>
           <Route path='/history' element={<><Navbar/><History/><ChatBot/><Footer/></>}/>
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
+
+          <Route path='/moizchat' element={<><Navbar/><MoizChat/><Footer/></>}/>
 
         </Routes>
       </div>
