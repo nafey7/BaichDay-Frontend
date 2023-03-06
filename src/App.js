@@ -24,9 +24,9 @@ function App() {
     <Router>
       <div className="App" style={{height:"100%", backgroundColor:"#c8c8c8", position:"relative", width:"100%", backgroundSize: "cover"}}>
         <Routes>
-          <Route path="/home" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
+          <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
           <Route path="/category" element={<> <Navbar/> <UserHome title="Browse"/><ChatBot/><Footer/> </>}/>
-          <Route path='/' element={ <Login/> }/>
+          <Route path='/login' element={ <Login/> }/>
           <Route path='/wallet' element={<><Navbar/><Wallet/><Footer/></>}/>
           <Route path='/product' element={<><Navbar/> <Product/><ChatBot/><Footer/> </>}/>
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><ChatBot/><Footer/> </>}/>
