@@ -93,7 +93,7 @@ export default function Footer() {
       </MDBCol>
 
       <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-        © 2020 MDBootstrap.com
+        © 2023 BaichDay.com
       </div>
     </MDBFooter>
 
