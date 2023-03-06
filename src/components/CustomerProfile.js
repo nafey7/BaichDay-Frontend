@@ -3,14 +3,19 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { reactLocalStorage } from 'reactjs-localstorage';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import Button from '@mui/material/Button';
+
+import Select from 'react-select';
+import countryList from 'react-select-country-list';
+
 
 
 
 function CustomerProfile() {
     let userID = reactLocalStorage.get('userID', "", true);
 
+    const options = useMemo(() => countryList().getData(), [])
 
     const [cust, setCust] = React.useState({})
     const [user, setUser] = React.useState({
@@ -91,13 +96,14 @@ function CustomerProfile() {
         a.city = e;
         setUser(a)
     }
-    function changeCountry(e) {
+    const changeCountry = e => {
+        console.log(e.label)
         let x = cust;
-        x.country = e;
-        setCust(x)
+        x.country = e.label;
+        setCust(x);
         let a = user;
-        a.country = e;
-        setUser(a)
+        a.country = e.label;
+        setUser(a);
     }
     function done() {
         axios.post('https://pacific-sands-58031.herokuapp.com/user/editprofile', user)
@@ -113,7 +119,7 @@ function CustomerProfile() {
                 console.log(err);
             })
         
-        navigate('/CustomerProfile')
+        window.location.reload(true)
     }
 
 
@@ -154,14 +160,17 @@ function CustomerProfile() {
                     <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeCity(e.target.value) }} placeholder={cust.city} />
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Country</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeCountry(e.target.value) }} placeholder={cust.country} />
+                    <div style={{width: '400px'}}>
+                        <Select options={options}  placeholder= {cust.country} onChange={(e) => { changeCountry(e) }} />
+                    </div>
+                    
                     <br></br>
                 </div>
             </div>
             <br></br>
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto"}}>
                 <div style={{textAlign: "left", margin: "-4% 0%"}}>
-                    <Button variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} /*onClick={()=>{deleteaccount()}}*/>Delete My Account</Button>
+                    <Button variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} /*onClick={()=>{deleteaccount()}}*/>Delete Account</Button>
                 </div>
                 <div style={{textAlign: "right", margin: "-5% 0% 5%"}}>
                     <Button variant="contained" color="success" size='large' style={{margin: "0% 60%", fontSize: "130%", fontWeight: "bold"}} onClick={done} className="btn btn-success">Apply</Button>
