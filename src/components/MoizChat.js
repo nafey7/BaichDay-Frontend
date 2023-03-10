@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-// import io from 'socket.io/node_modules/socket.io-client';
+// import { MessageList, Input } from 'react-chat-elements';
 
 
 function MoizChat() {
@@ -38,10 +38,11 @@ function MoizChat() {
     const handleSubmit = (e) => {
       e.preventDefault();
       if (input) {
-        socket.emit('chat message', input);
+        socket.emit('chat message', input, localStorage.getItem('userID'));
         setInput('');
       }
     };
+
   
     return (
       <div>
