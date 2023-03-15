@@ -34,15 +34,15 @@ function Product() {
   
   React.useEffect(()=> {
 
-    axios.post('https://pacific-sands-58031.herokuapp.com/user/product/single/', {productID: prop.productID})
+    axios.post('https://pacific-sands-58031.herokuapp.com/product/single/', {productID: prop._id})
     .then(function(res) {
-        console.log(res.data.timeRemaining)
-        setTime(res.data.timeRemaining)          
+        console.log(res.data.data)
+        setTime(res.data.data)         
     }, time)
     .catch(function(err) {
         console.log(err);
-  })},[])
-
+    })
+  },[])
 
   const formik = useFormik({
     initialValues: {
