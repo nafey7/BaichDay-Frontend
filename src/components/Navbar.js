@@ -34,6 +34,7 @@ export default function Navbar() {
     reactLocalStorage.remove('token');
     reactLocalStorage.remove('userID');
     navigate("/")
+    window.location.reload(true)
   }
   function viewprofile(){
     navigate('/CustomerProfile')
@@ -137,7 +138,7 @@ export default function Navbar() {
           >
             <MenuIcon sx={{fontSize: "200%"}} />
           </IconButton>
-          <Link to={{pathname: "/home"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
+          <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
           <Drawer
                   sx={{
                     width: 150,
@@ -209,7 +210,7 @@ export default function Navbar() {
             <AccountCircle sx={{fontSize: "200%"}} />
           </IconButton>
           ):(
-            <button className="btn btn-dark" onClick={() =>{navigate("/")}} style={{fontSize:"100%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px"}}>Sign In</button>)}
+            <button className="btn btn-dark" onClick={() =>{navigate("/login")}} style={{fontSize:"100%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px"}}>Sign In</button>)}
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}

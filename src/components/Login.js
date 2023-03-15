@@ -30,14 +30,14 @@ function Login() {
           reactLocalStorage.set('wallet', response.data.data.wallet);
           console.log(response.data.data.wallet);
           alert(response.data.message);
-          navigate('/home')
+          navigate('/')
         }
         
       })
       .catch(function (error) {
         alert("Incorrect Fields");
         console.log(error);
-        navigate('/');
+        navigate('/login');
       });
     },
   });
@@ -60,7 +60,7 @@ function Login() {
       .then(function (response) {
         if (response.data.message === "success") {
         alert(response.data.message)
-        navigate('/');
+        navigate('/login');
       }
       else{
         alert(response.data.message)
