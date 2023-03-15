@@ -29,6 +29,7 @@ function Product() {
   const location = useLocation();
   const [prop, setProp] = React.useState(location.state)
   const [time, setTime] = React.useState(0)
+  const [isActive, setActive] = React.useState(false)
   let navigate = useNavigate();
 
   
@@ -36,8 +37,9 @@ function Product() {
 
     axios.post('https://pacific-sands-58031.herokuapp.com/product/single/', {productID: prop._id})
     .then(function(res) {
-        console.log(res.data.data)
-        setTime(res.data.data)         
+        // console.log(res.data.data)
+        setTime(res.data.data)
+        setActive(true)    
     }, time)
     .catch(function(err) {
         console.log(err);
@@ -115,7 +117,13 @@ function Product() {
               <div className='card-text row' style={{textAlign:"left", height:"180px"}}>
                 <h5>Current Bid: ${prop.bid[prop.bid.length-1].bidCost}</h5>
                 <h5>Number of Bids: {prop.bid.length}</h5>
-                <Timer duration={time}/>
+                <div>
+                  {isActive ? (
+                    <Timer duration={time}/>
+                  ) : (
+                    <h5>Timer loading</h5>
+                  )}
+                </div>
                 {/* <Timer duration={Math.floor(Math.random() * 10000)}/> */}
               </div>
             </div>
