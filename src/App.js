@@ -37,7 +37,7 @@ function App() {
           <Route path='/history' element={<><Navbar/><History/><ChatBot/><Footer/></>}/>
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
 
-          <Route path='/moizchat' element={<><Navbar/><MoizChat/><Footer/></>}/>
+          <Route path='/moizchat' element={<><Navbar/><MoizChat/></>}/>
 
         </Routes>
       </div>
