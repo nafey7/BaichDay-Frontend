@@ -14,7 +14,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 300,
+  width: 'auto',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -84,7 +84,7 @@ function Product() {
 
 
   return (
-    <div style={{width: '100%', height: '100%', display:'flex', maxWidth: '1200px', flexWrap: 'wrap'}}>
+    <div style={{width: 'auto', height: 'auto', display:'flex', maxWidth: '1200px', flexWrap: 'wrap'}}>
        <Modal
         open={open}
         onClose={handleClose}

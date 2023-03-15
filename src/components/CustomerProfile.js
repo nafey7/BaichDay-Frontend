@@ -124,7 +124,7 @@ function CustomerProfile() {
 
 
     return (
-        <div className="container" style={{marginTop: '2.4%', boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#d9d9d9", whiteSpace: 'nowrap', overflow: 'hidden', width: "70%" }}>
+        <div className="container" style={{boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#d9d9d9", whiteSpace: 'nowrap', overflow: 'hidden', width: "70%" }}>
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: '40% 1fr',

@@ -29,18 +29,16 @@ function History() {
         }
     };
     return (
-        <div style={{width: '100%', height: '100%'}}>
-            <div className='centered'>
-                <h2 style={{margin:"0 0 30px 0", textAlign:'left'}}>Your History</h2>
+            <div style={{alignContent: "right"}}>
+                <h2 style={{margin:"0 0 30px 0"}}>Your History</h2>
                 {data.map((d) => (
-                    <div className="card" style={{width: "22rem", outline: "3px ridge grey"}}>
+                    <div className="card" style={{width: "22rem", outline: "3px ridge black"}}>
                         <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Item: {d.name}</h2>
                         <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Bid: {d.cost}</h2>
                         <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Status: {Status(d.sold)}</h2>
                     </div>
                 ))}
             </div>
-        </div>
     );
 };
 
