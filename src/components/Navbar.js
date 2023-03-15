@@ -31,10 +31,21 @@ export default function Navbar() {
   const [Check, setCheck] = React.useState(false);
   let navigate = useNavigate();
   function logout(){
-    reactLocalStorage.remove('token');
-    reactLocalStorage.remove('userID');
-    navigate("/")
-    window.location.reload(true)
+    let userID = reactLocalStorage.get('userID',);
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
+        userID: userID
+    })
+    .then(function (response) {
+        if (response.data.message === 'success') {
+          reactLocalStorage.remove('token');
+          reactLocalStorage.remove('userID');
+          navigate("/")
+          window.location.reload(true)
+        }
+        else {
+            alert(response.data.message)
+        }
+    })
   }
   function viewprofile(){
     navigate('/CustomerProfile')
