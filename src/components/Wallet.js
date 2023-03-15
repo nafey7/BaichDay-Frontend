@@ -16,19 +16,20 @@ export default function Wallet() {
                 </div>
 
                 <div className="row" style={{ marginTop: "3%" }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6" style={{ borderRight: "2px outset #eee" }}>
                         <div style={{ marginLeft: "2%" }}>
                             <h3 style={{ fontSize: "2rem" }}>My Balance:</h3>
                             <h2 style={{ fontSize: "10rem", fontWeight: "bolder", color: "#3b3b3b", marginTop: "-3%" }}>${amount}</h2>
                         </div>
                     </div>
-                    <div className="col-md-6">
 
-                        <h2 style={{ textAlign: "center" }}>Your History</h2>
+                    <div className="col-md-6">
+                        <div style={{ textAlign: "center" }}>
+                            <h2>Your History</h2>
+                        </div>
                         <div style={{ overflowY: "scroll", marginTop: "auto" }}>
                             <History />
                         </div>
-
                     </div>
                 </div>
 
