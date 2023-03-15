@@ -22,7 +22,7 @@ function UserHome(props){
         })
         }else{
           console.log("in categories")
-          axios.post('https://pacific-sands-58031.herokuapp.com/user/category/', {category: props.title})
+          axios.post('https://pacific-sands-58031.herokuapp.com/product/category/', {category: props.title})
           .then(function(res) {
               setDataprops(res.data.data)          
           }, dataprops)
