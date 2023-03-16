@@ -45,7 +45,7 @@ function AboutUs() {
                         </div>
                         <div class="feature-box">
                             <div class="clearfix">
-                                <div class="iconset">
+                                <div class="iconset" style={{backgroundColor:"#d3ebe9"}}>
                                     <span class="glyphicon glyphicon-cog icon"></span>
                                 </div>
                                 <div class="feature-content">

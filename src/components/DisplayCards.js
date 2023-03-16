@@ -10,7 +10,7 @@ const gridContainer = {
     marginTop: '0px 0px 0px 0px'
 }
 const cardStyles ={
-    margin: '10px 0px 0px 0px'
+    margin: '30px 0px 0px 0px'
 }
 
 function DisplayCards(props){
@@ -21,7 +21,7 @@ function DisplayCards(props){
                 {props.test.map(function(object, i){ 
                     return(
                         <Grid item xs="12" sm="6" md="4" sx={cardStyles}>
-                            <ActionAreaCard {... object} /> 
+                            <ActionAreaCard {... object}/> 
                         </Grid>
                     ) 
                             

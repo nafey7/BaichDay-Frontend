@@ -33,19 +33,11 @@ function UserHome(props){
   
     },[])
     return(
-        <div>
-            <Box sx={{ display: 'flex'}}>
-                
-                <Box sx={{ width:"100%",flexGrow: 1}}><h1>{props.title}</h1></Box>
-                <Box sx={{width:"25%"}}><button className="btn btn-success" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", borderRadius:"15px"}}>Sell With Us</button></Box>
-            </Box>
-
-            
-            
+        <div>            
             <Box sx={{ display: 'flex' }}>
                     
                 <DisplayCards test={dataprops}/>
-                <div style={{backgroundColor: 'grey', width: '20%',marginTop: '12px'}}>
+                <div style={{backgroundColor: 'grey', width: '20%',marginTop: '30px'}}>
                     <br/>
                     <h3>Advert</h3>
                     <br/>

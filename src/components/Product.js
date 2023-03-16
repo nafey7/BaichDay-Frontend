@@ -34,14 +34,14 @@ function Product() {
   
   React.useEffect(()=> {
 
-    axios.post('https://pacific-sands-58031.herokuapp.com/user/product/single/', {productID: prop.productID})
+    axios.post('https://pacific-sands-58031.herokuapp.com/product/single/', {productID: prop.productID})
     .then(function(res) {
         console.log(res.data.timeRemaining)
         setTime(res.data.timeRemaining)          
     }, time)
     .catch(function(err) {
         console.log(err);
-  })},[])
+  })})
 
 
   const formik = useFormik({
