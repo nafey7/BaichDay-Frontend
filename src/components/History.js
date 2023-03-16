@@ -29,15 +29,23 @@ function History() {
     };
     return (
         <div style={{ margin: "0 auto", textAlign: "center" }}>
-            
-            <div style={{display: "flex", justifyContent: "center"}}>
-            {data.map((d) => (
-                <div className="card" style={{width: "20rem", outline: "3px ridge black" ,height: "100%"}}>
-                    <h2 style={{ margin: "0 0 15px 0", textAlign: 'left' }}>Item: {d.name}</h2>
-                    <h2 style={{ margin: "0 0 15px 0", textAlign: 'left' }}>Bid: {d.cost}</h2>
-                    <h2 style={{ margin: "0 0 15px 0", textAlign: 'left' }}>Status: {Status(d.sold)}</h2>
-                </div>
-            ))}
+
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Cost</th>
+                        <th>Status</th>
+                    </tr>
+
+                    {data.map((d) => (
+                        <tr>
+                            <td>{d.name}</td>
+                            <td>{d.cost}</td>
+                            <td>{Status(d.sold)}</td>
+                        </tr>
+                    ))}
+                </table>
             </div>
         </div>
     );
