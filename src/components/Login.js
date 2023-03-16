@@ -23,21 +23,21 @@ function Login() {
         password: values.password
       })
       .then(function (response) {
-        console.log(response)
         if(response.data.message === "success")
         {
           reactLocalStorage.set('userID',response.data.data._id);
           reactLocalStorage.set('token',response.data.token);
-          console.log(response.data.token);
+          reactLocalStorage.set('wallet', response.data.data.wallet);
+          console.log(response.data.data.wallet);
           alert(response.data.message);
-          navigate('/home')
+          navigate('/')
         }
         
       })
       .catch(function (error) {
         alert("Incorrect Fields");
         console.log(error);
-        navigate('/');
+        navigate('/login');
       });
     },
   });
@@ -60,7 +60,7 @@ function Login() {
       .then(function (response) {
         if (response.data.message === "success") {
         alert(response.data.message)
-        navigate('/');
+        navigate('/login');
       }
       else{
         alert(response.data.message)

@@ -23,9 +23,21 @@ export default function Navbar() {
   const [Check, setCheck] = React.useState(false);
   let navigate = useNavigate();
   function logout(){
-    reactLocalStorage.remove('token');
-    reactLocalStorage.remove('userID');
-    navigate("/")
+    let userID = reactLocalStorage.get('userID',);
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
+        userID: userID
+    })
+    .then(function (response) {
+        if (response.data.message === 'success') {
+          reactLocalStorage.remove('token');
+          reactLocalStorage.remove('userID');
+          navigate("/")
+          window.location.reload(true)
+        }
+        else {
+            alert(response.data.message)
+        }
+    })
   }
   function viewprofile(){
     navigate('/CustomerProfile')
@@ -35,6 +47,9 @@ export default function Navbar() {
   }
   function wallet(){
     navigate('/wallet')
+  }
+  function chat(){
+    navigate('/moizchat')
   }
   let username
   React.useEffect(() => {
@@ -194,7 +209,6 @@ export default function Navbar() {
           </IconButton>
           ):(
             <button className="btn btn-dark" onClick={() =>{navigate("/")}} style={{fontSize:"100%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px"}}>Sign In</button>)}
-          
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}
@@ -211,6 +225,7 @@ export default function Navbar() {
             <MenuItem>Auction Items</MenuItem>
             <MenuItem onClick={history}>Bidding History</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
+            <MenuItem onClick={chat}>Chat</MenuItem>
           </Menu>
 
         </Toolbar>

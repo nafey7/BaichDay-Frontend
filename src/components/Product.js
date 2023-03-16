@@ -14,7 +14,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 300,
+  width: 'auto',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -29,20 +29,22 @@ function Product() {
   const location = useLocation();
   const [prop, setProp] = React.useState(location.state)
   const [time, setTime] = React.useState(0)
+  const [isActive, setActive] = React.useState(false)
   let navigate = useNavigate();
 
   
   React.useEffect(()=> {
 
-    axios.post('https://pacific-sands-58031.herokuapp.com/product/single/', {productID: prop.productID})
+    axios.post('https://pacific-sands-58031.herokuapp.com/product/single/', {productID: prop._id})
     .then(function(res) {
-        console.log(res.data.timeRemaining)
-        setTime(res.data.timeRemaining)          
+        // console.log(res.data.data)
+        setTime(res.data.data)
+        setActive(true)    
     }, time)
     .catch(function(err) {
         console.log(err);
-  })})
-
+    })
+  },[])
 
   const formik = useFormik({
     initialValues: {
@@ -65,7 +67,7 @@ function Product() {
         {
           console.log(response.data.token);
           alert(response.data.message);
-          navigate('/home');
+          navigate('/');
         }
         else
         {
@@ -82,7 +84,7 @@ function Product() {
 
 
   return (
-    <div style={{width: '100%', height: '100%', display:'flex', maxWidth: '1200px', flexWrap: 'wrap'}}>
+    <div style={{width: 'auto', height: 'auto', display:'flex', maxWidth: '1200px', flexWrap: 'wrap'}}>
        <Modal
         open={open}
         onClose={handleClose}
@@ -115,7 +117,13 @@ function Product() {
               <div className='card-text row' style={{textAlign:"left", height:"180px"}}>
                 <h5>Current Bid: ${prop.bid[prop.bid.length-1].bidCost}</h5>
                 <h5>Number of Bids: {prop.bid.length}</h5>
-                <Timer duration={time}/>
+                <div>
+                  {isActive ? (
+                    <Timer duration={time}/>
+                  ) : (
+                    <h5>Timer loading</h5>
+                  )}
+                </div>
                 {/* <Timer duration={Math.floor(Math.random() * 10000)}/> */}
               </div>
             </div>

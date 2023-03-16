@@ -11,7 +11,6 @@ function CountdownTimer({ duration }) {
     }, 1000);
     return () => clearInterval(intervalId);
   }, [seconds]);
-
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
   const secondsLeft = seconds % 60;

@@ -1,4 +1,7 @@
 import React from "react";
+import {reactLocalStorage} from 'reactjs-localstorage';
+import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 import {
   MDBBtn,
   MDBCard,
@@ -10,13 +13,34 @@ import {
 } from "mdb-react-ui-kit";
 
 export default function Payment() {
+  let userID = reactLocalStorage.get('userID', "", true);
+  const [amount, setAmount] = React.useState({});
+  let navigate = useNavigate();
+
+  function changeAmount(e){
+    setAmount(e)
+  }
+  
+  function addBalance(){
+    axios.post("https://pacific-sands-58031.herokuapp.com/user/chargewallet", {
+      userID: userID,
+      amount: amount
+    })
+    .then(function(response) {
+      if(response.data.message === "success"){
+        console.log(response.data.data.wallet)
+        reactLocalStorage.set('wallet', response.data.data.wallet);
+        navigate("/wallet");
+      }
+      else{
+        alert(response.data.message);
+      }
+    })
+  }
   return (
     <MDBContainer
       className="py-5"
       fluid
-      style={{
-        backgroundColor:"ghostwhite"
-    }}
     >
       <MDBRow className=" d-flex justify-content-center">
         <MDBCol md="10" lg="8" xl="5">
@@ -66,13 +90,13 @@ export default function Payment() {
                   <MDBInput
                     label="Amount"
                     id="form7"
-                    type="text"
                     size="lg"
+                    onChange={(e) => {changeAmount(+e.target.value)}}
                     placeholder="Enter amount in PKR"
                   />
                 </MDBCol>
               </MDBRow>
-              <MDBBtn color="success" size="lg" block>
+              <MDBBtn color="success" onClick={addBalance} size="lg" block>
                 Confirm Payment
               </MDBBtn>
             </MDBCardBody>
