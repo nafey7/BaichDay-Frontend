@@ -17,7 +17,8 @@ import AdminNavbar from './components/AdminNavbar';
 import Payment from './components/Payment';
 import Wallet from './components/Wallet';
 
-import MoizChat from './components/MoizChat';
+import UserChat from './components/UserChat';
+import ChatList from './components/ChatList';
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
           <Route path='/history' element={<><Navbar/><History/><ChatBot/><Footer/></>}/>
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
 
-          <Route path='/moizchat' element={<><Navbar/><MoizChat/></>}/>
+          <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
+          <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
 
         </Routes>
       </div>

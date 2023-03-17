@@ -46,7 +46,7 @@ export default function Navbar() {
     navigate('/wallet')
   }
   function chat(){
-    navigate('/moizchat')
+    navigate('/chatlist')
   }
   let username
   React.useEffect(() => {
@@ -226,8 +226,8 @@ export default function Navbar() {
             <MenuItem>Active Bids</MenuItem>
             <MenuItem>Auction Items</MenuItem>
             <MenuItem onClick={history}>Bidding History</MenuItem>
-            <MenuItem onClick={logout}>Logout</MenuItem>
             <MenuItem onClick={chat}>Chat</MenuItem>
+            <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>
 
         </Toolbar>

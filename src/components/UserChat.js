@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import axios from 'axios';
 
-function MoizChat() {
+
+
+function UserChat() {
     const [socket, setSocket] = useState(null);
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [userID, setuserID] = useState('');
+    const [list, setList] = useState([]);
   
     useEffect(() => {
       const newSocket = io('http://localhost:8000');
@@ -13,8 +17,20 @@ function MoizChat() {
   
       return () => newSocket.close();
     }, []);
+
+  //   useEffect(() => {     
+  //   axios.get('http://localhost:8000/user/chatlist')
+  //   .then(function(res) {
+  //       console.log(res.data.data)
+  //       setList(res.data.data);
+  //   }, list)
+  //   .catch(function(err) {
+  //       console.log(err);
+  // })
+  //   }, []);
   
     useEffect(() => {
+
         const userIDStorage = localStorage.getItem('userID');
         if (userIDStorage) {
         setuserID(userIDStorage);
@@ -48,12 +64,17 @@ function MoizChat() {
     return (
       <div>
         <h1>Chat</h1>
+        {/* <h2>{list.map((x) => (
+          <ul>
+          <li>{x.firstName} {x.lastName}</li>
+          </ul>
+        ))}</h2> */}
         <ul>
           {messages.map((msg, index) => (
             <li key={index}>{msg}</li>
           ))}
         </ul>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{display: 'flex'}}>
           <input type="text" value={input} onChange={handleInputChange} />
           <button type="submit">Send</button>
         </form>
@@ -62,4 +83,4 @@ function MoizChat() {
   };
   
 
-export default MoizChat;
+export default UserChat;
