@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import React from 'react'
+import Box from '@mui/material/Box';
 
 function AddProduct() {
     let navigate = useNavigate();
@@ -60,8 +61,18 @@ function AddProduct() {
     }
     
     return (
-    <div className="Product" style={{height:"100vh",width:"100wh",backgroundColor:"white"}}>
-    <div class="container" style={{margin: "50px 150px",backgroundSize:"cover",backgroundColor:"white", position:"relative", width:"100%"}}>
+        // <Box sx={{ display: 'flex' }}>
+        //     <div style={{display: "flex", justifyContent: 'center'}}>
+        //     <h1 style={{margin:"70px 0 0 200px"}}>Product description:</h1>
+        //     </div>
+            
+            
+        // </Box>
+    
+
+    
+    <div className="Product" style={{height:"100vh",width:"100wh",backgroundColor:"#E5E5E5"}}>
+    <div class="container" style={{margin: "50px 150px", position:"relative", width:"100%",backgroundColor:"#E5E5E5"}}>
         <div class="row align-items-center">
         <div class="col-2">
             
@@ -72,37 +83,36 @@ function AddProduct() {
                 
             <br></br>
             <div className='container' style={{height:"55vh", width:"60vw",backgroundColor:"#E5E5E5", borderRadius:"15px", margin:"0 0 100px 200px"}}>
-            <div className='row' style={{margin:"70px 0 0 70px "}}>
-            <div class="col-5">
- 
-            <input class="form-control" type="text" placeholder="Name" id= "1" name ="1" onChange={(e)=>{changeName(e.target.value)}}  aria-label="name"/>
-            <br></br>
-            <input class="form-control" type="text" placeholder="Product Description" id= "4" name ="4" onChange={(e)=>{changeDescription(e.target.value)}} aria-label="Product Description"  rows="3"/>            
-            <br></br>
-            <input class="form-control" type="number" placeholder="Duration in hours" id= "4" name ="4" min="1" max="10" onChange={(e)=>{changeDuration(e.target.value)}} aria-label="Duration"  rows="3"/>            
-            <br></br>
-            <input id="5" type="file" onChange={(e)=>{ 
-                var file = e.target.files[0]
-                var FR = new FileReader();
-                var baseString;
-                FR.onloadend = function () {
-                    baseString = FR.result;
-                    console.log(baseString); 
-                    changeImage(baseString)
-                };
-                FR.readAsDataURL(file);
+                <div className='row' style={{margin:"70px 0 0 70px "}}>
+                    <div class="col-5">
+        
+                        <input class="form-control" type="text" placeholder="Name" id= "1" name ="1" onChange={(e)=>{changeName(e.target.value)}}  aria-label="name"/>
+                        <br></br>
+                        <input class="form-control" type="text" placeholder="Product Description" id= "4" name ="4" onChange={(e)=>{changeDescription(e.target.value)}} aria-label="Product Description"  rows="3"/>            
+                        <br></br>
+                        <input class="form-control" type="number" placeholder="Duration in hours" id= "4" name ="4" min="1" max="10" onChange={(e)=>{changeDuration(e.target.value)}} aria-label="Duration"  rows="3"/>            
+                        <br></br>
+                        <input id="5" type="file" onChange={(e)=>{ 
+                            var file = e.target.files[0]
+                            var FR = new FileReader();
+                            var baseString;
+                            FR.onloadend = function () {
+                                baseString = FR.result;
+                                console.log(baseString); 
+                                changeImage(baseString)
+                            };
+                            FR.readAsDataURL(file);
 
-            }}/>
-                 
-            </div>
-            <div class="col-5" style={{margin:"0px 0 0 40px "}}>
-            
-            <input class="form-control" type="text" placeholder="Reserve Amount" aria-label="cost" onChange={(e)=>{changeCost(e.target.value)}} id= "6" name ="6" />
-            <br></br>
-            
-            <button type="button" class="btn" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#aca738",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
-            </div>
-            </div>
+                        }}/>
+                            
+                        </div>
+                        <div class="col-5" style={{margin:"0px 0 0 40px "}}>
+                        <input class="form-control" type="text" placeholder="Reserve Amount" aria-label="cost" onChange={(e)=>{changeCost(e.target.value)}} id= "6" name ="6" />
+                        <br></br>
+                    
+                    <button type="button" class="btn" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#aca738",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
+                    </div>
+                </div>
             </div>
             </form>
         </div>

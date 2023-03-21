@@ -30,23 +30,15 @@ function UserHome(props) {
               console.log(err);
         })
         }
-
-    }, [])
-    return (
-        <div>
+  
+    },[])
+    return(
+        <div>            
             <Box sx={{ display: 'flex' }}>
-
-                <Box sx={{ width: "100%", flexGrow: 1 }}><h1>{props.title}</h1></Box>
-                <Box sx={{ width: "25%" }}><button className="btn btn-success" size="small" onClick={() => { navigate("/AddProduct") }} style={{ width: "70%", height: "auto", fontSize: "20px", fontWeight: "bolder", borderRadius: "15px" }}>Sell With Us</button></Box>
-            </Box>
-
-
-
-            <Box sx={{ display: 'flex' }}>
-
-                <DisplayCards test={dataprops} />
-                <div style={{ backgroundColor: 'grey', width: '20%', marginTop: '12px' }}>
-                    <br />
+                    
+                <DisplayCards test={dataprops}/>
+                <div style={{backgroundColor: 'grey', width: '20%',marginTop: '30px'}}>
+                    <br/>
                     <h3>Advert</h3>
                     <br />
                     <h4>Get your adds featured now!</h4>
