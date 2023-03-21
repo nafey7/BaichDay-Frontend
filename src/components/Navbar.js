@@ -130,7 +130,7 @@ export default function Navbar() {
     <Box sx={{ flexGrow: 1}}>
       <AppBar position="fixed" sx={{backgroundColor:"black"}}>
         <Toolbar>
-          <Link to={{pathname: "/home"}} style={{margin:"0 15px",color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
+          <Link to={{pathname: "/"}} style={{margin:"0 15px",color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
           <button className="btn"         id="demo-positioned-button1"
         aria-controls={open1 ? 'demo-positioned-menu1' : undefined}
         aria-haspopup="true"
