@@ -6,21 +6,24 @@ import { reactLocalStorage } from 'reactjs-localstorage';
 function History() {
     let userID = reactLocalStorage.get('userID', "", true);
     const [data, setData] = React.useState([]);
-    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
-        userID: userID
-    })
-        .then(function (response) {
-            if (response.data.message === 'success') {
-                let x = data;
-                x = response.data.data
-                setData(x)
-            }
-            else {
-                alert(response.data.message)
-            }
-        });
+    React.useEffect(() => {
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
+            userID: userID
+        })
+            .then(function (response) {
+                if (response.data.message === 'success') {
+                    let x = data;
+                    x = response.data.data
+                    setData(x)
+                }
+                else {
+                    alert(response.data.message)
+                }
+            }, data);
+    }, [])
+    
     function Status(sold) {
-        if (sold === true) {
+        if (sold === 'true') {
             return 'Success';
         }
         else {
@@ -41,7 +44,7 @@ function History() {
                     {data.map((d) => (
                         <tr>
                             <td>{d.name}</td>
-                            <td>{d.cost}</td>
+                            <td>{d.maxBid}</td>
                             <td>{Status(d.sold)}</td>
                         </tr>
                     ))}
