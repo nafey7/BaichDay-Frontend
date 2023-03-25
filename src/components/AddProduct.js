@@ -73,10 +73,10 @@ function AddProduct() {
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto" }}>
                 <div className="row" style={{textAlign: "left", fontSize: '15px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Name</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeName(e.target.value)}} placeholder="Name" />
+                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeName(e.target.value)}} placeholder="Name" required />
                     <br></br>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Description</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeDescription(e.target.value)}} placeholder="Product Description" />
+                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeDescription(e.target.value)}} placeholder="Product Description" required />
                     <br></br>
                     <input id="5" type="file" onChange={(e)=>{ 
                         var file = e.target.files[0]
@@ -88,14 +88,14 @@ function AddProduct() {
                             changeImage(baseString)
                         };
                         FR.readAsDataURL(file);
-                    }}/>
+                    }} required/>
                 </div>
                 <div className="row" style={{textAlign: "left", fontSize: '15px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
                     <label for="contactInput" className="form-label" style={{marginBottom: "0px"}}>Reserve Amount</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeCost(e.target.value)}} placeholder="Reserve Amount" />
+                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeCost(e.target.value)}} placeholder="Reserve Amount" required/>
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Duration</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeDuration(e.target.value)}} placeholder="Duration in Hours" />
+                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeDuration(e.target.value)}} placeholder="Duration in Hours" required />
                     <br></br>
                 </div>
             </div>
