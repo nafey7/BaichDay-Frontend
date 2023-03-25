@@ -1,17 +1,23 @@
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
-import React from 'react'
+import React from 'react';
+import { reactLocalStorage } from 'reactjs-localstorage';
+import Select from 'react-select';
 import Box from '@mui/material/Box';
 
 function AddProduct() {
     let navigate = useNavigate();
-    const [cust, setCust] = React.useState({
-        cost: '',
-        description:"",
-        name: "", 
-        image: "",
-
-    })
+    const categoryOptions = [
+        { value: 'option1', label: 'Collectibles' },
+        { value: 'option2', label: 'Sporting' },
+        { value: 'option3', label: 'Electronics' },
+        { value: 'option4', label: 'Fashion' },
+        { value: 'option5', label: 'Toys' },
+        { value: 'option6', label: 'Music' },
+        { value: 'option7', label: 'Other' },
+    ];
+    const userID = reactLocalStorage.get('userID');
+    const [cust, setCust] = React.useState({})
     
     function changeCost(e){
         let product = cust;
@@ -38,15 +44,22 @@ function AddProduct() {
         product.duration = e;
         setCust(product)
     }
+    function changeCategory(e){
+        let product = cust;
+        product.category = e.label;
+        setCust(product)
+    }
 
     function postProductDetails(){
         console.log(cust)
         axios.post('https://pacific-sands-58031.herokuapp.com/user/addproduct', {
+          userID: userID,
           cost: cust.cost,
           description: cust.description,
           name: cust.name, 
           image: cust.image,
-          duration: cust.duration
+          duration: cust.duration,
+          category: cust.category
           })
           .then(function (response) {
             alert(response.data.message)
@@ -68,7 +81,7 @@ function AddProduct() {
             
             
         // </Box>
-        <div className="container" style={{boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#d9d9d9", whiteSpace: 'nowrap', overflow: 'hidden', width: "70%" }}>
+        <div className="container" style={{boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#d9d9d9", whiteSpace: 'nowrap', width: "70%", height: "100%"}}>
             <h1 style={{ textAlign: "center", color: 'black', fontSize: '50px', fontWeight: "bolder" }}>Product Details</h1>
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto" }}>
                 <div className="row" style={{textAlign: "left", fontSize: '15px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
@@ -78,6 +91,7 @@ function AddProduct() {
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Description</label>
                     <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeDescription(e.target.value)}} placeholder="Product Description" required />
                     <br></br>
+                    <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Image</label>
                     <input id="5" type="file" onChange={(e)=>{ 
                         var file = e.target.files[0]
                         var FR = new FileReader();
@@ -97,9 +111,13 @@ function AddProduct() {
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Duration</label>
                     <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeDuration(e.target.value)}} placeholder="Duration in Hours" required />
                     <br></br>
+                    <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Category</label>
+                    <div style={{width: '400px'}}>
+                        <Select options={categoryOptions}  placeholder="Category" onChange={(e) => {changeCategory(e)}} />
+                    </div>
                 </div>
             </div>
-            <div style={{textAlign: "right", margin: "-3% 12% 5%"}}>
+            <div style={{textAlign: "right", margin: "2% 12% 3%"}}>
                 <button type="button" class="btn" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#008000",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
             </div>
             {/* <div class="row align-items-center">
