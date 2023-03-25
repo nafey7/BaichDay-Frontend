@@ -208,7 +208,7 @@ export default function Navbar() {
             <AccountCircle sx={{fontSize: "200%"}} />
           </IconButton>
           ):(
-            <button className="btn btn-dark" onClick={() =>{navigate("/")}} style={{fontSize:"100%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px"}}>Sign In</button>)}
+            <button className="btn btn-dark" onClick={() =>{navigate("/login")}} style={{fontSize:"100%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px"}}>Sign In</button>)}
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}
