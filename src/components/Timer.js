@@ -17,7 +17,7 @@ function CountdownTimer({ duration }) {
 
   return (
     <div>
-      <b>{hours}:{minutes}:{secondsLeft} remaining</b>
+      <p className="h1 mt-4"><b><icon className="far fa-clock"></icon> Time Left : </b>{hours}:{minutes}:{secondsLeft}</p>
     </div>
   );
 }
