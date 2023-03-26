@@ -14,7 +14,8 @@ function AddProduct() {
         { value: 'option4', label: 'Fashion' },
         { value: 'option5', label: 'Toys' },
         { value: 'option6', label: 'Music' },
-        { value: 'option7', label: 'Other' },
+        { value: 'option7', label: 'Cars' },
+        { value: 'option8', label: 'Other' },
     ];
     const userID = reactLocalStorage.get('userID');
     const [cust, setCust] = React.useState({})
