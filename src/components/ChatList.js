@@ -34,7 +34,9 @@ export default function ChatList() {
       };
 
     React.useEffect(() => {     
-        axios.get('http://localhost:8000/user/chatlist')
+        axios.post('http://localhost:8000/user/chatlist', {
+          userID: localStorage.getItem('userID')
+        })
         .then(function(res) {
             console.log(res.data.data)
             setList(res.data.data);

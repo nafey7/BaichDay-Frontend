@@ -19,6 +19,7 @@ import Wallet from './components/Wallet';
 
 import UserChat from './components/UserChat';
 import ChatList from './components/ChatList';
+import Test from './components/test';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
 
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
+          <Route path='/test' element={<><Test/></>}/>
 
         </Routes>
       </div>
