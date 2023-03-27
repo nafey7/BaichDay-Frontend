@@ -95,7 +95,7 @@ function Login() {
       .then(function (response) {
         if (response.data.message === "success") {
         alert(response.data.message)
-        navigate('/login');
+        navigate('/pinauthentication');
       }
       else{
         alert(response.data.message)
