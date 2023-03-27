@@ -44,8 +44,12 @@ function PinAuthentication() {
             length={6}
             onChange={(code) => setCode(code)}
           />
-          <br />
-          <Button type="submit" variant="contained" sx={{background: 'green'}}>Enter</Button>
+          <br></br>
+          <br></br>
+
+          <Button type="submit" variant="contained" sx={{background: '#4BB543'}} size="large" style={{ fontSize: '1.5rem', padding: '1rem 2rem' }}>Enter</Button>
+
+
         </form>
       </div>
     </div>
