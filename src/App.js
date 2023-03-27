@@ -19,7 +19,7 @@ import Wallet from './components/Wallet';
 
 import UserChat from './components/UserChat';
 import ChatList from './components/ChatList';
-import Test from './components/test';
+import PinAuthentication from './components/PinAuthentication';
 
 function App() {
   return (
@@ -41,7 +41,7 @@ function App() {
 
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
-          <Route path='/test' element={<><Navbar/><Test/></>}/>
+          <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
 
         </Routes>
       </div>

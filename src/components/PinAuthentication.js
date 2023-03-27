@@ -2,16 +2,34 @@ import React, { useState } from "react";
 import InputVerificationCode from "react-input-verification-code";
 import axios from "axios";
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router-dom";
+import {reactLocalStorage} from 'reactjs-localstorage';
 
-function Test() {
+
+function PinAuthentication() {
   const [code, setCode] = useState("");
+  let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("/api/verify-code", { code })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/confirmpin', {
+      token: localStorage.getItem('token'),
+      pin: code
+    }).then(function(res) {
+      if (res.data.message === "success") {
+        reactLocalStorage.set('userID',res.data.data._id);
+        reactLocalStorage.set('token',res.data.token);
+        reactLocalStorage.set('wallet', res.data.data.wallet);
+        navigate('/');
+      console.log(res.data.data)
+      }
+      else{
+        alert(res.data.message)
+      }
+  })
+  .catch(function(err) {
+      console.log(err);
+})
   };
   
   return (
@@ -34,4 +52,6 @@ function Test() {
   );
 }
 
-export default Test;
+export default PinAuthentication;
+
+

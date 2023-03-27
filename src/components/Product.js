@@ -105,8 +105,8 @@ function Product() {
       </Modal>
       <div className='row'>
         <div className="col-5" style={{padding:'2% 10%'}}>
-          <div className="card" style={{width: "400px", outline: "3px ridge grey", height:"400px"}}>
-            <img className="card-img-top" src={prop.image[0]} alt="Card" style={{height:"400px", width:"400px"}}/>
+          <div className="card">
+            <img className="card-img-top" src={prop.image[0]} alt="Card" style={{height:"60vh", width:"30vw"}}/>
           </div>
         </div>
         <div className="col-7" style={{padding:'0 5%',textAlign:"left"}}>
