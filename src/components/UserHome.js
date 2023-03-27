@@ -3,12 +3,14 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import DisplayCards from './DisplayCards';
 import Box from '@mui/material/Box';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 function UserHome(props) {
     const [dataprops, setDataprops] = React.useState([{ name: "", image: "img.png", bid: [0] }]);
     let navigate = useNavigate();
+
+
     React.useEffect(()=> {
         if(props.title ==="Featured Products"){
           axios.get('https://pacific-sands-58031.herokuapp.com/product/')
