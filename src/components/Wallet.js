@@ -2,10 +2,25 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { reactLocalStorage } from 'reactjs-localstorage';
 import History from './History';
+import axios from "axios";
 
 export default function Wallet() {
     const navigate = useNavigate();
-    const amount = reactLocalStorage.get('wallet');
+    const userID = reactLocalStorage.get('userID');
+    const [amount, setAmount] = React.useState(0)
+
+    React.useEffect(() => {
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/wallet', {
+            userID: userID
+        }).then(function (response) {
+            if (response.data.message === 'success') {
+                setAmount(response.data.data.wallet);
+            }
+            else{
+                alert(response.data.message);
+            }
+        }, amount)
+    }, [])
 
     return (
         <div className="container" style={{ boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#d9d9d9", width: "70%", height: "auto", padding: "2rem", whiteSpace: 'nowrap', overflow: 'hidden' }}>
