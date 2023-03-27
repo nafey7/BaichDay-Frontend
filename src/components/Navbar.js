@@ -209,7 +209,7 @@ export default function Navbar() {
             open={Boolean(anchorEl3)}
             onClose={handleClose}
           >
-            <MenuItem onClick={viewprofile}></MenuItem>
+            <MenuItem onClick={viewprofile}>Profile</MenuItem>
             <MenuItem onClick={wallet}>Wallet</MenuItem>
             <MenuItem>Notifications</MenuItem>
             <MenuItem>Active Bids</MenuItem>
