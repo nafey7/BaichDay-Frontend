@@ -101,80 +101,63 @@ export default function Navbar() {
   });
   
   const [anchorEl1, setAnchorEl1] = React.useState(null);
-  const open1 = Boolean(anchorEl1);
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const [anchorEl3, setAnchorEl3] = React.useState(null);
+
   const handleClick1 = (event) => {
     setAnchorEl1(event.currentTarget);
   };
-  const handleClose1 = () => {
-    setAnchorEl1(null);
-  };
-  const [anchorEl2, setAnchorEl2] = React.useState(null);
-  const open2 = Boolean(anchorEl2);
+
   const handleClick2 = (event) => {
     setAnchorEl2(event.currentTarget);
   };
-  const handleClose2 = () => {
-    setAnchorEl2(null);
+
+  const handleClick3 = (event) => {
+    setAnchorEl3(event.currentTarget);
   };
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const openMenu = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClose = () => {
+    setAnchorEl1(null);
+    setAnchorEl2(null);
+    setAnchorEl3(null);
   };
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
+
   return (
     <Box sx={{ flexGrow: 1}}>
       <AppBar position="fixed" sx={{backgroundColor:"black"}}>
         <Toolbar>
           <Link to={{pathname: "/"}} style={{margin:"0 15px",color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
-          <button className="btn"         id="demo-positioned-button1"
-        aria-controls={open1 ? 'demo-positioned-menu1' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open1 ? 'true' : undefined}
-        onClick={handleClick} style={{fontSize:"150%", marginLeft:"50px", color:"white"}}>Auctions</button>
+          <button className="btn" aria-controls="menu1" aria-haspopup="true" onClick={handleClick1} style={{fontSize:"150%", marginLeft:"50px", color:"white"}}>Auctions</button>
           <Menu
-            id="demo-positioned-menu1"
-            aria-labelledby="demo-positioned-button1"
+            id="menu1"
             anchorEl={anchorEl1}
-            open={open1}
-            onClose={handleClose1}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
+            keepMounted
+            open={Boolean(anchorEl1)}
+            onClose={handleClose}
           >
             <MenuItem >Current Auctions</MenuItem>
             <MenuItem >Past Auctions</MenuItem>
           </Menu>
           <button className="btn" id="demo-positioned-button2"
-        aria-controls={open2 ? 'demo-positioned-menu2' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open2 ? 'true' : undefined}
-        onClick={handleClick} style={{fontSize:"150%", marginLeft:"20px", color:"white"}}>Categories</button>
+            aria-controls="menu2" aria-haspopup="true" onClick={handleClick2}
+            style={{fontSize:"150%", marginLeft:"20px", color:"white"}}>
+              Categories
+          </button>
           <Menu
-            id="demo-positioned-menu2"
-            aria-labelledby="demo-positioned-button2"
+            id="menu2"
             anchorEl={anchorEl2}
-            open={open2}
-            onClose={handleClose1}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
+            keepMounted
+            open={Boolean(anchorEl2)}
+            onClose={handleClose}
           >
-            <MenuItem onClick={handleClose2}>Current Auctions</MenuItem>
-            <MenuItem onClick={handleClose2}>Past Auctions</MenuItem>
+            <MenuItem onClick={handleClose}>Collectibles</MenuItem>
+            <MenuItem onClick={handleClose}>Sporting</MenuItem>
+            <MenuItem onClick={handleClose}>Electronics</MenuItem>
+            <MenuItem onClick={handleClose}>Fashion</MenuItem>
+            <MenuItem onClick={handleClose}>Toy</MenuItem>
+            <MenuItem onClick={handleClose}>Music</MenuItem>
+            <MenuItem onClick={handleClose}>Cars</MenuItem>
+            <MenuItem onClick={handleClose}>Others</MenuItem>
           </Menu>
           <button className="btn btn-success" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"15px"}}>Sell With Us</button>
           <FormControl sx={{ width: '15%', backgroundColor: 'white', marginLeft:"550px", borderRadius:"15px"}} variant="standard">
@@ -199,9 +182,9 @@ export default function Navbar() {
         <IconButton
             size="large"
             aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleClick}
+            aria-controls="menu3" 
+            aria-haspopup="true" 
+            onClick={handleClick3}
             color="inherit"
           >
             <AccountCircle sx={{fontSize: "200%"}} />
@@ -209,13 +192,11 @@ export default function Navbar() {
           ):(
             <button className="btn btn-dark" onClick={() =>{navigate("/login")}} style={{fontSize:"100%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px"}}>Sign In</button>)}
           <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={openMenu}
-            onClose={handleCloseMenu}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
-            }}
+            id="menu3"
+            anchorEl={anchorEl3}
+            keepMounted
+            open={Boolean(anchorEl3)}
+            onClose={handleClose}
           >
             <MenuItem onClick={viewprofile}>Profile</MenuItem>
             <MenuItem onClick={wallet}>Wallet</MenuItem>
