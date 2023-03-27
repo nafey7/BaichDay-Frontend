@@ -12,7 +12,12 @@
   .about-us-description {
     font-size: 18px;
     text-align: justify;
-    text-align: center;
+    text-align: left;
+  }
+
+  .about-us-image {
+    float: right;
+    max-width: 50%;
   }
 
 

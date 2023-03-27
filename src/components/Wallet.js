@@ -19,7 +19,7 @@ export default function Wallet() {
                     <div className="col-md-6" style={{ borderRight: "2px outset #eee" }}>
                         <div style={{ marginLeft: "2%" }}>
                             <h3 style={{ fontSize: "2rem" }}>My Balance:</h3>
-                            <h2 style={{ fontSize: "10rem", fontWeight: "bolder", color: "#3b3b3b", marginTop: "-3%" }}>${amount}</h2>
+                            <h2 style={{ fontSize: "5rem", fontWeight: "bolder", color: "#3b3b3b", marginTop: "-3%" }}>${amount}</h2>
                         </div>
                     </div>
 
