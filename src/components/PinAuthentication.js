@@ -24,11 +24,12 @@ function PinAuthentication() {
       console.log(res.data.data)
       }
       else{
-        alert(res.data.message)
+        console.log('Error');
       }
   })
   .catch(function(err) {
       console.log(err);
+      alert("Wrong PIN");
 })
   };
   
