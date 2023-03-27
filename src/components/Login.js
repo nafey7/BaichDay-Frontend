@@ -9,7 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [Check, setCheck] = React.useState(false);
+  const [userType, setType] = React.useState('');
   let navigate = useNavigate();
+
+  function handleUser(e) {
+    setType(e);
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -18,27 +23,57 @@ function Login() {
     },
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
-      axios.post('https://pacific-sands-58031.herokuapp.com/user/login', {
-        emailAddress: values.email,
-        password: values.password
-      })
-      .then(function (response) {
-        if(response.data.message === "success")
-        {
-          reactLocalStorage.set('userID',response.data.data._id);
-          reactLocalStorage.set('token',response.data.token);
-          reactLocalStorage.set('wallet', response.data.data.wallet);
-          console.log(response.data.data.wallet);
-          alert(response.data.message);
-          navigate('/')
-        }
-        
-      })
-      .catch(function (error) {
-        alert("Incorrect Fields");
-        console.log(error);
-        navigate('/login');
-      });
+      if (userType === 'customer') {
+        console.log("Customer Here");
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/login', {
+          emailAddress: values.email,
+          password: values.password
+        })
+        .then(function (response) {
+          if(response.data.message === "success")
+          {
+            reactLocalStorage.set('userID',response.data.data._id);
+            reactLocalStorage.set('token',response.data.token);
+            reactLocalStorage.set('wallet', response.data.data.wallet);
+            console.log(response.data.data.wallet);
+            alert(response.data.message);
+            navigate('/')
+          }
+          
+        })
+        .catch(function (error) {
+          alert("Incorrect Fields");
+          console.log(error);
+          navigate('/login');
+        });
+      }
+      else if (userType === 'admin') {
+        console.log("Admin Here");
+        axios.post('https://pacific-sands-58031.herokuapp.com/admin/login', {
+          emailAddress: values.email,
+          password: values.password
+        })
+        .then(function (response) {
+          console.log(response.data);
+          if(response.data.message === "success")
+          {
+            console.log(response.data);
+            reactLocalStorage.set('userID',response.data.data._id);
+            reactLocalStorage.set('token',response.data.token);
+            alert(response.data.message);
+            navigate('/Admin')
+          }
+          
+        })
+        .catch(function (error) {
+          alert("Incorrect Fields");
+          console.log(error);
+          navigate('/login');
+        });
+      }
+      else {
+        alert("Please select between Customer and Admin");
+      }
     },
   });
 
@@ -110,6 +145,14 @@ function Login() {
             </div>
             <div className="form-group">
                 <input type="password" className="form-control" id="password" name="password" onChange={formik.handleChange} value={formik.values.password} placeholder="Password" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:"white"}}/>
+            </div>
+            <div style={{display: "flex", justifyContent:"space-evenly"}}>
+              <label style={{ display: 'flex', alignItems: 'center' }}>
+                <input type="radio" name="userType" style={{ marginRight: '5px', WebkitAppearance: 'none', height: '16px', width: '16px', borderRadius: '50%', border: '2px solid #ccc' }} onChange={(e) => { handleUser(e.target.value) }} value="customer" /> Customer
+              </label>
+              <label style={{ display: 'flex', alignItems: 'center' }}>
+                <input type="radio" name="userType" style={{ marginRight: '5px', WebkitAppearance: 'none', height: '16px', width: '16px', borderRadius: '50%', border: '2px solid #ccc' }} onChange={(e) => { handleUser(e.target.value) }} value="admin" /> Admin
+              </label>
             </div>
             <a href="#" style={{color: '#a7ac38',textAlign:'right'}}><p>Forgot password?</p></a>
             <br></br>
