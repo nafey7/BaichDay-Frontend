@@ -161,7 +161,7 @@ export default function Navbar() {
             <MenuItem onClick={handleClose}>Others</MenuItem>
           </Menu>
           <button className="btn btn-success" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"15px"}}>Sell With Us</button>
-          <FormControl sx={{ width: '15%', backgroundColor: 'white', marginLeft:"550px", borderRadius:"15px"}} variant="standard">
+          <FormControl sx={{backgroundColor: 'white', marginLeft:"40%", borderRadius:"15px"}} variant="standard">
           <Input
             type={'text'}
             id="name"
