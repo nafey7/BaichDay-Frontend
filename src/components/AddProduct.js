@@ -12,7 +12,7 @@ function AddProduct() {
         { value: 'option2', label: 'Sporting' },
         { value: 'option3', label: 'Electronics' },
         { value: 'option4', label: 'Fashion' },
-        { value: 'option5', label: 'Toys' },
+        { value: 'option5', label: 'Toy' },
         { value: 'option6', label: 'Music' },
         { value: 'option7', label: 'Cars' },
         { value: 'option8', label: 'Other' },

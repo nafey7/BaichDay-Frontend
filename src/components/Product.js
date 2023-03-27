@@ -27,11 +27,12 @@ function Product() {
   const handleClose = () => setOpen(false);
   // const [bid, setBid] = React.useState()
   const location = useLocation();
-  const [prop, setProp] = React.useState(location.state)
-  const [time, setTime] = React.useState(0)
-  const [isActive, setActive] = React.useState(false)
-  let navigate = useNavigate();
+  const [prop, setProp] = React.useState(location.state);
+  const [time, setTime] = React.useState(0);
+  const [isActive, setActive] = React.useState(false);
+  const userID = reactLocalStorage.get('userID');
 
+  let navigate = useNavigate();
   
   React.useEffect(()=> {
 
@@ -51,12 +52,9 @@ function Product() {
       bidCost: prop.bid[prop.bid.length - 1].bidCost,
     },
     onSubmit: values => {
-      console.log(values)
       // alert(JSON.stringify(values, null, 2));
-      console.log(prop._id)
-      console.log(reactLocalStorage.get('userID', "", true))
       axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
-        userID: reactLocalStorage.get('userID', "", true),
+        userID: userID,
         productID: prop._id,
         bidCost: values.bidCost
       }
@@ -65,13 +63,7 @@ function Product() {
         console.log(response)
         if(response.data.message === "success")
         {
-          console.log(response.data.token);
-          alert(response.data.message);
           navigate('/');
-        }
-        else
-        {
-          alert("Incorrect Fields");
         }
         
       })
@@ -126,12 +118,20 @@ function Product() {
                     <h5>Timer loading</h5>
                   )}
                 </div>
-                {/* <Timer duration={Math.floor(Math.random() * 10000)}/> */}
               </div>
             </div>
           </div>
-          <button className='mt-5 btn' style={{fontSize:"20px", backgroundColor:"green", color:"white", width:"180px"}}variant="contained" onClick={handleOpen}><b>Bid Now</b></button>
-        </div>
+          <div>
+            {prop.userID === userID ? (
+              <></>
+            ) : (
+              <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', columnGap:"50px"}}>
+                <input type="text" className="form-control" onChange={formik.handleChange} name="bidCost" id="bidCost" placeholder="Enter Bid" style={{marginTop:"30px", marginLeft:"-3px", height: '40px'}}/>
+                <button className='mt-5 btn' style={{fontSize:"20px", backgroundColor:"green", color:"white", width:"150px", height:"40px", float: "right"}}variant="contained" onClick={formik.handleSubmit}><b>Bid Now</b></button>
+              </div>
+            )}
+          </div>
+          </div>
       </div>
      
     </div>
