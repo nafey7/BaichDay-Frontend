@@ -33,7 +33,8 @@ function UserHome(props) {
   
     },[])
     return(
-        <div>            
+        <div> 
+                   
             <Box sx={{ display: 'flex' }}>
                     
                 <DisplayCards test={dataprops}/>

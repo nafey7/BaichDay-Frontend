@@ -13,7 +13,7 @@ import { textAlign } from '@mui/system';
 export default function Footer() {
   return (
 
-    <MDBFooter className='text-center' color='white' bgColor='black' style={{marginTop: 'auto', position: 'absolute', bottom: '0px', width: '100%'}}>
+    <MDBFooter className='text-center' color='white' bgColor='black' style={{marginTop: '100px', position: 'relative', bottom: '0px', width: '100%'}}>
 
       <MDBContainer className='p-5' style={{ marginLeft: '-2%' }}>
         <MDBRow className='d-flex align-items-center justify-content-center'>
