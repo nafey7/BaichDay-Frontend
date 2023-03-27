@@ -41,7 +41,7 @@ function App() {
 
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
-          <Route path='/test' element={<><Test/></>}/>
+          <Route path='/test' element={<><Navbar/><Test/></>}/>
 
         </Routes>
       </div>

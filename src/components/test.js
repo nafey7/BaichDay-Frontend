@@ -15,7 +15,7 @@ function Test() {
       .catch((err) => console.log(err));
   };
   return (
-    <div style={{background: 'white', display: "flex", justifyContent: "center", alignItems: "center", height: "90vh" }}>
+    <div style={{background: 'white', display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
       <form onSubmit={handleSubmit}>
       <h1>Authentication Code</h1>
       <p style={{fontSize: '15px'}}>Your security is our top priority.<br />Enter the verification code sent to your email</p>
