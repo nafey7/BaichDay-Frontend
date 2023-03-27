@@ -84,7 +84,7 @@ function Product() {
 
 
   return (
-    <div style={{width: 'auto', height: 'auto', display:'flex', maxWidth: '1200px', flexWrap: 'wrap'}}>
+    <div>
        <Modal
         open={open}
         onClose={handleClose}
@@ -104,12 +104,12 @@ function Product() {
         </Box>
       </Modal>
       <div className='row'>
-        <div className="col-3" style={{textAlign: "center", padding: '2cm', margin:"30px 5cm 0cm 15%"}}>
+        <div className="col-5" style={{padding:'2% 10%'}}>
           <div className="card" style={{width: "400px", outline: "3px ridge grey", height:"400px"}}>
             <img className="card-img-top" src={prop.image[0]} alt="Card" style={{height:"400px", width:"400px"}}/>
           </div>
         </div>
-        <div className="col-3" style={{textAlign:"left", padding: '2cm'}}>
+        <div className="col-7" style={{padding:'0 5%',textAlign:"left"}}>
           <br/>
           <div style={{width: "100vh"}}>
             <div className="card-body">
