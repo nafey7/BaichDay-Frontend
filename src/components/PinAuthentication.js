@@ -48,7 +48,7 @@ function PinAuthentication() {
           <br></br>
           <br></br>
 
-          <Button type="submit" variant="contained" sx={{background: '#4BB543'}} size="large" style={{ fontSize: '1.5rem', padding: '1rem 2rem' }}>Enter</Button>
+          <Button type="submit" className='mt-5 btn' variant="contained" sx={{background: '#4BB543'}} size="large" style={{ fontSize: '1.5rem', padding: '1rem 2rem' }}>Enter</Button>
 
 
         </form>
