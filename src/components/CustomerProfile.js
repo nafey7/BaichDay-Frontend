@@ -110,6 +110,7 @@ function CustomerProfile() {
             .then(function (res) {
                 if (res.data.message === 'success') {
                     console.log(res)
+                    window.location.reload(true)
                 }
                 else {
                     alert(res.data.message)
@@ -119,7 +120,6 @@ function CustomerProfile() {
                 console.log(err);
             })
         
-        window.location.reload(true)
     }
 
 
