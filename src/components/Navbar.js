@@ -81,6 +81,7 @@ export default function Navbar() {
             console.log(response.data)
             navigate('/product',{ state: {
               _id: response.data.data[0]._id,
+              description: response.data.data[0].description,
               name: response.data.data[0].name,
               image: response.data.data[0].image,
               bid: response.data.data[0].bid,
