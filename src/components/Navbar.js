@@ -209,11 +209,11 @@ export default function Navbar() {
             open={Boolean(anchorEl3)}
             onClose={handleClose}
           >
-            <MenuItem onClick={viewprofile}></MenuItem>
+            <MenuItem onClick={viewprofile}>Profile</MenuItem>
             <MenuItem onClick={wallet}>Wallet</MenuItem>
-            <MenuItem>Notifications</MenuItem>
+            {/* <MenuItem>Notifications</MenuItem>
             <MenuItem>Active Bids</MenuItem>
-            <MenuItem>Auction Items</MenuItem>
+            <MenuItem>Auction Items</MenuItem> */}
             <MenuItem onClick={history}>Bidding History</MenuItem>
             <MenuItem onClick={chat}>Chat</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
