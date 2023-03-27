@@ -27,7 +27,7 @@ export default function Wallet() {
                         <div style={{ textAlign: "center" }}>
                             <h4>Transaction History</h4>
                         </div>
-                        <div style={{ overflowY: "scroll", marginTop: "auto" }}>
+                        <div style={{ marginTop: "auto" }}>
                             <History />
                         </div>
                     </div>
