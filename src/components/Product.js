@@ -76,7 +76,7 @@ function Product() {
 
 
   return (
-    <div className="container" style={{boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#eaeaea", whiteSpace: 'nowrap', width: "100%", padding: '2rem' }}>
+    <div className="container" style={{boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#eaeaea", whiteSpace: 'nowrap', width: "100%", padding: '2rem', marginTop: '5%' }}>
        <Modal
         open={open}
         onClose={handleClose}
@@ -127,8 +127,8 @@ function Product() {
               <></>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', columnGap:"50px"}}>
-                <input type="text" className="form-control" onChange={formik.handleChange} name="bidCost" id="bidCost" placeholder="Enter Bid" style={{marginTop:"30px", marginLeft:"-3px", height: '40px'}}/>
-                <button className='mt-5 btn' style={{fontSize:"20px", backgroundColor:"green", color:"white", width:"150px", height:"40px", float: "right"}}variant="contained" onClick={formik.handleSubmit}><b>Bid Now</b></button>
+                <input type="text" className="form-control" onChange={formik.handleChange} name="bidCost" id="bidCost" placeholder="Enter Bid" style={{marginTop:"30px", marginLeft:"-3px", height: '40px', fontSize: '15px'}}/>
+                <button className='mt-5 btn' style={{fontSize:"20px", background: '#4BB543', color:"white", width:"150px", height:"40px", float: "right"}}variant="contained" onClick={formik.handleSubmit}><b>Bid Now</b></button>
               </div>
             )}
           </div>
