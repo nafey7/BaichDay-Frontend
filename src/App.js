@@ -31,9 +31,10 @@ function App() {
           <Route path="/sporting" element={<> <Navbar/> <UserHome title="Sporting"/><ChatBot/><Footer/> </>}/>
           <Route path="/electronics" element={<> <Navbar/> <UserHome title="Electronics"/><ChatBot/><Footer/> </>}/>
           <Route path="/fashion" element={<> <Navbar/> <UserHome title="Fashion"/><ChatBot/><Footer/> </>}/>
-          <Route path="/toys" element={<> <Navbar/> <UserHome title="Toys"/><ChatBot/><Footer/> </>}/>
+          <Route path="/toy" element={<> <Navbar/> <UserHome title="Toy"/><ChatBot/><Footer/> </>}/>
           <Route path="/music" element={<> <Navbar/> <UserHome title="Music"/><ChatBot/><Footer/> </>}/>
           <Route path="/cars" element={<> <Navbar/> <UserHome title="Cars"/><ChatBot/><Footer/> </>}/>
+          <Route path="/other" element={<> <Navbar/> <UserHome title="Other"/><ChatBot/><Footer/> </>}/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/wallet' element={<><Navbar/><Wallet/> <Footer/> </>}/>
           <Route path='/product' element={<><Navbar/> <Product/><ChatBot/><Footer/> </>}/>

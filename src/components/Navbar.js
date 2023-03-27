@@ -151,14 +151,15 @@ export default function Navbar() {
             open={Boolean(anchorEl2)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Collectibles</MenuItem>
-            <MenuItem onClick={handleClose}>Sporting</MenuItem>
-            <MenuItem onClick={handleClose}>Electronics</MenuItem>
-            <MenuItem onClick={handleClose}>Fashion</MenuItem>
-            <MenuItem onClick={handleClose}>Toy</MenuItem>
-            <MenuItem onClick={handleClose}>Music</MenuItem>
-            <MenuItem onClick={handleClose}>Cars</MenuItem>
-            <MenuItem onClick={handleClose}>Others</MenuItem>
+            <MenuItem onClick={()=>{navigate('/collectibles')}}>Collectibles</MenuItem>
+            <MenuItem onClick={()=>{navigate('/sporting')}}>Sporting</MenuItem>
+            <MenuItem onClick={()=>{navigate('/electronics')}}>Electronics</MenuItem>
+            <MenuItem onClick={()=>{navigate('/fashion')}}>Fashion</MenuItem>
+            <MenuItem onClick={()=>{navigate('/toy')}}>Toy</MenuItem>
+            <MenuItem onClick={()=>{navigate('/music')}}>Music</MenuItem>
+            <MenuItem onClick={()=>{navigate('/cars')}}>Cars</MenuItem>
+            <MenuItem onClick={()=>{navigate('/other')}}>Others</MenuItem>
+
           </Menu>
           <button className="btn btn-success" onClick={() => { navigate("/AddProduct") }} style={{ fontSize: "150%", marginLeft: "20px", borderRadius: "15px" }}>Sell With Us</button>
           <FormControl sx={{ backgroundColor: 'white', marginLeft: "40%", borderRadius: "15px" }} variant="standard">
@@ -207,7 +208,7 @@ export default function Navbar() {
             open={Boolean(anchorEl3)}
             onClose={handleClose}
           >
-            <MenuItem onClick={viewprofile}>Profile</MenuItem>
+            <MenuItem onClick={viewprofile}></MenuItem>
             <MenuItem onClick={wallet}>Wallet</MenuItem>
             <MenuItem>Notifications</MenuItem>
             <MenuItem>Active Bids</MenuItem>
