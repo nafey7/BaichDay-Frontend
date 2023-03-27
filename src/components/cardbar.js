@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function CountdownTimer({ duration, type }) {
+function CountdownTimer({ duration }) {
   const [seconds, setSeconds] = useState(duration);
 
   useEffect(() => {
@@ -17,11 +17,7 @@ function CountdownTimer({ duration, type }) {
 
   return (
     <div>
-      {type ? (
-        <p className="h4"> <icon className="far fa-clock"></icon> {hours}:{minutes}:{secondsLeft}</p>
-      ) : (
-        <p className="h1 mt-4"><b><icon className="far fa-clock"></icon> Time Left : </b>{hours}:{minutes}:{secondsLeft}</p>
-      )}
+      <p className="h1 mt-4"><b><icon className="far fa-clock"></icon> Time Left : </b>{hours}:{minutes}:{secondsLeft}</p>
     </div>
   );
 }

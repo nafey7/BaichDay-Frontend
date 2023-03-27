@@ -2,34 +2,16 @@ import React, { useState } from "react";
 import InputVerificationCode from "react-input-verification-code";
 import axios from "axios";
 import Button from '@mui/material/Button';
-import { useNavigate } from "react-router-dom";
-import {reactLocalStorage} from 'reactjs-localstorage';
 
-
-function PinAuthentication() {
+function Test() {
   const [code, setCode] = useState("");
-  let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://pacific-sands-58031.herokuapp.com/user/confirmpin', {
-      token: localStorage.getItem('token'),
-      pin: code
-    }).then(function(res) {
-      if (res.data.message === "success") {
-        reactLocalStorage.set('userID',res.data.data._id);
-        reactLocalStorage.set('token',res.data.token);
-        reactLocalStorage.set('wallet', res.data.data.wallet);
-        navigate('/');
-      console.log(res.data.data)
-      }
-      else{
-        alert(res.data.message)
-      }
-  })
-  .catch(function(err) {
-      console.log(err);
-})
+    axios
+      .post("/api/verify-code", { code })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   
   return (
@@ -44,18 +26,12 @@ function PinAuthentication() {
             length={6}
             onChange={(code) => setCode(code)}
           />
-          <br></br>
-          <br></br>
-
-          <Button type="submit" variant="contained" sx={{background: '#4BB543'}} size="large" style={{ fontSize: '1.5rem', padding: '1rem 2rem' }}>Enter</Button>
-
-
+          <br />
+          <Button type="submit" variant="contained" sx={{background: 'green'}}>Enter</Button>
         </form>
       </div>
     </div>
   );
 }
 
-export default PinAuthentication;
-
-
+export default Test;
