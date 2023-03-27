@@ -27,7 +27,13 @@ function App() {
       <div className="App" style={{backgroundColor:"#c8c8c8", backgroundRepeat: 'repeat', position:"relative", width:"100%", backgroundSize: "auto"}}>
         <Routes>
           <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
-          <Route path="/category" element={<> <Navbar/> <UserHome title="Browse"/><ChatBot/><Footer/> </>}/>
+          <Route path="/collectibles" element={<> <Navbar/> <UserHome title="Collectiibles"/><ChatBot/><Footer/> </>}/>
+          <Route path="/sporting" element={<> <Navbar/> <UserHome title="Sporting"/><ChatBot/><Footer/> </>}/>
+          <Route path="/electronics" element={<> <Navbar/> <UserHome title="Electronics"/><ChatBot/><Footer/> </>}/>
+          <Route path="/fashion" element={<> <Navbar/> <UserHome title="Fashion"/><ChatBot/><Footer/> </>}/>
+          <Route path="/toys" element={<> <Navbar/> <UserHome title="Toys"/><ChatBot/><Footer/> </>}/>
+          <Route path="/music" element={<> <Navbar/> <UserHome title="Music"/><ChatBot/><Footer/> </>}/>
+          <Route path="/cars" element={<> <Navbar/> <UserHome title="Cars"/><ChatBot/><Footer/> </>}/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/wallet' element={<><Navbar/><Wallet/> <Footer/> </>}/>
           <Route path='/product' element={<><Navbar/> <Product/><ChatBot/><Footer/> </>}/>

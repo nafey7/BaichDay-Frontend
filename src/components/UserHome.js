@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import DisplayCards from './DisplayCards';
 import Box from '@mui/material/Box';
 import { useNavigate } from "react-router-dom";
-
 
 
 function UserHome(props) {
@@ -32,10 +31,14 @@ function UserHome(props) {
         }
   
     },[])
+    // const slides = dataprops.map((item, index) => (
+    //     <img key={index} src={item.image[0]} alt={`Carousel item ${index}`} />
+    //   ));
     return(
-        <div> 
-                   
+        <div>
+
             <Box sx={{ display: 'flex' }}>
+                
                     
                 <DisplayCards test={dataprops}/>
                 <div style={{backgroundColor: 'grey', width: '20%',marginTop: '30px'}}>
