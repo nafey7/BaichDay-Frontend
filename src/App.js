@@ -19,12 +19,12 @@ import Wallet from './components/Wallet';
 
 import UserChat from './components/UserChat';
 import ChatList from './components/ChatList';
-import Test from './components/test';
+import PinAuthentication from './components/PinAuthentication';
 
 function App() {
   return (
     <Router>
-      <div className="App" style={{backgroundColor:"#c8c8c8", backgroundRepeat: 'repeat', position:"relative", width:"100%", backgroundSize: "auto"}}>
+      <div className="App" style={{backgroundColor:"#c8c8c8", backgroundRepeat: 'repeat', position:"relative", width:"100%", backgroundSize: "auto", minHeight: "100vh"}}>
         <Routes>
           <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
           <Route path="/collectibles" element={<> <Navbar/> <UserHome title="Collectiibles"/><ChatBot/><Footer/> </>}/>
@@ -47,7 +47,7 @@ function App() {
 
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
-          <Route path='/test' element={<><Navbar/><Test/></>}/>
+          <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
 
         </Routes>
       </div>
