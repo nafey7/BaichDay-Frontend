@@ -4,7 +4,7 @@ import './about.css';
 
 function AboutUs() {
   return (
-    <div className="about-us" >
+    <div className="about-us" style={{marginBottom: "-20%"}}>
       <div className="about-us-section" >
         <Container >
           <Row >
