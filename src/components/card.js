@@ -6,8 +6,26 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import {Link} from 'react-router-dom';
+import Timer from './Timer'
+import axios from 'axios'
+
+
 
 export default function ActionAreaCard(props) {
+  const [time, setTime] = React.useState(0)
+  const [isActive, setActive] = React.useState(false)
+  React.useEffect(()=> {
+
+    axios.post('https://pacific-sands-58031.herokuapp.com/product/single/', {productID: props._id})
+    .then(function(res) {
+        // console.log(res.data.data)
+        setTime(res.data.data)
+        setActive(true)    
+    }, time)
+    .catch(function(err) {
+        console.log(err);
+    })
+  },[])
 
   return (
     <Link to={{pathname:'/product'}} state= {{...props}} style={{ textDecoration: 'none' }}>
@@ -25,13 +43,20 @@ export default function ActionAreaCard(props) {
             <Typography variant="body2" color="text.secondary">
               <Box sx={{ fontSize: "120%", display: "flex", justifyContent: "space-between", paddingLeft: '30px', paddingRight: '30px', marginTop: '0px' }}>
                 <Box sx={{ width: '33%', marginRight: 1, borderRight: "1px solid gray", textAlign: "center" }}>
-                  <b>${props.bid[props.bid.length-1].bidCost}</b>
+                <p className="h4">${props.bid[props.bid.length-1].bidCost}</p>
                 </Box> 
                 <Box sx={{ width: '33%', marginRight: 1, borderRight: "1px solid gray", textAlign: "center" }}>
-                  <b>{props.bid.length-1} Bids</b>
+                <p className="h4">{props.bid.length-1} Bids</p>
                 </Box>
                 <Box sx={{ width: '33%', textAlign: "center" }}>
-                  <b>Open</b>
+                  <div>
+                  {isActive ? (
+                    <Timer duration={time} type={true}/>
+                  ) : (
+                    <h5>Timer loading </h5>
+                    
+                  )}
+                </div>
                 </Box>
               </Box>
             </Typography>
