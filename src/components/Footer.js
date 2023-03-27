@@ -13,7 +13,7 @@ import { textAlign } from '@mui/system';
 export default function Footer() {
   return (
 
-    <MDBFooter className='text-center' color='white' bgColor='black'>
+    <MDBFooter className='text-center' color='white' bgColor='black' style={{marginTop: 'auto', position: 'absolute', bottom: '0px', width: '100%'}}>
 
       <MDBContainer className='p-5' style={{ marginLeft: '-2%' }}>
         <MDBRow className='d-flex align-items-center justify-content-center'>
@@ -39,26 +39,27 @@ export default function Footer() {
             </form>
           </MDBCol>
 
-          <MDBCol style={{ fontSize: "15px" }}>
+          <MDBCol style={{ fontSize: "12px" }}>
               <ul className='list-unstyled mb-1'>
+                <h2>Links</h2>
                 <li>
-                  <a href='#!' className='text-white'>
-                    Link 1
+                  <a href='/AddProduct' className='text-white'>
+                    Add a Product
                   </a>
                 </li>
                 <li>
-                  <a href='#!' className='text-white'>
-                    Link 2
+                  <a href='/CustomerProfile' className='text-white'>
+                    Your Profile
                   </a>
                 </li>
                 <li>
-                  <a href='#!' className='text-white'>
-                    Link 3
+                  <a href='/ContactUs' className='text-white'>
+                    Contact Us
                   </a>
                 </li>
                 <li>
-                  <a href='#!' className='text-white'>
-                    Link 4
+                  <a href='/AboutUs' className='text-white'>
+                    About Us
                   </a>
                 </li>
               </ul>

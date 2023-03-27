@@ -1,48 +1,70 @@
 import React from 'react';
 import axios from 'axios';
-import {reactLocalStorage} from 'reactjs-localstorage';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 
 function History() {
     let userID = reactLocalStorage.get('userID', "", true);
     const [data, setData] = React.useState([]);
-    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
-        userID: userID
-    })
-    .then(function (response) {
-        if(response.data.message === 'success')
-        {
-            let x = data;
-            x = response.data.data
-            setData(x)
-        }
-        else{
-            alert(response.data.message)
-        }
-    });
-    function Status(sold){
-        if(sold === true){
+    React.useEffect(() => {
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
+            userID: userID
+        })
+            .then(function (response) {
+                if (response.data.message === 'success') {
+                    let x = response.data.data;
+                    setData(x)
+                }
+                else {
+                    alert(response.data.message)
+                }
+            });
+    }, [])
+
+    function Status(sold) {
+        if (sold === 'true') {
             return 'Success';
         }
-        else{
+        else {
             return 'In Progress';
         }
     };
+
     return (
-        <div style={{width: '100%', height: '100%'}}>
-            <div className='centered'>
-                <h2 style={{margin:"0 0 30px 0", textAlign:'left'}}>Your History</h2>
-                {data.map((d) => (
-                    <div className="card" style={{width: "22rem", outline: "3px ridge grey"}}>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Item: {d.name}</h2>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Bid: {d.cost}</h2>
-                        <h2 style={{margin:"0 0 15px 0", textAlign:'left'}}>Status: {Status(d.sold)}</h2>
-                    </div>
-                ))}
+        <div style={{ margin: "0 auto", textAlign: "center" }}>
+
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <TableContainer component={Paper} style={{ maxHeight: "200px"}}>
+                    <Table stickyHeader sx={{ overflowY: 'scroll', backgroundColor: '#3c3d3f' }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="left">Item</TableCell>
+                                <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Bid</TableCell>
+                                <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Status</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.map((d) => (
+                                <TableRow key={d.id}>
+                                    <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}>{d.name} </TableCell>
+                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{d.maxBid}</TableCell>
+                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Status(d.sold)}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </div>
         </div>
     );
 };
-
 
 export default History;

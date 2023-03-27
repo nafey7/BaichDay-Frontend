@@ -3,12 +3,12 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import DisplayCards from './DisplayCards';
 import Box from '@mui/material/Box';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
-function UserHome(props){
-    const [dataprops,setDataprops] = React.useState([{name: "", image: "img.png", bid: [0]}]);
+function UserHome(props) {
+    const [dataprops, setDataprops] = React.useState([{ name: "", image: "img.png", bid: [0] }]);
     let navigate = useNavigate();
     React.useEffect(()=> {
         if(props.title ==="Featured Products"){
@@ -22,7 +22,7 @@ function UserHome(props){
         })
         }else{
           console.log("in categories")
-          axios.post('https://pacific-sands-58031.herokuapp.com/user/category/', {category: props.title})
+          axios.post('https://pacific-sands-58031.herokuapp.com/product/category/', {category: props.title})
           .then(function(res) {
               setDataprops(res.data.data)          
           }, dataprops)
@@ -33,29 +33,21 @@ function UserHome(props){
   
     },[])
     return(
-        <div>
-            <Box sx={{ display: 'flex'}}>
-                
-                <Box sx={{ width:"100%",flexGrow: 1}}><h1>{props.title}</h1></Box>
-                <Box sx={{width:"25%"}}><button className="btn btn-success" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", borderRadius:"15px"}}>Sell With Us</button></Box>
-            </Box>
-
-            
-            
+        <div>            
             <Box sx={{ display: 'flex' }}>
                     
                 <DisplayCards test={dataprops}/>
-                <div style={{backgroundColor: 'grey', width: '20%',marginTop: '12px'}}>
+                <div style={{backgroundColor: 'grey', width: '20%',marginTop: '30px'}}>
                     <br/>
                     <h3>Advert</h3>
-                    <br/>
+                    <br />
                     <h4>Get your adds featured now!</h4>
-                </div>                
+                </div>
             </Box>
-            <br/>
-            <br/>
+            <br />
+            <br />
         </div>
-        
+
     )
 }
 

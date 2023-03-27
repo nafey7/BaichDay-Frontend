@@ -14,7 +14,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 300,
+  width: 'auto',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -29,20 +29,22 @@ function Product() {
   const location = useLocation();
   const [prop, setProp] = React.useState(location.state)
   const [time, setTime] = React.useState(0)
+  const [isActive, setActive] = React.useState(false)
   let navigate = useNavigate();
 
   
   React.useEffect(()=> {
 
-    axios.post('https://pacific-sands-58031.herokuapp.com/user/product/single/', {productID: prop.productID})
+    axios.post('https://pacific-sands-58031.herokuapp.com/product/single/', {productID: prop._id})
     .then(function(res) {
-        console.log(res.data.timeRemaining)
-        setTime(res.data.timeRemaining)          
+        // console.log(res.data.data)
+        setTime(res.data.data)
+        setActive(true)    
     }, time)
     .catch(function(err) {
         console.log(err);
-  })},[])
-
+    })
+  },[])
 
   const formik = useFormik({
     initialValues: {
@@ -65,7 +67,7 @@ function Product() {
         {
           console.log(response.data.token);
           alert(response.data.message);
-          navigate('/home');
+          navigate('/');
         }
         else
         {
@@ -82,7 +84,7 @@ function Product() {
 
 
   return (
-    <div style={{width: '100%', height: '100%', display:'flex', maxWidth: '1200px', flexWrap: 'wrap'}}>
+    <div style={{width: 'auto', height: 'auto', display:'flex', maxWidth: '1200px', flexWrap: 'wrap'}}>
        <Modal
         open={open}
         onClose={handleClose}
@@ -102,27 +104,33 @@ function Product() {
         </Box>
       </Modal>
       <div className='row'>
-        <div className="col-sm-3" style={{textAlign: "center", padding: '2cm', margin:"30px 5cm 0cm 15%"}}>
+        <div className="col-3" style={{textAlign: "center", padding: '2cm', margin:"30px 5cm 0cm 15%"}}>
           <div className="card" style={{width: "400px", outline: "3px ridge grey", height:"400px"}}>
             <img className="card-img-top" src={prop.image[0]} alt="Card" style={{height:"400px", width:"400px"}}/>
           </div>
         </div>
-        <div className="col-sm-3" style={{textAlign: "center", padding: '2cm', margin:"0 0 0 0"}}>
-          <h2 style={{textAlign:"left"}}>{prop.name}</h2>
+        <div className="col-3" style={{textAlign:"left", padding: '2cm'}}>
           <br/>
-          <div style={{width: "30rem"}}>
-            <div className="card-body" style={{backgroundColor:"white"}}>
-              <div className='card-text row' style={{textAlign:"left", height:"180px"}}>
-                <h5>Current Bid: ${prop.bid[prop.bid.length-1].bidCost}</h5>
-                <h5>Number of Bids: {prop.bid.length}</h5>
-                <Timer duration={time}/>
+          <div style={{width: "100vh"}}>
+            <div className="card-body">
+              <div className='card-text row'>
+                <h1 className='bold' style={{fontSize:"50px", textAlign:"left"}}>{prop.name}</h1>  
+                <h3><b>Number of Bids:</b> {prop.bid.length - 1}</h3>
+                
+                <p className='mt-4 h1'><strong>Description :</strong> <span className='h2'>{prop.description}</span></p>
+                <p className='mt-4 h1'><b>Current Bid :</b> <b className='text-danger '>${prop.bid[prop.bid.length-1].bidCost}</b></p>
+                <div>
+                  {isActive ? (
+                    <Timer duration={time}/>
+                  ) : (
+                    <h5>Timer loading</h5>
+                  )}
+                </div>
                 {/* <Timer duration={Math.floor(Math.random() * 10000)}/> */}
               </div>
             </div>
           </div>
-          <div className='d-flex justify-content-center'>
-          <Button variant="contained" color="success" onClick={handleOpen}>Bid Now</Button>
-          </div>
+          <button className='mt-5 btn' style={{fontSize:"20px", backgroundColor:"green", color:"white", width:"180px"}}variant="contained" onClick={handleOpen}><b>Bid Now</b></button>
         </div>
       </div>
      

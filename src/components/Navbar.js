@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { styled} from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import {Link} from 'react-router-dom'
@@ -15,26 +12,31 @@ import axios from 'axios'
 import { useFormik } from 'formik';
 import Input from '@mui/material/Input';
 import FormControl from '@mui/material/FormControl';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Drawer from '@mui/material/Drawer';
-import HomeIcon from '@mui/icons-material/Home';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import History from './History';
+import { ReactComponent as Logo } from './logo.svg';
+
 
 
 export default function Navbar() {
   const [Check, setCheck] = React.useState(false);
   let navigate = useNavigate();
   function logout(){
-    reactLocalStorage.remove('token');
-    reactLocalStorage.remove('userID');
-    navigate("/")
-    window.location.reload(true)
+    let userID = reactLocalStorage.get('userID',);
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
+        userID: userID
+    })
+    .then(function (response) {
+        if (response.data.message === 'success') {
+          reactLocalStorage.remove('token');
+          reactLocalStorage.remove('userID');
+          navigate("/")
+          window.location.reload(true)
+        }
+        else {
+            alert(response.data.message)
+        }
+    })
   }
   function viewprofile(){
     navigate('/CustomerProfile')
@@ -97,24 +99,23 @@ export default function Navbar() {
       });
     },
   });
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-      setOpen(true);
-    };
   
-    const handleDrawerClose = () => {
-      setOpen(false);
-    };
-   
-    const DrawerHeader = styled('div')(({ theme }) => ({
-      display: 'flex',
-      alignItems: 'center',
-      padding: theme.spacing(0, 1),
-      // necessary for content to be below app bar
-      ...theme.mixins.toolbar,
-      justifyContent: 'flex-end',
-    }));
+  const [anchorEl1, setAnchorEl1] = React.useState(null);
+  const open1 = Boolean(anchorEl1);
+  const handleClick1 = (event) => {
+    setAnchorEl1(event.currentTarget);
+  };
+  const handleClose1 = () => {
+    setAnchorEl1(null);
+  };
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const open2 = Boolean(anchorEl2);
+  const handleClick2 = (event) => {
+    setAnchorEl2(event.currentTarget);
+  };
+  const handleClose2 = () => {
+    setAnchorEl2(null);
+  };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openMenu = Boolean(anchorEl);
@@ -125,72 +126,68 @@ export default function Navbar() {
     setAnchorEl(null);
   };
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}}>
       <AppBar position="fixed" sx={{backgroundColor:"black"}}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            sx={{ mr: 2, ...(open && { display: 'none' })}}
+          <Link to={{pathname: "/"}} style={{margin:"0 15px",color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
+          <button className="btn"         id="demo-positioned-button1"
+        aria-controls={open1 ? 'demo-positioned-menu1' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open1 ? 'true' : undefined}
+        onClick={handleClick} style={{fontSize:"150%", marginLeft:"50px", color:"white"}}>Auctions</button>
+          <Menu
+            id="demo-positioned-menu1"
+            aria-labelledby="demo-positioned-button1"
+            anchorEl={anchorEl1}
+            open={open1}
+            onClose={handleClose1}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
           >
-            <MenuIcon sx={{fontSize: "200%"}} />
-          </IconButton>
-          <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
-          <Drawer
-                  sx={{
-                    width: 150,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                      width: 150,
-                      backgroundColor:"white",
-                      boxSizing: 'border-box',
-                    },
-                  }}
-                  variant="persistent"
-                  anchor="left"
-                  open={open}
-                >
-                  <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                      <ChevronLeftIcon sx= {{fontSize:30}}/>
-                    </IconButton>
-                  </DrawerHeader>
-                  <List>
-                    {['Art', 'Antiques','Automobiles', 'Books', 'Electronics', 'Fashion','NFTs', 'Pets','Real Estate','WholeSale', 'Others'].map((text, index) => (
-                      <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                          <ListItemText primary={text} sx={{color: 'black'}}/>
-                        </ListItemButton>
-                      </ListItem>
-                    ))}
-                  </List>
-                </Drawer>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block',  fontSize: '250%'} }}
+            <MenuItem >Current Auctions</MenuItem>
+            <MenuItem >Past Auctions</MenuItem>
+          </Menu>
+          <button className="btn" id="demo-positioned-button2"
+        aria-controls={open2 ? 'demo-positioned-menu2' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open2 ? 'true' : undefined}
+        onClick={handleClick} style={{fontSize:"150%", marginLeft:"20px", color:"white"}}>Categories</button>
+          <Menu
+            id="demo-positioned-menu2"
+            aria-labelledby="demo-positioned-button2"
+            anchorEl={anchorEl2}
+            open={open2}
+            onClose={handleClose1}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
           >
-            BaichDay
-          </Typography>
-          <FormControl sx={{ width: '10%', backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
+            <MenuItem onClick={handleClose2}>Current Auctions</MenuItem>
+            <MenuItem onClick={handleClose2}>Past Auctions</MenuItem>
+          </Menu>
+          <button className="btn btn-success" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"15px"}}>Sell With Us</button>
+          <FormControl sx={{ width: '15%', backgroundColor: 'white', marginLeft:"550px", borderRadius:"15px"}} variant="standard">
           <Input
             type={'text'}
             id="name"
             disableUnderline = "false"
-            placeholder="   Search Keyword"
+            placeholder="   Search Product"
+            style={{paddingLeft: "10px"}}
             onChange={formik.handleChange}
             endAdornment={
                 <IconButton
                   onClick={formik.handleSubmit}
-                  // onKeyDown={(e)=>{
-                  //   if(e.key === "Enter"){
-                  //     formik.handleSubmit();
-                  //   }
-                  // }}
                 >
                 <SearchIcon/>
                 </IconButton>

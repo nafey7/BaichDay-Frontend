@@ -41,9 +41,6 @@ export default function Payment() {
     <MDBContainer
       className="py-5"
       fluid
-      style={{
-        backgroundColor:"ghostwhite"
-    }}
     >
       <MDBRow className=" d-flex justify-content-center">
         <MDBCol md="10" lg="8" xl="5">

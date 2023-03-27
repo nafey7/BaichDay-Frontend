@@ -11,14 +11,13 @@ function CountdownTimer({ duration }) {
     }, 1000);
     return () => clearInterval(intervalId);
   }, [seconds]);
-
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
   const secondsLeft = seconds % 60;
 
   return (
     <div>
-      <b>{hours}:{minutes}:{secondsLeft} remaining</b>
+      <p className="h1 mt-4"><b><icon className="far fa-clock"></icon> Time Left : </b>{hours}:{minutes}:{secondsLeft}</p>
     </div>
   );
 }
