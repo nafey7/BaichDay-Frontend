@@ -41,11 +41,7 @@ function App() {
 
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
-<<<<<<< Updated upstream
-          <Route path='/test' element={<><Navbar/><Test/></>}/>
-=======
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
->>>>>>> Stashed changes
 
         </Routes>
       </div>

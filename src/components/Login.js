@@ -94,6 +94,7 @@ function Login() {
       })
       .then(function (response) {
         if (response.data.message === "success") {
+        reactLocalStorage.set('token',response.data.token);
         alert(response.data.message)
         navigate('/pinauthentication');
       }

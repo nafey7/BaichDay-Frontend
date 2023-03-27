@@ -3,6 +3,7 @@ import InputVerificationCode from "react-input-verification-code";
 import axios from "axios";
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 
 function PinAuthentication() {
@@ -11,12 +12,15 @@ function PinAuthentication() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://pacific-sands-58031.herokuapp.com//user/confirmpin', {
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/confirmpin', {
       token: localStorage.getItem('token'),
       pin: code
     }).then(function(res) {
       if (res.data.message === "success") {
-        navigate('/login');
+        reactLocalStorage.set('userID',res.data.data._id);
+        reactLocalStorage.set('token',res.data.token);
+        reactLocalStorage.set('wallet', res.data.data.wallet);
+        navigate('/');
       console.log(res.data.data)
       }
       else{
