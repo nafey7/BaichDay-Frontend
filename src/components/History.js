@@ -19,6 +19,7 @@ function History() {
             userID: userID
         })
             .then(function (response) {
+                console.log(response.data);
                 if (response.data.message === 'success') {
                     setData(response.data.data);
                 }
@@ -46,10 +47,12 @@ function History() {
         <div style={{ margin: "0 auto", textAlign: "center" }}>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-                <TableContainer component={Paper} style={{ maxHeight: "200px"}}>
+                <TableContainer className='m-4' component={Paper} style={{ maxHeight: "100vh"}}>
                     <Table stickyHeader sx={{ overflowY: 'scroll', backgroundColor: '#3c3d3f' }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
+                                <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="left">Order ID</TableCell>
+                                <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="left">Name</TableCell>
                                 <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="left">Item</TableCell>
                                 <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Bid</TableCell>
                                 <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Status</TableCell>
@@ -58,7 +61,9 @@ function History() {
                         <TableBody>
                             {data.map((d) => (
                                 <TableRow key={d.id}>
+                                    <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}>{d._id} </TableCell>
                                     <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}>{d.name} </TableCell>
+                                    <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}><img style={{height:'40px', width:'40px'}} src={d.image}></img> </TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{d.maxBid}</TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Status(d.sold, d.newOwner)}</TableCell>
                                 </TableRow>
