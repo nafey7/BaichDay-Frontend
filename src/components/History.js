@@ -20,8 +20,7 @@ function History() {
         })
             .then(function (response) {
                 if (response.data.message === 'success') {
-                    let x = response.data.data;
-                    setData(x)
+                    setData(response.data.data);
                 }
                 else {
                     alert(response.data.message)
@@ -29,9 +28,14 @@ function History() {
             });
     }, [])
 
-    function Status(sold) {
+    function Status(sold, newOwner) {
         if (sold === 'true') {
-            return 'Success';
+            if(userID === newOwner) {
+                return 'Success';
+            }
+            else {
+                return 'Failed';
+            }
         }
         else {
             return 'In Progress';
@@ -56,7 +60,7 @@ function History() {
                                 <TableRow key={d.id}>
                                     <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}>{d.name} </TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{d.maxBid}</TableCell>
-                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Status(d.sold)}</TableCell>
+                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Status(d.sold, d.newOwner)}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
