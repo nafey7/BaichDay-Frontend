@@ -44,6 +44,9 @@ export default function Navbar() {
   function history(){
     navigate('/History')
   }
+  function products(){
+    navigate('/myproducts');
+  }
   function wallet(){
     navigate('/wallet')
   }
@@ -214,6 +217,7 @@ export default function Navbar() {
             {/* <MenuItem>Notifications</MenuItem>
             <MenuItem>Active Bids</MenuItem>
             <MenuItem>Auction Items</MenuItem> */}
+            <MenuItem onClick={products}>My Products</MenuItem>
             <MenuItem onClick={history}>Bidding History</MenuItem>
             <MenuItem onClick={chat}>Chat</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
