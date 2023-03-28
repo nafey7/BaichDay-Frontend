@@ -19,7 +19,6 @@ import Wallet from './components/Wallet';
 import UserChat from './components/UserChat';
 import ChatList from './components/ChatList';
 import PinAuthentication from './components/PinAuthentication';
-import AlertExample from './components/AlertTest';
 import SellerHistory from './components/SellerHistory';
 
 function App() {

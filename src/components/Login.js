@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const [Check, setCheck] = React.useState(false);
   const [userType, setType] = React.useState('');
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState('');
   let navigate = useNavigate();
 
   function handleUser(e) {
@@ -36,15 +38,13 @@ function Login() {
             reactLocalStorage.set('token',response.data.token);
             reactLocalStorage.set('wallet', response.data.data.wallet);
             console.log(response.data.data.wallet);
-            alert(response.data.message);
             navigate('/')
           }
           
         })
         .catch(function (error) {
-          alert("Incorrect Fields");
-          console.log(error);
-          navigate('/login');
+          setAlertMessage('Incorrect Email or Password. Please try again.');
+          setShowAlert(true);
         });
       }
       else if (userType === 'admin') {
@@ -66,13 +66,13 @@ function Login() {
           
         })
         .catch(function (error) {
-          alert("Incorrect Fields");
-          console.log(error);
-          navigate('/login');
+          setAlertMessage('Incorrect Email or Password. Please try again.');
+          setShowAlert(true);
         });
       }
       else {
-        alert("Please select between Customer and Admin");
+        setAlertMessage('Please select between Customer and Admin');
+        setShowAlert(true);
       }
     },
   });
@@ -93,18 +93,15 @@ function Login() {
         password: values.password
       })
       .then(function (response) {
+        console.log(response.data);
         if (response.data.message === "success") {
         reactLocalStorage.set('token',response.data.token);
-        alert(response.data.message)
         navigate('/pinauthentication');
-      }
-      else{
-        alert(response.data.message)
       }
       })
       .catch(function (error) {
-        console.log(error);
-        alert(error)
+        setAlertMessage(error.response.data.data);
+        setShowAlert(true);
       });
     },
   });
@@ -134,6 +131,11 @@ function Login() {
             <div className="form-group">
               <input type="password" className="form-control" onChange={formikRegister.handleChange} value={formikRegister.values.password} name="password" id="password" placeholder="Password" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:""}} required/>
             </div>
+            {showAlert && (
+              <div style={{marginTop:"-10px", marginBottom:"10px"}}>
+                <strong style={{ fontSize:"1.2em", fontWeight:"bold", color:"red" }}>{alertMessage}</strong> 
+              </div>
+            )}
 
             <button type="submit" id="log" className="btn" style={{color:"white",backgroundColor:"#a7ac38", width:"100px", display: "block", margin: '30px auto', textAlign: 'center'}}>SIGN UP</button>
             <p>Already have an account? <a href="#" onClick={()=>{setCheck(false)}} style={{color: '#a7ac38'}}>Sign In</a></p>
@@ -147,6 +149,11 @@ function Login() {
             <div className="form-group">
                 <input type="password" className="form-control" id="password" name="password" onChange={formik.handleChange} value={formik.values.password} placeholder="Password" style={{width: '400', height: '40px', paddingLeft: '8px', backgroundColor:"white"}}/>
             </div>
+            {showAlert && (
+              <div style={{marginTop:"-10px", marginBottom:"10px"}}>
+                <strong style={{ fontSize:"1.2em", fontWeight:"bold", color:"red" }}>{alertMessage}</strong> 
+              </div>
+            )}
             <div style={{display: "flex", justifyContent:"space-evenly"}}>
               <label style={{ display: 'flex', alignItems: 'center' }}>
                 <input type="radio" name="userType" style={{ marginRight: '5px', WebkitAppearance: 'none', height: '16px', width: '16px', borderRadius: '50%', border: '2px solid #ccc' }} onChange={(e) => { handleUser(e.target.value) }} value="customer" /> Customer
