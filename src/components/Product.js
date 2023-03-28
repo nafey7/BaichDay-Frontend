@@ -52,15 +52,17 @@ function Product() {
       bidCost: prop.bid[prop.bid.length - 1].bidCost,
     },
     onSubmit: values => {
+      console.log(values.bidCost);
+      let amount = values.bidCost
       // alert(JSON.stringify(values, null, 2));
       axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
         userID: userID,
         productID: prop._id,
-        bidCost: values.bidCost
+        bidCost: amount
       }
       )
       .then(function (response) {
-        console.log(response)
+        console.log(response.data);
         if(response.data.message === "success")
         {
           navigate('/');
