@@ -18,6 +18,12 @@ function Login() {
     setType(e);
   }
 
+  function handleCheck(e) {
+    setCheck(e);
+    setAlertMessage('');
+    setShowAlert(false);
+  }
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -138,7 +144,7 @@ function Login() {
             )}
 
             <button type="submit" id="log" className="btn" style={{color:"white",backgroundColor:"#a7ac38", width:"100px", display: "block", margin: '30px auto', textAlign: 'center'}}>SIGN UP</button>
-            <p>Already have an account? <a href="#" onClick={()=>{setCheck(false)}} style={{color: '#a7ac38'}}>Sign In</a></p>
+            <p>Already have an account? <a href="#" onClick={()=>{handleCheck(false)}} style={{color: '#a7ac38'}}>Sign In</a></p>
           </form>
           ):(
           <form id = "login_form" onSubmit={formik.handleSubmit} style={{width: '400px', height: '500px', overflow: 'hidden', margin: '200px 0 0px 0px', padding: '20px', background: 'white'}} >
@@ -166,7 +172,7 @@ function Login() {
             <br></br>
             <button type="submit" id="log" className="btn" style={{width:"100px",display: "block", margin: '0 auto', textAlign: 'center',backgroundColor:"#a7ac38"}}>SIGN IN</button>
             <br></br>
-            <p>Don't have an account? <a href="#" style={{color: '#a7ac38'}} onClick={()=>{setCheck(true)}} >Sign Up</a></p>
+            <p>Don't have an account? <a href="#" style={{color: '#a7ac38'}} onClick={()=>{handleCheck(true)}} >Sign Up</a></p>
           </form>)}    
         </div>
       </div>
