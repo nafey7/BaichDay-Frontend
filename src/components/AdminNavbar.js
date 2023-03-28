@@ -122,6 +122,7 @@ export default function AdminNavbar() {
         <Toolbar>
 
           <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
+          <button to={{pathname: "/userlist"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Users</button>
           
           <Typography
             variant="h6"
