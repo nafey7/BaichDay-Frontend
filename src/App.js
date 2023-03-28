@@ -50,7 +50,6 @@ function App() {
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
-          <Route path='/alert' element={<><AlertExample/></>}/>
         </Routes>
       </div>
     </Router>
