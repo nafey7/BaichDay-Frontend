@@ -41,24 +41,26 @@ export default function Footer() {
 
           <MDBCol style={{ fontSize: "12px" }}>
               <ul className='list-unstyled mb-1'>
+                <br/>
                 <h2>Links</h2>
+                <br/>
                 <li>
-                  <a href='/AddProduct' className='text-white'>
+                  <a href='/AddProduct' className='text-white' style={{textDecoration:"none"}}>
                     Add a Product
                   </a>
                 </li>
                 <li>
-                  <a href='/CustomerProfile' className='text-white'>
+                  <a href='/CustomerProfile' className='text-white' style={{textDecoration:"none"}}>
                     Your Profile
                   </a>
                 </li>
                 <li>
-                  <a href='/ContactUs' className='text-white'>
+                  <a href='/ContactUs' className='text-white' style={{textDecoration:"none"}}>
                     Contact Us
                   </a>
                 </li>
                 <li>
-                  <a href='/AboutUs' className='text-white'>
+                  <a href='/AboutUs' className='text-white' style={{textDecoration:"none"}}>
                     About Us
                   </a>
                 </li>

@@ -11,11 +11,11 @@ import TableRow from '@mui/material/TableRow';
 import { reactLocalStorage } from 'reactjs-localstorage';
 
 
-function History() {
+function CurrentBids() {
     let userID = reactLocalStorage.get('userID', "", true);
     const [data, setData] = React.useState([]);
     React.useEffect(() => {
-        axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/viewcurrentbidproducts', {
             userID: userID
         })
             .then(function (response) {
@@ -27,20 +27,6 @@ function History() {
                 }
             });
     }, [])
-
-    function Status(sold, newOwner) {
-        if (sold === 'true') {
-            if(userID === newOwner) {
-                return 'Success';
-            }
-            else {
-                return 'Failed';
-            }
-        }
-        else {
-            return 'In Progress';
-        }
-    };
 
     return (
         <div style={{ margin: "0 auto", textAlign: "center" }}>
@@ -60,7 +46,7 @@ function History() {
                                 <TableRow key={d.id}>
                                     <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}>{d.name} </TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{d.maxBid}</TableCell>
-                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Status(d.sold, d.newOwner)}</TableCell>
+                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>Bid in Progress</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -71,4 +57,4 @@ function History() {
     );
 };
 
-export default History;
+export default CurrentBids;

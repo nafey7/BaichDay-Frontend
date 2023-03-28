@@ -1,6 +1,7 @@
 .about-us {
     padding-top: 1%;
-    min-height: 130vh;
+    min-height: 100vh;
+    margin-bottom: 0%;
   }
   
   .about-us-title {
@@ -81,7 +82,7 @@ a:hover, a:active {
     left: 47%;
     position: absolute;
     top: 100%;
-    width: 5px;
+    width: 10px;
 }
 
 .feature .feature-box .feature-content h4 {
@@ -118,3 +119,6 @@ a:hover, a:active {
     text-align: center;
     width: 50px;
 }
+.feature-icon {
+    font-size: 15px;
+  }

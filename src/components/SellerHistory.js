@@ -11,11 +11,11 @@ import TableRow from '@mui/material/TableRow';
 import { reactLocalStorage } from 'reactjs-localstorage';
 
 
-function History() {
+function SellerHistory() {
     let userID = reactLocalStorage.get('userID', "", true);
     const [data, setData] = React.useState([]);
     React.useEffect(() => {
-        axios.post('https://pacific-sands-58031.herokuapp.com/user/viewallbidproducts', {
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/viewmyproducts', {
             userID: userID
         })
             .then(function (response) {
@@ -28,18 +28,33 @@ function History() {
             });
     }, [])
 
-    function Status(sold, newOwner) {
+    function Status(sold) {
         if (sold === 'true') {
-            if(userID === newOwner) {
-                return 'Success';
-            }
-            else {
-                return 'Failed';
-            }
+            return 'Success';
+        }
+        else if (sold === 'expired') {
+            return 'Failed';
         }
         else {
             return 'In Progress';
         }
+    };
+
+    function numberBid(bid) {
+        let b = bid.length - 1;
+        console.log(b);
+        return b;
+    }
+
+    function Bid(bid) {
+        if (bid.length === 1) {
+            return '0';
+        }
+        else {
+            let b = bid[bid.length-1].bidCost;
+            return b;
+        }
+
     };
 
     return (
@@ -51,7 +66,8 @@ function History() {
                         <TableHead>
                             <TableRow>
                                 <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="left">Item</TableCell>
-                                <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Bid</TableCell>
+                                <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Number of Bid</TableCell>
+                                <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Bid Amount</TableCell>
                                 <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Status</TableCell>
                             </TableRow>
                         </TableHead>
@@ -59,7 +75,8 @@ function History() {
                             {data.map((d) => (
                                 <TableRow key={d.id}>
                                     <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}>{d.name} </TableCell>
-                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{d.maxBid}</TableCell>
+                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{numberBid(d.bid)} </TableCell>
+                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Bid(d.bid)}</TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Status(d.sold, d.newOwner)}</TableCell>
                                 </TableRow>
                             ))}
@@ -71,4 +88,4 @@ function History() {
     );
 };
 
-export default History;
+export default SellerHistory;

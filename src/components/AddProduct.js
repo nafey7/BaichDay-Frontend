@@ -82,15 +82,15 @@ function AddProduct() {
             
             
         // </Box>
-        <div className="container" style={{boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#d9d9d9", whiteSpace: 'nowrap', width: "70%", height: "100%"}}>
+        <div className="container" style={{boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#eaeaea", whiteSpace: 'nowrap', width: "70%", height: "100%", padding: '2rem', marginTop: '3%'}}>
             <h1 style={{ textAlign: "center", color: 'black', fontSize: '50px', fontWeight: "bolder" }}>Product Details</h1>
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto" }}>
-                <div className="row" style={{textAlign: "left", fontSize: '15px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
+                <div className="row" style={{textAlign: "left", fontSize: '16px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Name</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeName(e.target.value)}} placeholder="Name" required />
+                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeName(e.target.value)}} placeholder="Name" required />
                     <br></br>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Description</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeDescription(e.target.value)}} placeholder="Product Description" required />
+                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeDescription(e.target.value)}} placeholder="Product Description" required />
                     <br></br>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Image</label>
                     <input id="5" type="file" onChange={(e)=>{ 
@@ -105,12 +105,12 @@ function AddProduct() {
                         FR.readAsDataURL(file);
                     }} required/>
                 </div>
-                <div className="row" style={{textAlign: "left", fontSize: '15px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
+                <div className="row" style={{textAlign: "left", fontSize: '16px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
                     <label for="contactInput" className="form-label" style={{marginBottom: "0px"}}>Reserve Amount</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeCost(e.target.value)}} placeholder="Reserve Amount" required/>
+                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeCost(e.target.value)}} placeholder="Reserve Amount" required/>
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Duration</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e)=>{changeDuration(e.target.value)}} placeholder="Duration in Hours" required />
+                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeDuration(e.target.value)}} placeholder="Duration in Hours" required />
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Category</label>
                     <div style={{width: '400px'}}>
