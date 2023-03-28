@@ -4,7 +4,7 @@ import './about.css';
 
 function AboutUs() {
   return (
-    <div className="about-us" style={{marginBottom: "-20%"}}>
+    <div className="about-us">
       <div className="about-us-section" >
         <Container >
           <Row >
@@ -28,6 +28,7 @@ function AboutUs() {
       <br></br>
       <br></br>
       <br></br>
+      <br></br>
       <div className="features-section">
         <Container>
           <h2 className="section-title" style={{fontSize: "25px"}}>Our Promises</h2>
@@ -39,8 +40,8 @@ function AboutUs() {
                   <i className="fas fa-gift" style={{height: "0px", width: "0px"}}></i>
                 </div>
                 <div className="feature-content">
-                  <h4>Quality Products</h4>
-                  <p>Our team works tirelessly to ensure that you receive only the best quality products. We believe in delivering excellence and quality to our customers.</p>
+                  <h4 style={{fontSize: '18px'}}>Quality Products</h4>
+                  <p style={{fontSize: '12px'}}>Our team works tirelessly to ensure that you receive only the best quality products. We believe in delivering excellence and quality to our customers.</p>
                 </div>
               </div>
             </Col>
@@ -50,8 +51,8 @@ function AboutUs() {
                   <i className="fas fa-heart"></i>
                 </div>
                 <div className="feature-content">
-                  <h4>User Experience</h4>
-                  <p>We prioritize our customer's experience above all else. Our team works around the clock to make sure your experience with us is smooth and enjoyable.</p>
+                  <h4 style={{fontSize: '18px'}}>User Experience</h4>
+                  <p style={{fontSize: '12px'}}>We prioritize our customer's experience above all else. Our team works around the clock to make sure your experience with us is smooth and enjoyable.</p>
                 </div>
               </div>
             </Col>
@@ -61,8 +62,8 @@ function AboutUs() {
                   <i className="fas fa-headset"></i>
                 </div>
                 <div className="feature-content">
-                  <h4>Customer Support</h4>
-                  <p>We are committed to delivering top-notch customer support, with a focus on personalized assistance and timely resolution of issues.</p>
+                  <h4 style={{fontSize: '18px'}}>Customer Support</h4>
+                  <p style={{fontSize: '12px'}}>We are committed to delivering top-notch customer support, with a focus on personalized assistance and timely resolution of issues.</p>
                 </div>
               </div>
             </Col>

@@ -23,7 +23,7 @@ export default function Wallet() {
     }, [])
 
     return (
-        <div className="container" style={{ boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#d9d9d9", width: "70%", height: "auto", padding: "2rem", whiteSpace: 'nowrap', overflow: 'hidden' }}>
+        <div className="container" style={{ boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#eaeaea", width: "70%", height: "auto", padding: "2rem", whiteSpace: 'nowrap', overflow: 'hidden' }}>
 
             <div className="container" style={{ textAlign: "left" }}>
                 <div className="row">
