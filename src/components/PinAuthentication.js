@@ -5,9 +5,14 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import {reactLocalStorage} from 'reactjs-localstorage';
 
+import Alert from 'react-bootstrap/Alert';
+// import ButtonAlert from 'react-bootstrap/Button';
+
 
 function PinAuthentication() {
   const [code, setCode] = useState("");
+  const [show, setShow] = useState(false);
+
   let navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -29,8 +34,22 @@ function PinAuthentication() {
   })
   .catch(function(err) {
       console.log(err);
-      alert("Wrong PIN");
+      // alert("Wrong PIN");
+      setShow(true);
 })
+  };
+
+  if(show){
+    return(
+      <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+        <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+        <p>
+          Change this and that and try again. Duis mollis, est non commodo
+          luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+          Cras mattis consectetur purus sit amet fermentum.
+        </p>
+      </Alert>
+    )
   };
   
   return (

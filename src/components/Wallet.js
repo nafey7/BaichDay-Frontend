@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { reactLocalStorage } from 'reactjs-localstorage';
-import History from './History';
+import CurrentBids from "./CurrentBids";
 import axios from "axios";
 
 export default function Wallet() {
@@ -40,10 +40,10 @@ export default function Wallet() {
 
                     <div className="col-md-6">
                         <div style={{ textAlign: "center" }}>
-                            <h4>Transaction History</h4>
+                            <h4>Active Bids</h4>
                         </div>
                         <div style={{ marginTop: "auto" }}>
-                            <History />
+                            <CurrentBids />
                         </div>
                     </div>
                 </div>

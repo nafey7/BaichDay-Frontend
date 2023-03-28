@@ -113,10 +113,8 @@ function Product() {
                 </div>
                 <p className='mt-4 h1'><b>Current Bid :</b> <b className='text-danger '>${prop.bid[prop.bid.length-1].bidCost}</b></p>
                 <div>
-                  {isActive ? (
+                  {isActive && (
                     <Timer duration={time}/>
-                  ) : (
-                    <h5>Timer loading</h5>
                   )}
                 </div>
               </div>
