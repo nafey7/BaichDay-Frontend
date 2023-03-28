@@ -19,8 +19,8 @@ import Wallet from './components/Wallet';
 import UserChat from './components/UserChat';
 import ChatList from './components/ChatList';
 import PinAuthentication from './components/PinAuthentication';
-import AlertExample from './components/AlertTest';
 import SellerHistory from './components/SellerHistory';
+import Userlist from './components/Userlist';
 
 function App() {
   return (
@@ -44,13 +44,15 @@ function App() {
           <Route path='/ContactUs' element={<><Navbar/> <ContactUs/><Footer/> </>}/>
           <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><ChatBot/><Footer/></>}/>
           <Route path='/Admin' element={<><AdminNavbar/><AdminHome/></>}/>
+          <Route path='/userlist' element={<><AdminNavbar/><Userlist/></>}/>
+          
           <Route path='/history' element={<><Navbar/><History/><ChatBot/></>}/>
           <Route path='/myproducts' element={<><Navbar/><SellerHistory/><ChatBot/></>}/>
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
-          <Route path='/alert' element={<><AlertExample/></>}/>
+
         </Routes>
       </div>
     </Router>
