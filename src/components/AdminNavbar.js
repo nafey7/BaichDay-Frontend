@@ -25,7 +25,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import History from './History';
-
+import { ReactComponent as Logo } from './logo.svg';
 
 export default function AdminNavbar() {
   const [Check, setCheck] = React.useState(false);
@@ -121,16 +121,10 @@ export default function AdminNavbar() {
       <AppBar position="fixed" sx={{backgroundColor:"black"}}>
         <Toolbar>
 
-          <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><HomeIcon sx={{ color: "white", fontSize: 30, margin: "8% 0% 0% 0%" }}/></Link>
+          <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
+          <button to={{pathname: "/userlist"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Users</button>
+          <button to={{pathname: "/"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Products</button>
           
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block',  fontSize: '250%'} }}
-          >
-            BaichDay
-          </Typography>
           <FormControl sx={{ width: '10%', backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
           <Input
             type={'text'}
