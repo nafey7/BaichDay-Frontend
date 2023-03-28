@@ -45,7 +45,6 @@ function App() {
           <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><ChatBot/><Footer/></>}/>
           <Route path='/Admin' element={<><AdminNavbar/><AdminHome/></>}/>
           <Route path='/userlist' element={<><AdminNavbar/><Userlist/></>}/>
-          
           <Route path='/history' element={<><Navbar/><History/><ChatBot/></>}/>
           <Route path='/myproducts' element={<><Navbar/><SellerHistory/><ChatBot/></>}/>
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
