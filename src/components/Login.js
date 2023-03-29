@@ -67,8 +67,8 @@ function Login() {
           if(response.data.message === "success")
           {
             console.log('hello')
-            reactLocalStorage.set('userID',response.data.data.adminInfo._id);
-            reactLocalStorage.set('token',response.data.token);
+            reactLocalStorage.set('adminID',response.data.data.adminInfo._id);
+            reactLocalStorage.set('token',response.data.data.token);
             navigate('/Admin')
           }
           
