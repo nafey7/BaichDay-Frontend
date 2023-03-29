@@ -152,7 +152,7 @@ function Login() {
               <button type="submit" id="log" className="btn" style={{ width: "100px", display: "block", margin: '0 auto', textAlign: 'center', backgroundColor: "green", fontSize: "15px", padding: '5px', color: "white" }}>SIGN UP</button>
               <br/>
               
-              <p>Already have an account? <a href="#" onClick={() => { handleCheck(false) }} style={{ color: 'green' }}>Sign In</a></p>
+              <p style={{fontSize: '10px'}}>Already have an account? <a href="#" onClick={() => { handleCheck(false) }} style={{ color: 'green', fontSize: '10px' }}>Sign In</a></p>
             </form>
           ) : (
             <form id="login_form" onSubmit={formik.handleSubmit} style={{ boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', width: '400px', height: 'auto', overflow: 'hidden', whiteSpace: 'nowrap', padding: '2rem', backgroundColor: 'white' }} >
@@ -180,7 +180,7 @@ function Login() {
               <a href="#" style={{ color: '#a7ac38', textAlign: 'right' }}><p>Forgot password?</p></a>
               <button type="submit" id="log" className="btn" style={{ width: "100px", display: "block", margin: '0 auto', textAlign: 'center', backgroundColor: "green", fontSize: "15px", padding: '5px', color: "white" }}>SIGN IN</button>
               <br></br>
-              <p>Don't have an account? <a href="#" style={{ color: 'green' }} onClick={() => { handleCheck(true) }} >Sign Up</a></p>
+              <p style={{fontSize: '10px'}}>Don't have an account? <a href="#" style={{ color: 'green', fontSize: '10px' }} onClick={() => { handleCheck(true) }} >Sign Up</a></p>
             </form>)}
         </div>
       </div>
