@@ -1,60 +1,26 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import axios from 'axios';
-import {useNavigate} from "react-router-dom";
-import DisplayCards from './DisplayCards';
-import { Nav } from 'react-bootstrap';
 import './AdminHome.css';
-import {Link} from 'react-router-dom'
-import HomeIcon from '@mui/icons-material/Home'; 
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
-// import { Card, CardGroup } from 'react-bootstrap';
-import ReactApexChart from 'react-apexcharts';
-import Sidebar from './AdminSidebar';
 import Chart from 'react-apexcharts';
 import CardHeader from '@mui/material/CardHeader';
 import {List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
 import { FiberManualRecord } from '@material-ui/icons';
-import { FaCoins } from 'react-icons/fa';
-
-
-// const chartData = {
-//   series: [
-//     { name: 'Series A', data: [30, 40, 35, 50, 49, 60, 70, 91, 125] },
-//     { name: 'Series B', data: [23, 12, 54, 61, 32, 56, 81, 19, 56] },
-//     { name: 'Series C', data: [40, 45, 50, 58, 63, 61, 52, 48, 55] },
-//   ],
-//   options: {
-//     chart: {
-//       type: 'bar',
-//       height: 10,
-//       width:20,
-//       stacked: true,
-//     },
-//     plotOptions: {
-//       bar: {
-//         horizontal: false,
-//       },
-//     },
-//     xaxis: {
-//       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-//     },
-//     legend: {
-//       position: 'bottom',
-//     },
-//   },
-// };
+import { FaCoins, FaUsers, FaUserCheck, FaBox } from 'react-icons/fa';
+import { Avatar } from '@mui/material';
 
 const events = [
-  { title: 'Event 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', color: 'red' },
-  { title: 'Event 2', description: 'Consectetur adipiscing elit', color: 'blue' },
-  { title: 'Event 3', description: 'Sed do eiusmod tempor incididunt', color: 'green' },
+  { title: 'Weekly team meeting every Monday at 9am to discuss site performance, user feedback, and upcoming auction events', color: 'red' },
+  { title: 'Monthly board meeting on the first Wednesday of every month at 2pm to report on site metrics, financial performance, and strategic planning', color: 'blue' },
+  { title: 'Bi-weekly marketing meeting every other Friday at 10am to discuss promotional strategies and outreach efforts', color: 'gray' },
+  { title: 'Daily reminder to check the sites customer support inbox for any user inquiries or issues that need to be addressed', color: 'red' },
+  { title: 'Monthly reminder to conduct site backups and ensure all data is secure', color: 'blue' },
+  { title: 'Quarterly reminder to review and update the sites terms and conditions, as well as privacy policy, to ensure compliance with relevant laws and regulations', color: 'gray' },
+  { title: 'Bi-annual meeting with legal counsel to review any legal matters related to the sites operations', color: 'red' },
+  { title: 'Bi-annual review of the sites SEO performance and optimization efforts', color: 'blue' },
+  { title: 'Reminder to send out a user satisfaction survey after each auction event to gather feedback on the user experience', color: 'gray' },
+  { title: 'Monthly review of the sites financial performance, including revenue, expenses, and profit margins', color: 'red' },
   // Add more events as needed
 ];
 
@@ -73,17 +39,21 @@ export default function AdminHome() {
         type: 'donut',
       },
       dataLabels: {
-        enabled: true,
+        enabled: false,
         style: {
           fontSize: '10px',
           // colors: ['#000'],
         },
       },
-      labels: ['Series A', 'Series B', 'Series C', 'Series D'],
+      labels: ['Collectibles', 'Sporting', 'Electronics', 'Fashion', 'Toys','Music','Cars','Other'],
       legend: {
-        position: 'right',
+        position: 'bottom',
         offsetY: 0,
-        height: 230,
+        height: 20,
+        textWrap: true,
+        markers: {
+          offsetY: 0,
+        },
       },
       responsive: [{
         breakpoint: 480,
@@ -92,12 +62,16 @@ export default function AdminHome() {
             position: 'bottom',
             offsetY: 0,
             height: 300,
+            markers: {
+              offsetY: 0,
+            },
           }
         }
       }],
     },
-    series: [44, 55, 13, 33],
+    series: [10, 10, 10, 10,10,10,10,30],
   });
+  
 
   return (
  
@@ -110,28 +84,49 @@ export default function AdminHome() {
         <Card sx={{ width: '100%', marginTop:"20px" }}>
           <CardHeader sx={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)', lineHeight: '2.5rem', height: '2.5rem', textAlign: 'left', fontSize: '100%', height: '100%' }} title="Performance Analytics"/>
           <CardContent>
-            <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
-              <Box sx={{ flexGrow: 1, width: '20%'}}>
-                All Users
-                {/* <Chart options={chartData.options} series={chartData.series[0].data} type="bar" /> */}
+            <Box sx={{ display: 'flex', flexDirection: 'row'}}>
+              <Box sx={{ flexGrow: 1, width: '25%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <h4 style={{marginBottom: '8px'}}>All Users</h4>
+                <Box sx={{display: 'flex', flexDirection: 'row-reverse', alignItems: 'center'}}>
+                  <span style={{marginLeft: '5px'}}>1000</span>
+                  <Avatar sx={{ bgcolor: '#4caf50', width: 40, height: 40 }}>
+                    <FaUsers size={24} color="white" />
+                  </Avatar>
+                </Box>
               </Box>
-              <Box sx={{ flexGrow: 1, width: '20%' }}>
-                Active Users
-                {/* <Chart options={chartData.options} series={chartData.series[1].data} type="bar" /> */}
+              <Box sx={{ flexGrow: 1, width: '25%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h4 style={{marginBottom: '8px'}}>Active Users</h4>
+                <Box sx={{display: 'flex', flexDirection: 'row-reverse', alignItems: 'center'}}>
+                  <span style={{marginLeft: '5px'}}>500</span>
+                  <Avatar sx={{ bgcolor: '#4caf50', width: 40, height: 40 }}>
+                    <FaUserCheck size={24} color="white" />
+                  </Avatar>
+                </Box>
               </Box>
-              <Box sx={{ flexGrow: 1, width: '20%' }}>
-                <FaCoins size={24} color="#6d4c41" />
-                {/* <Chart options={chartData.options} series={chartData.series[2].data} type="bar" /> */}
+              <Box sx={{ flexGrow: 1, width: '25%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h4 style={{marginBottom: '8px'}}>Total Revenue</h4>
+                <Box sx={{display: 'flex', flexDirection: 'row-reverse', alignItems: 'center'}}>
+                  <span style={{marginLeft: '5px'}}>$10,000</span>
+                  <Avatar sx={{ bgcolor: '#4caf50', width: 40, height: 40 }}>
+                    <FaCoins size={24} color="white" />
+                  </Avatar>
+                </Box>
               </Box>
-              <Box sx={{ flexGrow: 1, width: '20%' }}>
-                Totals Items Sold
-                {/* <Chart options={chartData.options} series={chartData.series[2].data} type="bar" /> */}
+              <Box sx={{ flexGrow: 1, width: '25%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h4 style={{marginBottom: '8px'}}>Total Items Sold</h4>
+                <Box sx={{display: 'flex', flexDirection: 'row-reverse', alignItems: 'center'}}>
+                  <span style={{marginLeft: '5px'}}>100</span>
+                  <Avatar sx={{ bgcolor: '#4caf50', width: 40, height: 40 }}>
+                    <FaBox size={24} color="white" />
+                  </Avatar>
+                </Box>
               </Box>
             </Box>
           </CardContent>
         </Card>
-        <Box sx={{display:"flex", gap: 4, marginTop:"1%"}}>
-        <Card sx={{ width: '49%' }}>
+
+        <Box sx={{display:"flex", gap: 4, marginTop:"1.5%"}}>
+        <Card sx={{ width: '49%', height:"40%" }}>
         <CardHeader sx={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)', lineHeight: '2.5rem', height: '2.5rem', textAlign: 'left'}} title="Sales by Category"/>
           <CardContent>
           <Box sx={{ flexGrow: 1}}>
@@ -160,82 +155,20 @@ export default function AdminHome() {
           </CardContent>
         </Card>
         </Box>
+        <Box sx={{display:"flex", gap: 4, marginTop:"1%", marginBottom:"1%"}}>
+        <Card sx={{ width: '49%', marginTop:"-19%" }}>
+        <CardHeader sx={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)', lineHeight: '2.5rem', height: '2.5rem', textAlign: 'left'}} title="Sales by Time"/>
+          <CardContent>
+          <Box sx={{ flexGrow: 1}}>
+                <Chart options={chartData.options} series={chartData.series} type="donut" height="250" />
+              </Box>
+          
+          </CardContent>
+        </Card>
 
-        {/* <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4, marginTop:"1%"}}>
-          <Card sx={{width: '49%', minHeight:"30%"}}>
-            <CardContent>
-              dssdsf
-              fdgdfgd
-            </CardContent>
-          </Card>
+        </Box>
 
-          <Card sx={{width: '49%'}}>
-            <CardContent>
-            <Typography variant="body2" color="text.secondary">
-              This impressive paella is a perfect party dish and a fun meal to cook
-              together with your guests. Add 1 cup of frozen peas along with the mussels,
-              if you like.
-            </Typography>
-            </CardContent>
-          </Card>
-        </Box> */}
-
-{/* <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4, marginTop:"1%"}}>
-    <Card sx={{width: 'calc(50% - 2px)', minHeight:"30%"}}>
-      <CardContent>
-        Card 1
-      </CardContent>
-    </Card>
-
-    <Card sx={{width: 'calc(50% - 2px)'}}>
-      <CardContent>
-        Card 2
-      </CardContent>
-    </Card>
-  </Box> */}
-      
-      
-      {/* <CardGroup>
-            <Card className='m-4 admincard'>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title className='admincard-heading'>Sales Summary</Card.Title>
-                <Card.Text>
-                  
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card classNmame='m-4 admincard'>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title className='admincard-heading'>Active Users</Card.Title>
-                <Card.Text>
-                  This card has supporting text below as a natural lead-in to
-                  additional content.{' '}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card className='m-4 admincard'>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title className='admincard-heading'>Total Auction Items</Card.Title>
-                <Card.Text>
-                  This is a wider card with supporting text below as a natural lead-in
-                  to additional content. This card has even longer content than the
-                  first to show that equal height action.
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-          </CardGroup> */}
+        
       </div> 
 
 

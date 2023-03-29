@@ -23,7 +23,7 @@ export default function Navbar() {
   let navigate = useNavigate();
   function logout(){
     let userID = reactLocalStorage.get('userID',);
-    axios.post('https://pacific-sands-58031.herokuapp.com/user/logout', {
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
         userID: userID
     })
     .then(function (response) {
@@ -154,15 +154,6 @@ export default function Navbar() {
             open={Boolean(anchorEl2)}
             onClose={handleClose}
           >
-            {/* <MenuItem onClick={()=>{navigate('/collectibles')}}>Collectibles</MenuItem>
-            <MenuItem onClick={()=>{navigate('/sporting')}}>Sporting</MenuItem>
-            <MenuItem onClick={()=>{navigate('/electronics')}}>Electronics</MenuItem>
-            <MenuItem onClick={()=>{navigate('/fashion')}}>Fashion</MenuItem>
-            <MenuItem onClick={()=>{navigate('/toy')}}>Toy</MenuItem>
-            <MenuItem onClick={()=>{navigate('/music')}}>Music</MenuItem>
-            <MenuItem onClick={()=>{navigate('/cars')}}>Cars</MenuItem>
-            <MenuItem onClick={()=>{navigate('/other')}}>Others</MenuItem> */}
-
             <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/collectibles"}}>Collectibles</Link></MenuItem>
             <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/sporting"}}>Sporting</Link></MenuItem>
             <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/electronics"}}>Electronics</Link></MenuItem>

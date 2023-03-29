@@ -63,7 +63,6 @@ function AddProduct() {
           category: cust.category
           })
           .then(function (response) {
-            alert(response.data.message)
             //console.log(response)
             if(response.data.message==="success"){
             navigate('/')}

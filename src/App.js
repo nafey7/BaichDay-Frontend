@@ -20,6 +20,8 @@ import UserChat from './components/UserChat';
 import ChatList from './components/ChatList';
 import PinAuthentication from './components/PinAuthentication';
 import SellerHistory from './components/SellerHistory';
+import Userlist from './components/Userlist';
+import Productlist from './components/Productlist';
 
 function App() {
   return (
@@ -43,12 +45,15 @@ function App() {
           <Route path='/ContactUs' element={<><Navbar/> <ContactUs/><Footer/> </>}/>
           <Route path='/CustomerProfile' element={<><Navbar/><CustomerProfile/><ChatBot/><Footer/></>}/>
           <Route path='/Admin' element={<><AdminNavbar/><AdminHome/></>}/>
+          <Route path='/userlist' element={<><AdminNavbar/><Userlist/></>}/>
+          <Route path='/productlist' element={<><AdminNavbar/><Productlist/></>}/>
           <Route path='/history' element={<><Navbar/><History/><ChatBot/></>}/>
           <Route path='/myproducts' element={<><Navbar/><SellerHistory/><ChatBot/></>}/>
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
+
         </Routes>
       </div>
     </Router>
