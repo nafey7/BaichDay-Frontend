@@ -14,6 +14,7 @@ function UserHome(props) {
         if(props.title ==="Featured Products"){
           axios.get('https://pacific-sands-58031.herokuapp.com/product/')
           .then(function(res) {
+                console.log("in featured products")
               console.log(res.data.data)
               setDataprops(res.data.data)          
           }, dataprops)

@@ -131,7 +131,7 @@ export default function Navbar() {
       <AppBar position="fixed" sx={{backgroundColor:"black"}}>
         <Toolbar>
           <Link reloadDocument to={{pathname: "/"}} style={{margin:"0 15px",color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
-          <button className="btn" aria-controls="menu1" aria-haspopup="true" onClick={handleClick1} style={{fontSize:"150%", marginLeft:"50px", color:"white"}}>Auctions</button>
+          {/* <button className="btn" aria-controls="menu1" aria-haspopup="true" onClick={handleClick1} style={{fontSize:"150%", marginLeft:"50px", color:"white"}}>Auctions</button>
           <Menu
             id="menu1"
             anchorEl={anchorEl1}
@@ -141,7 +141,7 @@ export default function Navbar() {
           >
             <MenuItem >Current Auctions</MenuItem>
             <MenuItem >Past Auctions</MenuItem>
-          </Menu>
+          </Menu> */}
           <button className="btn" id="demo-positioned-button2"
             aria-controls="menu2" aria-haspopup="true" onClick={handleClick2}
             style={{fontSize:"150%", marginLeft:"20px", color:"white"}}>
@@ -165,7 +165,7 @@ export default function Navbar() {
 
           </Menu>
           <button className="btn btn-success" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"15px"}}>Sell With Us</button>
-          <FormControl sx={{backgroundColor: 'white', marginLeft:"40%", borderRadius:"15px"}} variant="standard">
+          <FormControl sx={{backgroundColor: 'white', marginLeft:"53%", borderRadius:"15px"}} variant="standard">
           <Input
             type={'text'}
             id="name"
