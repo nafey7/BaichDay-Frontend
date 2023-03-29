@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 function UserHome(props) {
     const [dataprops, setDataprops] = React.useState([{ name: "", image: "img.png", bid: [0] }]);
     let navigate = useNavigate();
+    let rand = Math.floor(Math.random() * 1000);
     React.useEffect(()=> {
         if(props.title ==="Featured Products"){
           axios.get('https://pacific-sands-58031.herokuapp.com/product/')
@@ -32,18 +33,20 @@ function UserHome(props) {
         }
   
     },[])
-    // const slides = dataprops.map((item, index) => (
-    //     <img key={index} src={item.image[0]} alt={`Carousel item ${index}`} />
-    //   ));
+
     return(
         <div>
+            
+            <div>
+                <h2 style={{ textAlign: 'left', marginLeft:"60px" }}>{props.title}</h2>
+            </div>
 
             <Box sx={{ display: 'flex', overflowY: 'auto' }}>
                 
                     
                 <DisplayCards test={dataprops}/>
-                <div style={{backgroundSize: 'cover', width: '17%', height: '70%', position: 'fixed', top: '16%', right: '0px', }}>
-                <img style={{maxWidth: '100%', maxHeight: '100%', paddingRight: '5%'}} src="221.jpg" alt="advert" />
+                <div style={{backgroundSize: 'cover', width: '17%', height: '70%', position: 'fixed', top: '18%', right: '0px', }}>
+                    <img style={{maxWidth: '100%', maxHeight: '100%', paddingRight: '5%'}} src="221.jpg" alt="advert" />
                 </div>
             </Box>
             <br />
