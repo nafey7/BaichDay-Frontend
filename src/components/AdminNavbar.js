@@ -35,7 +35,7 @@ export default function AdminNavbar() {
     navigate("/login")
   }
   function viewprofile(){
-    navigate('/CustomerProfile')
+    
   }
   function history(){
     navigate('/History')
@@ -151,7 +151,7 @@ export default function AdminNavbar() {
             onClick={handleClick}
             color="inherit"
           >
-            <AccountCircle sx={{fontSize: "200%"}} />
+            <AccountCircle sx={{fontSize: "35px"}} />
           </IconButton>
           <Menu
             id="basic-menu"
@@ -162,7 +162,7 @@ export default function AdminNavbar() {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem onClick={viewprofile}>Admin Profile</MenuItem>
+            <MenuItem>Admin Profile</MenuItem>
             <MenuItem>My Notifications</MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>

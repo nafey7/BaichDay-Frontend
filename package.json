@@ -36,6 +36,8 @@
     "react-scripts": "^5.0.1",
     "react-select": "^5.7.0",
     "react-select-country-list": "^2.2.3",
+    "react-typewriter-effect": "^1.1.0",
+    "react-typist": "^2.0.5",
     "react-whatsapp-chat-widget": "^1.1.2",
     "reactjs-localstorage": "^1.0.1",
     "rn-country-dropdown-picker": "^2.1.8",
