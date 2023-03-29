@@ -121,11 +121,11 @@ export default function AdminNavbar() {
       <AppBar position="fixed" sx={{backgroundColor:"black"}}>
         <Toolbar>
 
-          <Link to={{pathname: "/Admin"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
-          <Link to={{pathname: "/userlist"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Users</Link>
-          <Link to={{pathname: "/productlist"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Products</Link>
+          <Link to={{pathname: "/Admin"}} style={{margin:"0 15px",textDecoration:"none", fontSize:"18px", color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
+          <Link to={{pathname: "/userlist"}} style={{backgroundColor:'black',textDecoration:"none",margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Users</Link>
+          <Link to={{pathname: "/productlist"}} style={{backgroundColor:'black',textDecoration:"none",margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Products</Link>
           
-          <FormControl sx={{ width: '10%', backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
+          <FormControl sx={{backgroundColor: 'white', borderRadius:"15px", width: "40%", marginLeft: "45%"}} variant="standard">
           <Input
             type={'text'}
             id="name"
@@ -143,6 +143,7 @@ export default function AdminNavbar() {
           />
         </FormControl>
           <IconButton
+            fontSize= "20px"
             size="large"
             aria-label="account of current user"
             aria-controls="menu-appbar"
