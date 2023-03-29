@@ -14,6 +14,7 @@ import axios from 'axios'
 export default function ActionAreaCard(props) {
   const [time, setTime] = React.useState(0)
   const [isActive, setActive] = React.useState(false)
+  const [test, setTest] = React.useState(0)
   React.useEffect(()=> {
 
     axios.post('https://pacific-sands-58031.herokuapp.com/product/single/', {productID: props._id})
@@ -53,8 +54,10 @@ export default function ActionAreaCard(props) {
                   {isActive ? (
                     <Timer duration={time} type={true}/>
                   ) : (
-                    <h5>Timer loading </h5>
-                    
+                    <div>
+                    <h5>Timer loading</h5>
+                    {()=>{setTest(Math.floor(Math.random() * 1000))}}
+                    </div>
                   )}
                 </div>
                 </Box>
