@@ -136,7 +136,7 @@ export default function AdminHome() {
         }
       }],
     },
-    series: [10, 10, 10, 10,10,10,10,30],
+    series: [15, 7, 24, 3,21,5,9,16],
   });
   
 
