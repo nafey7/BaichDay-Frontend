@@ -54,19 +54,16 @@ function Login() {
         });
       }
       else if (userType === 'admin') {
-        console.log("Admin Here");
         axios.post('https://pacific-sands-58031.herokuapp.com/admin/login', {
           emailAddress: values.email,
           password: values.password
         })
         .then(function (response) {
-          console.log(response.data);
           if(response.data.message === "success")
           {
-            console.log(response.data);
-            reactLocalStorage.set('userID',response.data.data._id);
-            reactLocalStorage.set('token',response.data.token);
-            alert(response.data.message);
+            console.log('hello')
+            reactLocalStorage.set('adminID',response.data.data.adminInfo._id);
+            reactLocalStorage.set('token',response.data.data.token);
             navigate('/Admin')
           }
           
