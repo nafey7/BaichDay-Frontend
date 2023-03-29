@@ -125,7 +125,7 @@ export default function AdminNavbar() {
           <button to={{pathname: "/userlist"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Users</button>
           <button to={{pathname: "/"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Products</button>
           
-          <FormControl sx={{ width: '10%', backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
+          <FormControl sx={{backgroundColor: 'white', borderRadius:"15px", width: "40%", marginLeft: "45%"}} variant="standard">
           <Input
             type={'text'}
             id="name"
@@ -143,6 +143,7 @@ export default function AdminNavbar() {
           />
         </FormControl>
           <IconButton
+            fontSize= "20px"
             size="large"
             aria-label="account of current user"
             aria-controls="menu-appbar"
