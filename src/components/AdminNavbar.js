@@ -122,8 +122,8 @@ export default function AdminNavbar() {
         <Toolbar>
 
           <Link to={{pathname: "/"}} style={{margin:"0 15px", fontSize:"18px", color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
-          <button to={{pathname: "/userlist"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Users</button>
-          <button to={{pathname: "/"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Products</button>
+          <Link to={{pathname: "/userlist"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Users</Link>
+          <Link to={{pathname: "/productlist"}} style={{backgroundColor:'black',margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Products</Link>
           
           <FormControl sx={{ width: '10%', backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
           <Input
