@@ -29,7 +29,7 @@ function App() {
       <div className="App" style={{backgroundColor:"#c8c8c8", backgroundRepeat: 'repeat', position:"relative", width:"100%", backgroundSize: "auto", minHeight: "100vh"}}>
         <Routes>
           <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
-          <Route path="/collectibles" element={<> <Navbar/> <UserHome title="Collectiibles"/><ChatBot/><Footer/> </>}/>
+          <Route path="/collectibles" element={<> <Navbar/> <UserHome title="Collectibles"/><ChatBot/><Footer/> </>}/>
           <Route path="/sporting" element={<> <Navbar/> <UserHome title="Sporting"/><ChatBot/><Footer/> </>}/>
           <Route path="/electronics" element={<> <Navbar/> <UserHome title="Electronics"/><ChatBot/><Footer/> </>}/>
           <Route path="/fashion" element={<> <Navbar/> <UserHome title="Fashion"/><ChatBot/><Footer/> </>}/>
