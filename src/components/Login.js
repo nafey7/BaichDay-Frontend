@@ -55,14 +55,19 @@ function Login() {
       }
       else if (userType === 'admin') {
         console.log("Admin Here");
+        console.log(values.email);
+        console.log(values.password);
+        console.log()
         axios.post('https://pacific-sands-58031.herokuapp.com/admin/login', {
           emailAddress: values.email,
           password: values.password
         })
         .then(function (response) {
-          if(response.data.adminInfo)
+          console.log(response);
+          if(response.data.message === "success")
           {
-            reactLocalStorage.set('userID',response.data.adminInfo._id);
+            console.log('hello')
+            reactLocalStorage.set('userID',response.data.data.adminInfo._id);
             reactLocalStorage.set('token',response.data.token);
             navigate('/Admin')
           }
