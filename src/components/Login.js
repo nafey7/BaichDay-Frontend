@@ -60,13 +60,10 @@ function Login() {
           password: values.password
         })
         .then(function (response) {
-          console.log(response.data);
-          if(response.data.message === "success")
+          if(response.data.adminInfo)
           {
-            console.log(response.data);
-            reactLocalStorage.set('userID',response.data.data._id);
+            reactLocalStorage.set('userID',response.data.adminInfo._id);
             reactLocalStorage.set('token',response.data.token);
-            alert(response.data.message);
             navigate('/Admin')
           }
           

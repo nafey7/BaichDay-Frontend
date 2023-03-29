@@ -52,8 +52,8 @@ function Product() {
       bidCost: prop.bid[prop.bid.length - 1].bidCost,
     },
     onSubmit: values => {
-      console.log(values.bidCost);
-      let amount = values.bidCost
+      let amount = parseInt(values.bidCost);
+      console.log("Amount:", amount, "type", typeof(amount));
       // alert(JSON.stringify(values, null, 2));
       axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
         userID: userID,
