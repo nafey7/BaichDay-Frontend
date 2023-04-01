@@ -18,59 +18,82 @@ function AddProduct() {
         { value: 'option8', label: 'Other' },
     ];
     const userID = reactLocalStorage.get('userID');
-    const [cust, setCust] = React.useState({})
-    
+    const [showAlert, setShowAlert] = React.useState(false);
+    const [alertMessage, setAlertMessage] = React.useState('');
+    const [cust, setCust] = React.useState({});
+    const isFormValid = () => {
+        if (!userID){
+            setShowAlert(true);
+            setAlertMessage('You need to be logged in to add a product');
+            return false;
+        }
+        if (!cust.name || !cust.description || !cust.image || !cust.cost || !cust.duration || !cust.category){
+            return false;
+        }
+        if (cust.duration <= 0){
+            return false
+        }
+        return true;
+
+    }
     function changeCost(e){
         let product = cust;
-        product.cost= e;
-        setCust(product)
+        product.cost= parseInt(e);
+        setCust(product);
     }
     function changeDescription(e){
         let product = cust;
         product.description = e;
-        setCust(product)
+        setCust(product);
     }
     function changeName(e){
         let product = cust;
         product.name = e;
-        setCust(product)
+        setCust(product);
     }
     function changeImage(e){
         let product = cust;
         product.image = e;
-        setCust(product)
+        setCust(product);
     }
     function changeDuration(e){
         let product = cust;
-        product.duration = e;
-        setCust(product)
+        product.duration = parseInt(e);
+        setCust(product);
     }
     function changeCategory(e){
         let product = cust;
         product.category = e.label;
-        setCust(product)
+        setCust(product);
     }
 
     function postProductDetails(){
-        console.log(cust)
-        axios.post('https://pacific-sands-58031.herokuapp.com/user/addproduct', {
-          userID: userID,
-          cost: cust.cost,
-          description: cust.description,
-          name: cust.name, 
-          image: cust.image,
-          duration: cust.duration,
-          category: cust.category
-          })
-          .then(function (response) {
-            //console.log(response)
-            if(response.data.message==="success"){
-            navigate('/')}
-            
-          })
-          .catch(function (error) {
-            alert("Unsuccessful attempt")
-          });
+        if (isFormValid){
+            console.log("here");
+            axios.post('https://pacific-sands-58031.herokuapp.com/user/addproduct', {
+                userID: userID,
+                cost: cust.cost,
+                description: cust.description,
+                name: cust.name, 
+                image: cust.image,
+                duration: cust.duration,
+                category: cust.category
+                })
+                .then(function (response) {
+                    //console.log(response)
+                    if(response.data.message==="success"){
+                    navigate('/');
+                    }   
+                })
+                .catch(function (error) {
+                    setShowAlert(true);
+                    setAlertMessage("Please fill in all the fields");
+                });
+        }
+        else if(showAlert === false){
+            setShowAlert(true);
+            setAlertMessage("Please fill in all the fields");
+        }
     }
     
     return (
@@ -120,6 +143,11 @@ function AddProduct() {
             <div style={{textAlign: "right", margin: "2% 12% 3%"}}>
                 <button type="button" class="btn" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#008000",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
             </div>
+            {showAlert && (
+                <div style={{ marginTop: "-10px", marginBottom: "10px" }}>
+                    <strong style={{ fontSize: "1.2em", fontWeight: "bold", color: "red" }}>{alertMessage}</strong>
+                </div>
+            )}
             {/* <div class="row align-items-center">
             <div class="col-2">
                 
