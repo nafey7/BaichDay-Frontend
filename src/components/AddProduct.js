@@ -134,9 +134,7 @@ function AddProduct() {
                     <input className="form-control" type="text" data-cy="duration-input" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeDuration(e.target.value)}} placeholder="Duration in Hours" required />
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Category</label>
-                    <div style={{width: '400px'}}>
-                        <Select options={categoryOptions}  data-cy="category-input" placeholder="Category" onChange={(e) => {changeCategory(e)}} />
-                    </div>
+                    <Select options={categoryOptions} id='category-select' placeholder="Category" onChange={(e) => {changeCategory(e)}} />
                 </div>
             </div>
             <div style={{textAlign: "right", margin: "2% 12% 3%"}}>
