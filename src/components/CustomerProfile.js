@@ -134,31 +134,31 @@ function CustomerProfile() {
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto" }}>
                 <div className="row" style={{textAlign: "left", fontSize: '15px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>First Name</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeFirstName(e.target.value) }} placeholder={cust.firstName} />
+                    <input className="form-control" data-cy="firstName-input" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeFirstName(e.target.value) }} placeholder={cust.firstName} />
                     <br></br>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Last Name</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeLastName(e.target.value) }} placeholder={cust.lastName} />
+                    <input className="form-control" data-cy="lastName-input" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeLastName(e.target.value) }} placeholder={cust.lastName} />
                     <br></br>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Email</label>
                     <input className="form-control" type="text" disabled={true} style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} placeholder={cust.emailAddress} />
                     <br></br>
                     <label for="passwordInput" className="form-label" style={{marginBottom: "0px"}}>Password</label>
-                    <input className="form-control" type="password" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changePassword(e.target.value) }} placeholder={cust.password} />
+                    <input className="form-control" data-cy="password-input" type="password" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changePassword(e.target.value) }} placeholder={cust.password} />
                     <br></br>
                 </div>
                 <div className="row" style={{textAlign: "left", fontSize: '15px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
                     <label for="contactInput" className="form-label" style={{marginBottom: "0px"}}>Contact</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changePhoneNumber(e.target.value) }} placeholder={cust.phoneNumber} />
+                    <input className="form-control" data-cy="contact-input" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changePhoneNumber(e.target.value) }} placeholder={cust.phoneNumber} />
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>House Address</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeAddress(e.target.value) }} placeholder={cust.address} />
+                    <input className="form-control" data-cy="address-input" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeAddress(e.target.value) }} placeholder={cust.address} />
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>City</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeCity(e.target.value) }} placeholder={cust.city} />
+                    <input className="form-control" data-cy="city-input" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeCity(e.target.value) }} placeholder={cust.city} />
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Country</label>
                     <div style={{width: '400px'}}>
-                        <Select options={options}  placeholder= {cust.country} onChange={(e) => { changeCountry(e) }} />
+                        <Select options={options} id='country-select' placeholder= {cust.country} onChange={(e) => { changeCountry(e) }} />
                     </div>
                     
                     <br></br>
@@ -170,7 +170,7 @@ function CustomerProfile() {
                     <Button variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} /*onClick={()=>{deleteaccount()}}*/>Delete Account</Button>
                 </div>
                 <div style={{textAlign: "right", margin: "-5% 0% 5%"}}>
-                    <Button variant="contained" color="success" size='large' style={{margin: "0% 60%", fontSize: "130%", fontWeight: "bold"}} onClick={done} className="btn btn-success">Apply</Button>
+                    <Button id='apply-button' variant="contained" color="success" size='large' style={{margin: "0% 60%", fontSize: "130%", fontWeight: "bold"}} onClick={done} className="btn btn-success">Apply</Button>
                 </div>
             </div>
             {showAlert && (
