@@ -34,7 +34,7 @@ export default function Wallet() {
                     <div className="col-md-6" style={{ borderRight: "2px outset #eee" }}>
                         <div style={{ marginLeft: "2%" }}>
                             <h3 style={{ fontSize: "2rem" }}>My Balance:</h3>
-                            <h2 style={{ fontSize: "5rem", fontWeight: "bolder", color: "#3b3b3b", marginTop: "-3%" }}>${amount}</h2>
+                            <h2 id="current-balance" style={{ fontSize: "5rem", fontWeight: "bolder", color: "#3b3b3b", marginTop: "-3%" }}>${amount}</h2>
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@ export default function Wallet() {
                 </div>
 
             </div>
-            <button className="btn btn-success" onClick={() => { navigate("/payment") }} style={{ fontSize: "1.5rem", fontWeight: "bolder", padding: "1rem 2rem", borderRadius: "0.5rem", width: "auto", align: "center", marginTop: "5%" }}>Add Balance</button>
+            <button data-cy="add-balance-button" className="btn btn-success" onClick={() => { navigate("/payment") }} style={{ fontSize: "1.5rem", fontWeight: "bolder", padding: "1rem 2rem", borderRadius: "0.5rem", width: "auto", align: "center", marginTop: "5%" }}>Add Balance</button>
 
         </div>
     );

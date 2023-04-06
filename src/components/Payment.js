@@ -88,6 +88,7 @@ export default function Payment() {
                 </MDBCol>
                 <MDBCol size="2">
                   <MDBInput
+                    data-cy="balance-amount"
                     label="Amount"
                     id="form7"
                     size="lg"
@@ -96,7 +97,7 @@ export default function Payment() {
                   />
                 </MDBCol>
               </MDBRow>
-              <MDBBtn color="success" onClick={addBalance} size="lg" block>
+              <MDBBtn color="success" onClick={addBalance} size="lg" block data-cy="confirm-payment-button">
                 Confirm Payment
               </MDBBtn>
             </MDBCardBody>
