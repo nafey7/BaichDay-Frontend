@@ -139,7 +139,7 @@ function CustomerProfile() {
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Last Name</label>
                     <input className="form-control" data-cy="lastName-input" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeLastName(e.target.value) }} placeholder={cust.lastName} />
                     <br></br>
-                    <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Email</label>
+                    <label for="emailInput" className="form-label" style={{marginBottom: "0px"}}>Email</label>
                     <input className="form-control" type="text" disabled={true} style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} placeholder={cust.emailAddress} />
                     <br></br>
                     <label for="passwordInput" className="form-label" style={{marginBottom: "0px"}}>Password</label>
@@ -153,10 +153,10 @@ function CustomerProfile() {
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>House Address</label>
                     <input className="form-control" data-cy="address-input" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeAddress(e.target.value) }} placeholder={cust.address} />
                     <br></br>
-                    <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>City</label>
+                    <label for="cityInput" className="form-label" style={{marginBottom: "0px"}}>City</label>
                     <input className="form-control" data-cy="city-input" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeCity(e.target.value) }} placeholder={cust.city} />
                     <br></br>
-                    <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Country</label>
+                    <label for="countryInput" className="form-label" style={{marginBottom: "0px"}}>Country</label>
                     <div style={{width: '400px'}}>
                         <Select options={options} id='country-select' placeholder= {cust.country} onChange={(e) => { changeCountry(e) }} />
                     </div>
