@@ -22,7 +22,7 @@ function AddProduct() {
     const [alertMessage, setAlertMessage] = React.useState('');
     const [cust, setCust] = React.useState({});
     const isFormValid = () => {
-        if (!userID){
+        if (!userID === true){
             setShowAlert(true);
             setAlertMessage('You need to be logged in to add a product');
             return false;
@@ -68,8 +68,7 @@ function AddProduct() {
     }
 
     function postProductDetails(){
-        if (isFormValid){
-            console.log("here");
+        if (isFormValid() === true){
             axios.post('https://pacific-sands-58031.herokuapp.com/user/addproduct', {
                 userID: userID,
                 cost: cust.cost,
