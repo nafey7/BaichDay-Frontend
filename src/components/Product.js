@@ -128,7 +128,7 @@ function Product() {
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', columnGap:"50px"}}>
                 <input type="text" className="form-control" onChange={formik.handleChange} name="bidCost" id="bidCost" placeholder="Enter Bid" style={{marginTop:"30px", marginLeft:"-3px", height: '40px', fontSize: '15px'}}/>
-                <button className='mt-5 btn' style={{fontSize:"20px", background: '#4BB543', color:"white", width:"150px", height:"40px", float: "right"}}variant="contained" onClick={formik.handleSubmit}><b>Bid Now</b></button>
+                <button className='mt-5 btn' data-cy="bid-button" style={{fontSize:"20px", background: '#4BB543', color:"white", width:"150px", height:"40px", float: "right"}}variant="contained" onClick={formik.handleSubmit}><b>Bid Now</b></button>
               </div>
             )}
           </div>

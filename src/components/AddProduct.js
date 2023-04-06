@@ -28,9 +28,13 @@ function AddProduct() {
             return false;
         }
         if (!cust.name || !cust.description || !cust.image || !cust.cost || !cust.duration || !cust.category){
+            setShowAlert(true);
+            setAlertMessage("Please fill in all the fields");
             return false;
         }
         if (cust.duration <= 0){
+            setShowAlert(true);
+            setAlertMessage("Please fill in all the fields");
             return false
         }
         return true;
@@ -88,10 +92,6 @@ function AddProduct() {
                     setShowAlert(true);
                     setAlertMessage("Please fill in all the fields");
                 });
-        }
-        else if(showAlert === false){
-            setShowAlert(true);
-            setAlertMessage("Please fill in all the fields");
         }
     }
     
