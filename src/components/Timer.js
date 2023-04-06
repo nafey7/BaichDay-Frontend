@@ -18,7 +18,10 @@ function CountdownTimer({ duration, type }) {
   return (
     <div>
       {type ? (
-        <p className="h4"> <icon className="far fa-clock"></icon> {hours}:{minutes}:{secondsLeft}</p>
+        <div>
+        <p className="h4">Time</p> 
+        <p className="h4"><icon className="far fa-clock"></icon> {hours}:{minutes}:{secondsLeft}</p>
+        </div>
       ) : (
         <p className="h1 mt-4"><b><icon className="far fa-clock"></icon> Time Left : </b>{hours}:{minutes}:{secondsLeft}</p>
       )}

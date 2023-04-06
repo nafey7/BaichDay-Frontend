@@ -43,13 +43,15 @@ export default function ActionAreaCard(props) {
             </Typography>
             <Typography variant="body2" color="text.secondary">
               <Box sx={{ fontSize: "120%", display: "flex", justifyContent: "space-between", paddingLeft: '30px', paddingRight: '30px', marginTop: '0px' }}>
-                <Box sx={{ width: '33%', marginRight: 1, borderRight: "1px solid gray", textAlign: "center" }}>
+                <Box sx={{ width: '30vw', marginRight: 1, borderRight: "1px solid gray", textAlign: "center" }}>
+                <p className="h4">Max Bid</p>
                 <p className="h4">${props.bid[props.bid.length-1].bidCost}</p>
                 </Box> 
-                <Box sx={{ width: '33%', marginRight: 1, borderRight: "1px solid gray", textAlign: "center" }}>
-                <p className="h4">{props.bid.length-1} Bids</p>
+                <Box sx={{ width: '30vw', marginRight: 1, borderRight: "1px solid gray", textAlign: "center" }}>
+                <p className="h4">Bids</p>
+                <p className="h4">{props.bid.length-1}</p>
                 </Box>
-                <Box sx={{ width: '33%', textAlign: "center" }}>
+                <Box sx={{ width: '40vw', textAlign: "center" }}>
                   <div>
                     {isActive ? (
                       <Timer duration={time} type={true}/>

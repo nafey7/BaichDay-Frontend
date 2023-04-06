@@ -15,7 +15,7 @@ const cardStyles ={
 
 function DisplayCards(props){
     return(
-        <div style={{width: '100%', height: '100%', display:'flex', maxWidth: '1100px', flexWrap: 'wrap', margin:"-15px 0 0 30px"}}>
+        <div style={{display:'flex', width: '83vw', flexWrap: 'wrap'}}>
             
             <Grid container spacing="5" sx={gridContainer}>
                 {props.test.map(function(object, i){ 
