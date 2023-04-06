@@ -52,17 +52,15 @@ function Product() {
       bidCost: prop.bid[prop.bid.length - 1].bidCost,
     },
     onSubmit: values => {
-      let amount = parseInt(values.bidCost);
-      console.log("Amount:", amount, "type", typeof(amount));
       // alert(JSON.stringify(values, null, 2));
       axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
         userID: userID,
         productID: prop._id,
-        bidCost: amount
+        bidCost: values.bidCost
       }
       )
       .then(function (response) {
-        console.log(response.data);
+        console.log(response)
         if(response.data.message === "success")
         {
           navigate('/');
@@ -115,8 +113,10 @@ function Product() {
                 </div>
                 <p className='mt-4 h1'><b>Current Bid :</b> <b className='text-danger '>${prop.bid[prop.bid.length-1].bidCost}</b></p>
                 <div>
-                  {isActive && (
+                  {isActive ? (
                     <Timer duration={time}/>
+                  ) : (
+                    <h5>Timer loading</h5>
                   )}
                 </div>
               </div>
@@ -127,7 +127,7 @@ function Product() {
               <></>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', columnGap:"50px"}}>
-                <input type="text" className="form-control" onChange={formik.handleChange} name="bidCost" id="bidCost" placeholder="Enter Bid" style={{marginTop:"30px", marginLeft:"-3px", height: '40px', width: '60%', fontSize: '15px'}}/>
+                <input type="text" className="form-control" onChange={formik.handleChange} name="bidCost" id="bidCost" placeholder="Enter Bid" style={{marginTop:"30px", marginLeft:"-3px", height: '40px', fontSize: '15px'}}/>
                 <button className='mt-5 btn' style={{fontSize:"20px", background: '#4BB543', color:"white", width:"150px", height:"40px", float: "right"}}variant="contained" onClick={formik.handleSubmit}><b>Bid Now</b></button>
               </div>
             )}
