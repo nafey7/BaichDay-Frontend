@@ -206,8 +206,8 @@ export default function Navbar() {
             open={Boolean(anchorEl3)}
             onClose={handleClose}
           >
-            <MenuItem onClick={viewprofile}>Profile</MenuItem>
-            <MenuItem onClick={wallet}>Wallet</MenuItem>
+            <MenuItem id='profile-id' onClick={viewprofile}>Profile</MenuItem>
+            <MenuItem id='wallet-id' onClick={wallet}>Wallet</MenuItem>
             {/* <MenuItem>Notifications</MenuItem>
             <MenuItem>Active Bids</MenuItem>
             <MenuItem>Auction Items</MenuItem> */}
