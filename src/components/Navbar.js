@@ -188,6 +188,7 @@ export default function Navbar() {
         {Check?(
         <IconButton
             size="large"
+            id='profile-icon'
             aria-label="account of current user"
             aria-controls="menu3" 
             aria-haspopup="true" 
