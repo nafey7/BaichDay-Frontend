@@ -165,7 +165,8 @@ export default function Navbar() {
 
           </Menu>
           <button className="btn btn-success" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"15px"}}>Sell With Us</button>
-          <FormControl sx={{backgroundColor: 'white', marginLeft:"47vw", borderRadius:"15px"}} variant="standard">
+          <div className='col text-right'>
+          <FormControl sx={{backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
           <Input
             type={'text'}
             id="name"
@@ -183,6 +184,7 @@ export default function Navbar() {
             label="search"
           />
         </FormControl>
+        </div>
         {Check?(
         <IconButton
             size="large"
