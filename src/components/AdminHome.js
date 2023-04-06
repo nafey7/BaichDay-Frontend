@@ -32,17 +32,40 @@ export default function AdminHome() {
   const [income, setIncome] = React.useState(0);
   const [products, setProducts] = React.useState(0);
   const [active_users, setActive] = React.useState(0);
+  const [alllabels, setAllLabels] = React.useState([]);
+  const [revenueCategory, setrevenueCategory] = React.useState([]);
+  const [itemsCategory, setitemsCategory] = React.useState([]);
   const userID = reactLocalStorage.get('adminID');
 
   React.useEffect(()=> {
 
     axios.post('https://pacific-sands-58031.herokuapp.com/admin/home', {adminID: userID, duration: "all time"}) //duration: all time, 7 days, 30 days, 3 months
     .then(function(res) {
-        console.log(res)
+
+      // console.log(res.data.data.itemsByCategory)
+      // console.log(res.data.data.revenueByCategory)
+      // console.log(res.data.data.labels)
+
+      // console.log(res.data.data);
+      if (res.data.message === 'success'){
         setUsers(res.data.data.sales.NumberOfUsers)
         setIncome(res.data.data.sales.income)
         setProducts(res.data.data.sales.productsSold)
         setActive(res.data.data.sales.ActiveUsers)
+        setitemsCategory(res.data.data.itemsByCategory)
+        setrevenueCategory(res.data.data.revenueByCategory)
+        setAllLabels(res.data.data.labels)
+
+        console.log(itemsCategory);
+        console.log(revenueCategory);
+        console.log(alllabels)
+      }
+
+        
+
+        
+
+        
         // setChartData({
         //   ...chartData,
         //   series: res.data.data.sales.chart,
@@ -72,7 +95,7 @@ export default function AdminHome() {
           // colors: ['#000'],
         },
       },
-      labels: ['Collectibles', 'Sporting', 'Electronics', 'Fashion', 'Toys','Music','Cars','Other'],
+      labels: ["Collectibles", 'Sporting', 'Electronics', 'Fashion', 'Toys','Music','Cars','Other'],
       legend: {
         position: 'bottom',
         offsetY: 0,
