@@ -164,7 +164,7 @@ export default function Navbar() {
             <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/other"}}>Others</Link></MenuItem>
 
           </Menu>
-          <button className="btn btn-success" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"15px"}}>Sell With Us</button>
+          <button className="btn btn-success" data-cy="sell-button" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"15px"}}>Sell With Us</button>
           <div className='col text-right'>
           <FormControl sx={{backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
           <Input

@@ -108,13 +108,13 @@ function AddProduct() {
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto" }}>
                 <div className="row" style={{textAlign: "left", fontSize: '16px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Name</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeName(e.target.value)}} placeholder="Name" required />
+                    <input className="form-control" type="text" data-cy="name-input" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeName(e.target.value)}} placeholder="Name" required />
                     <br></br>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Description</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeDescription(e.target.value)}} placeholder="Product Description" required />
+                    <input className="form-control" type="text" data-cy="description-input" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeDescription(e.target.value)}} placeholder="Product Description" required />
                     <br></br>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Product Image</label>
-                    <input id="5" type="file" onChange={(e)=>{ 
+                    <input id="5" type="file" data-cy="image-input" onChange={(e)=>{ 
                         var file = e.target.files[0]
                         var FR = new FileReader();
                         var baseString;
@@ -128,19 +128,19 @@ function AddProduct() {
                 </div>
                 <div className="row" style={{textAlign: "left", fontSize: '16px', fontFamily: "Helvetica", margin: "auto", marginTop: "5%", width: "50%"}}>
                     <label for="contactInput" className="form-label" style={{marginBottom: "0px"}}>Reserve Amount</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeCost(e.target.value)}} placeholder="Reserve Amount" required/>
+                    <input className="form-control" type="text" data-cy="amount-input" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeCost(e.target.value)}} placeholder="Reserve Amount" required/>
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Duration</label>
-                    <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeDuration(e.target.value)}} placeholder="Duration in Hours" required />
+                    <input className="form-control" type="text" data-cy="duration-input" style={{marginBottom: "10px", marginLeft: "7px", height: '40px', fontSize: '13px'}} onChange={(e)=>{changeDuration(e.target.value)}} placeholder="Duration in Hours" required />
                     <br></br>
                     <label for="addressInput" className="form-label" style={{marginBottom: "0px"}}>Category</label>
                     <div style={{width: '400px'}}>
-                        <Select options={categoryOptions}  placeholder="Category" onChange={(e) => {changeCategory(e)}} />
+                        <Select options={categoryOptions}  data-cy="category-input" placeholder="Category" onChange={(e) => {changeCategory(e)}} />
                     </div>
                 </div>
             </div>
             <div style={{textAlign: "right", margin: "2% 12% 3%"}}>
-                <button type="button" class="btn" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#008000",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
+                <button type="button" class="btn" data-cy="product-button" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#008000",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
             </div>
             {showAlert && (
                 <div style={{ marginTop: "-10px", marginBottom: "10px" }}>
