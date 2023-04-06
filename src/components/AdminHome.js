@@ -42,7 +42,12 @@ export default function AdminHome() {
     axios.post('https://pacific-sands-58031.herokuapp.com/admin/home', {adminID: userID, duration: "all time"}) //duration: all time, 7 days, 30 days, 3 months
     .then(function(res) {
 
-      console.log(res)
+      // console.log(res.data.data.itemsByCategory)
+      // console.log(res.data.data.revenueByCategory)
+      // console.log(res.data.data.labels)
+
+      // console.log(res.data.data);
+      if (res.data.message === 'success'){
         setUsers(res.data.data.sales.NumberOfUsers)
         setIncome(res.data.data.sales.income)
         setProducts(res.data.data.sales.productsSold)
@@ -54,6 +59,11 @@ export default function AdminHome() {
         console.log(itemsCategory);
         console.log(revenueCategory);
         console.log(alllabels)
+      }
+
+        
+
+        
 
         
         // setChartData({
@@ -85,7 +95,7 @@ export default function AdminHome() {
           // colors: ['#000'],
         },
       },
-      labels: ['Collectibles', 'Sporting', 'Electronics', 'Fashion', 'Toys','Music','Cars','Other'],
+      labels: ["Collectibles", 'Sporting', 'Electronics', 'Fashion', 'Toys','Music','Cars','Other'],
       legend: {
         position: 'bottom',
         offsetY: 0,
