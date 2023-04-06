@@ -79,7 +79,7 @@ function Product() {
         .catch(function (error) {
           console.log(error);
           setShowAlert(true);
-          setAlertMessage("Incorrect amount entered, please check your wallet to see if you have the amount in your wallet and make sure that your bid is over the starting bid");
+          setAlertMessage("Please make sure that you have sufficient funds in wallet and bid is greater than starting bid");
         });
     }
     else{
@@ -149,8 +149,8 @@ function Product() {
             )}
           </div>
           {showAlert && (
-              <div style={{ maxWidth:"50vw", marginTop: "20px", marginBottom: "10px" }}>
-                  <strong style={{ fontSize: "1.2em", fontWeight: "bold", color: "red" }}>{alertMessage}</strong>
+              <div className='col' style={{marginTop: "20px", marginBottom: "10px" }}>
+                  <strong style={{fontSize: "1.2em", fontWeight: "bold", color: "red" }}>{alertMessage}</strong>
               </div>
           )}
           </div>
