@@ -31,8 +31,16 @@ function Product() {
   const [time, setTime] = React.useState(0);
   const [isActive, setActive] = React.useState(false);
   const userID = reactLocalStorage.get('userID');
+  const [amount, setAmount] = React.useState(0)
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState('');
 
   let navigate = useNavigate();
+
+  function handleBid(e) {
+    let new_amount = parseInt(e);
+    setAmount(new_amount);
+  }
   
   React.useEffect(()=> {
 
@@ -53,24 +61,31 @@ function Product() {
     },
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
+    if (amount > prop.bid[prop.bid.length-1].bidCost){
       axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
-        userID: userID,
-        productID: prop._id,
-        bidCost: values.bidCost
-      }
-      )
-      .then(function (response) {
-        console.log(response)
-        if(response.data.message === "success")
-        {
-          navigate('/');
+          userID: userID,
+          productID: prop._id,
+          bidCost: amount
         }
-        
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("Incorrect Amount entered")
-      });
+        )
+        .then(function (response) {
+          console.log(response)
+          if(response.data.message === "success")
+          {
+            navigate('/');
+          }
+          
+        })
+        .catch(function (error) {
+          console.log(error);
+          setShowAlert(true);
+          setAlertMessage("Incorrect amount entered, please check your wallet to see if you have the amount in your wallet and make sure that your bid is over the starting bid");
+        });
+    }
+    else{
+      setShowAlert(true);
+      setAlertMessage("Incorrect amount entered, plese bid over current bid");
+    }
     },
   });
 
@@ -111,6 +126,7 @@ function Product() {
                 <div style={{ width: 'auto', height: '100%', textAlign: "justify", whiteSpace: "normal", wordWrap: "break-word", maxWidth: '90vh'}}>
                 <p className='mt-4 h1'><strong>Description :</strong> <span className='h2'>{prop.description}</span></p>
                 </div>
+                <p className='mt-4 h1'><b>Starting Bid :</b> <b className='text-danger '>${prop.cost}</b></p>
                 <p className='mt-4 h1'><b>Current Bid :</b> <b className='text-danger '>${prop.bid[prop.bid.length-1].bidCost}</b></p>
                 <div>
                   {isActive ? (
@@ -127,11 +143,16 @@ function Product() {
               <></>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', columnGap:"50px"}}>
-                <input type="text" className="form-control" data-cy="bid-input" onChange={formik.handleChange} name="bidCost" id="bidCost" placeholder="Enter Bid" style={{marginTop:"30px", marginLeft:"-3px", height: '40px', fontSize: '15px'}}/>
+                <input type="text" className="form-control" data-cy="bid-input" onChange={(e) => {handleBid(e.target.value)}} name="bidCost" id="bidCost" placeholder="Enter Bid" style={{marginTop:"30px", marginLeft:"-3px", height: '40px', fontSize: '15px'}}/>
                 <button className='mt-5 btn' data-cy="bid-button" style={{fontSize:"20px", background: '#4BB543', color:"white", width:"150px", height:"40px", float: "right"}}variant="contained" onClick={formik.handleSubmit}><b>Bid Now</b></button>
               </div>
             )}
           </div>
+          {showAlert && (
+              <div style={{ maxWidth:"50vw", marginTop: "20px", marginBottom: "10px" }}>
+                  <strong style={{ fontSize: "1.2em", fontWeight: "bold", color: "red" }}>{alertMessage}</strong>
+              </div>
+          )}
           </div>
       </div>
      
