@@ -51,15 +51,15 @@ export default function ActionAreaCard(props) {
                 </Box>
                 <Box sx={{ width: '33%', textAlign: "center" }}>
                   <div>
-                  {isActive ? (
-                    <Timer duration={time} type={true}/>
-                  ) : (
-                    <div>
-                    <h5>Timer loading</h5>
-                    {()=>{setTest(Math.floor(Math.random() * 1000))}}
-                    </div>
-                  )}
-                </div>
+                    {isActive ? (
+                      <Timer duration={time} type={true}/>
+                    ) : (
+                      <div>
+                      <h5>Timer loading</h5>
+                      {()=>{setTest(Math.floor(Math.random() * 1000))}}
+                      </div>
+                    )}
+                  </div>
                 </Box>
               </Box>
             </Typography>

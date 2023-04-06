@@ -15,13 +15,14 @@ import countryList from 'react-select-country-list';
 function CustomerProfile() {
     let userID = reactLocalStorage.get('userID', "", true);
 
-    const options = useMemo(() => countryList().getData(), [])
+    const options = useMemo(() => countryList().getData(), []);
+    const [showAlert, setShowAlert] = React.useState(false);
+    const [alertMessage, setAlertMessage] = React.useState('');
 
-    const [cust, setCust] = React.useState({})
+    const [cust, setCust] = React.useState({});
     const [user, setUser] = React.useState({
         userID: userID
-    })
-    let navigate = useNavigate();
+    });
     useEffect(() => {
         axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
             userID: userID
@@ -34,10 +35,11 @@ function CustomerProfile() {
                     x.password = '********'
                     setCust(x)
                 }
-                else {
-                    alert(response.data.message)
-                }
             }, cust)
+            .catch(function (error) {
+                setAlertMessage('Unable to get details. Please try again.');
+                setShowAlert(true);
+            });
     }, []);
 
     function changeFirstName(e) {
@@ -54,14 +56,6 @@ function CustomerProfile() {
         setCust(x)
         let a = user;
         a.lastName = e;
-        setUser(a)
-    }
-    function changeEmail(e) {
-        let x = cust;
-        x.emailAddress = e;
-        setCust(x)
-        let a = user;
-        a.emailAddress = e;
         setUser(a)
     }
     function changePassword(e) {
@@ -106,20 +100,23 @@ function CustomerProfile() {
         setUser(a);
     }
     function done() {
-        axios.post('https://pacific-sands-58031.herokuapp.com/user/editprofile', user)
-            .then(function (res) {
-                if (res.data.message === 'success') {
-                    console.log(res)
-                    window.location.reload(true)
-                }
-                else {
-                    alert(res.data.message)
-                }
-            })
-            .catch(function (err) {
-                console.log(err);
-            })
-        
+        if (Object.keys(user).length > 1){
+            axios.post('https://pacific-sands-58031.herokuapp.com/user/editprofile', user)
+                .then(function (res) {
+                    if (res.data.message === 'success') {
+                        console.log(res)
+                        window.location.reload(true)
+                    }
+                })
+                .catch(function (error) {
+                    setAlertMessage('Unable to edit details. Please try again.');
+                    setShowAlert(true);
+                });
+        }
+        else{
+            setShowAlert(true);
+            setAlertMessage('Please change a field to edit profile');
+        }
     }
 
 
@@ -143,7 +140,7 @@ function CustomerProfile() {
                     <input className="form-control" type="text" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeLastName(e.target.value) }} placeholder={cust.lastName} />
                     <br></br>
                     <label for="nameInput" className="form-label" style={{marginBottom: "0px"}}>Email</label>
-                    <input className="form-control" type="text" disabled={true} style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changeEmail(e.target.value) }} placeholder={cust.emailAddress} />
+                    <input className="form-control" type="text" disabled={true} style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} placeholder={cust.emailAddress} />
                     <br></br>
                     <label for="passwordInput" className="form-label" style={{marginBottom: "0px"}}>Password</label>
                     <input className="form-control" type="password" style={{marginBottom: "10px", marginLeft: "7px", height: '40px'}} onChange={(e) => { changePassword(e.target.value) }} placeholder={cust.password} />
@@ -175,7 +172,12 @@ function CustomerProfile() {
                 <div style={{textAlign: "right", margin: "-5% 0% 5%"}}>
                     <Button variant="contained" color="success" size='large' style={{margin: "0% 60%", fontSize: "130%", fontWeight: "bold"}} onClick={done} className="btn btn-success">Apply</Button>
                 </div>
+            </div>
+            {showAlert && (
+                <div style={{ marginTop: "-10px", marginBottom: "10px" }}>
+                    <strong style={{ fontSize: "1.2em", fontWeight: "bold", color: "red" }}>{alertMessage}</strong>
                 </div>
+            )}
             <br></br>
         </div>
 
