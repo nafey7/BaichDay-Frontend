@@ -9,11 +9,19 @@ import Button from '@mui/material/Button';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 
 
 
 function CustomerProfile() {
+    let navigate = useNavigate();
     let userID = reactLocalStorage.get('userID', "", true);
+    const [open, setOpen] = React.useState(false);
 
     const options = useMemo(() => countryList().getData(), []);
     const [showAlert, setShowAlert] = React.useState(false);
@@ -23,6 +31,15 @@ function CustomerProfile() {
     const [user, setUser] = React.useState({
         userID: userID
     });
+    const handleClickOpen = () => {
+        setOpen(true);
+        console.log('true hogya hai bhai')
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
+
     useEffect(() => {
         axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
             userID: userID
@@ -99,6 +116,34 @@ function CustomerProfile() {
         a.country = e.label;
         setUser(a);
     }
+    
+    function deleteAccount(){
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/deleteaccount', {
+            userID: localStorage.getItem('userID')
+        })
+        .then(function (res) {
+            if (localStorage.getItem('receiverID')) {
+                localStorage.removeItem('receiverID');
+            }
+            if (localStorage.getItem('wallet')) {
+                localStorage.removeItem('wallet');
+            }
+            if (localStorage.getItem('adminID')) {
+                localStorage.removeItem('adminID');
+            }
+            if (localStorage.getItem('userID')) {
+                localStorage.removeItem('userID');
+            }
+            if (localStorage.getItem('token')) {
+                localStorage.removeItem('token');
+            }
+            navigate('/login');
+            
+        })
+        .catch(function (error) {
+
+        })
+    }
     function done() {
         if (Object.keys(user).length > 1){
             axios.post('https://pacific-sands-58031.herokuapp.com/user/editprofile', user)
@@ -121,6 +166,28 @@ function CustomerProfile() {
 
 
     return (
+        <div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Delete Account?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete your account? You may have on-going auctioned products. Click Delete to confirm 
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="outlined" onClick={handleClose}>Cancel</Button>
+          <Button variant="contained" color="error" onClick={deleteAccount} autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
         <div className="container" style={{boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#eaeaea", whiteSpace: 'nowrap', padding: '2rem', width: "70%", marginTop: '2.5%' }}>
             <div style={{
                 display: 'grid',
@@ -167,7 +234,7 @@ function CustomerProfile() {
             <br></br>
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto"}}>
                 <div style={{textAlign: "left", margin: "-4% 0%"}}>
-                    <Button variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} /*onClick={()=>{deleteaccount()}}*/>Delete Account</Button>
+                    <Button variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} onClick={handleClickOpen} /*onClick={()=>{deleteaccount()}}*/>Delete Account</Button>
                 </div>
                 <div style={{textAlign: "right", margin: "-5% 0% 5%"}}>
                     <Button id='apply-button' variant="contained" color="success" size='large' style={{margin: "0% 60%", fontSize: "130%", fontWeight: "bold"}} onClick={done} className="btn btn-success">Apply</Button>
@@ -180,6 +247,8 @@ function CustomerProfile() {
             )}
             <br></br>
         </div>
+        </div>
+
 
     )
 }

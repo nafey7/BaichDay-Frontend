@@ -22,6 +22,7 @@ import PinAuthentication from './components/PinAuthentication';
 import SellerHistory from './components/SellerHistory';
 import Userlist from './components/Userlist';
 import Productlist from './components/Productlist';
+import AlertDialog from './components/test'
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
+
+          {/* <Route path='/test' element={<><AlertDialog/></>}/> */}
 
         </Routes>
       </div>

@@ -1,37 +1,50 @@
-import React, { useState } from "react";
-import InputVerificationCode from "react-input-verification-code";
-import axios from "axios";
+import * as React from 'react';
 import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
-function Test() {
-  const [code, setCode] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post("/api/verify-code", { code })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+export default function AlertDialog() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
   };
-  
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-      <div style={{ boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', backgroundColor: "#eaeaea", whiteSpace: 'nowrap', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "50%", height: '400px', padding: '2rem', marginTop: '7%' }}>
-        <form onSubmit={handleSubmit}>
-          <h1>Authentication Code</h1>
-          <p style={{fontSize: '15px'}}>Your security is our top priority.<br />Enter the verification code sent to your email</p>
-          <br/>
-          <InputVerificationCode
-            style={{ margin: "0 auto" }}
-            length={6}
-            onChange={(code) => setCode(code)}
-          />
-          <br />
-          <Button type="submit" variant="contained" sx={{background: 'green'}}>Enter</Button>
-        </form>
-      </div>
+    <div>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Open alert dialog
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Let Google help apps determine location. This means sending anonymous
+            location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
-
-export default Test;
