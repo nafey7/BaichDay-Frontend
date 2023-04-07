@@ -141,7 +141,7 @@ function CustomerProfile() {
             
         })
         .catch(function (error) {
-
+            console.log(error);
         })
     }
     function done() {
@@ -183,7 +183,7 @@ function CustomerProfile() {
         </DialogContent>
         <DialogActions>
           <Button variant="outlined" onClick={handleClose}>Cancel</Button>
-          <Button variant="contained" color="error" onClick={deleteAccount} autoFocus>
+          <Button id='confirm-button' variant="contained" color="error" onClick={deleteAccount} autoFocus>
             Delete
           </Button>
         </DialogActions>
@@ -234,7 +234,7 @@ function CustomerProfile() {
             <br></br>
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto"}}>
                 <div style={{textAlign: "left", margin: "-4% 0%"}}>
-                    <Button variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} onClick={handleClickOpen} /*onClick={()=>{deleteaccount()}}*/>Delete Account</Button>
+                    <Button id='delete-button' variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} onClick={handleClickOpen} >Delete Account</Button>
                 </div>
                 <div style={{textAlign: "right", margin: "-5% 0% 5%"}}>
                     <Button id='apply-button' variant="contained" color="success" size='large' style={{margin: "0% 60%", fontSize: "130%", fontWeight: "bold"}} onClick={done} className="btn btn-success">Apply</Button>
