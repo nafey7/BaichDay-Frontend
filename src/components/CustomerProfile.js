@@ -237,7 +237,7 @@ function CustomerProfile() {
                     <Button id='delete-button' variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} onClick={handleClickOpen} >Delete Account</Button>
                 </div>
                 <div style={{textAlign: "right", margin: "-5% 0% 5%"}}>
-                    <Button id='apply-button' variant="contained" color="success" size='large' style={{margin: "0% 60%", fontSize: "130%", fontWeight: "bold"}} onClick={done} className="btn btn-success">Apply</Button>
+                    <Button id='apply-button' variant="contained" size='large' style={{margin: "0% 60%", fontSize: "13px", fontWeight: "bold",backgroundColor:"#58811c",color:"white"}} onClick={done} class="btn">Apply</Button>
                 </div>
             </div>
             {showAlert && (
