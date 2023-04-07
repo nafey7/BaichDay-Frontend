@@ -138,7 +138,7 @@ function AddProduct() {
                 </div>
             </div>
             <div style={{textAlign: "right", margin: "2% 12% 3%"}}>
-                <button type="button" class="btn" data-cy="product-button" onClick={()=>{postProductDetails()}} style = {{fontSize:"18px",backgroundColor:"#008000",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
+                <button type="button" class="btn" data-cy="product-button" onClick={()=>{postProductDetails()}} style = {{fontSize:"15px",backgroundColor:"#58811c",color:"white",margin: "Auto 0 auto 200px"}}>Add Product</button>
             </div>
             {showAlert && (
                 <div style={{ marginTop: "-10px", marginBottom: "10px" }}>

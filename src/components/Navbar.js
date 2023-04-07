@@ -164,15 +164,16 @@ export default function Navbar() {
             <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/other"}}>Others</Link></MenuItem>
 
           </Menu>
-          <button className="btn btn-success" data-cy="sell-button" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"15px"}}>Sell With Us</button>
+          <button className="btn" data-cy="sell-button" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"10px", backgroundColor: "#58811c", color:"white"}}>Sell With Us</button>
           <div className='col text-right'>
           <FormControl sx={{backgroundColor: 'white', borderRadius:"15px"}} variant="standard">
           <Input
             type={'text'}
             id="name"
             disableUnderline = "false"
-            placeholder="   Search Product"
-            style={{paddingLeft: "10px"}}
+            placeholder="Search Product"
+            style={{paddingLeft: "10px", fontSize: "15px"}}
+            inputProps={{ style: { paddingLeft: "20px" } }}
             onChange={formik.handleChange}
             endAdornment={
                 <IconButton
@@ -198,7 +199,7 @@ export default function Navbar() {
             <AccountCircle sx={{fontSize: "200%"}} />
           </IconButton>
           ):(
-            <button className="btn btn-dark" onClick={() =>{navigate("/login")}} style={{fontSize:"100%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px"}}>Sign In</button>)}
+            <button className="btn" onClick={() =>{navigate("/login")}} style={{fontSize:"150%", color:"white", borderRadius:"10px" ,margin:"0 0px 0 20px", backgroundColor: "#58811c"}}>Sign In</button>)}
           <Menu
             id="menu3"
             anchorEl={anchorEl3}

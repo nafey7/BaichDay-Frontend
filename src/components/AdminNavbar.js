@@ -131,7 +131,9 @@ export default function AdminNavbar() {
             type={'text'}
             id="name"
             disableUnderline = "false"
-            placeholder="   Search Keyword"
+            placeholder="Search Product"
+            style={{paddingLeft: "10px", fontSize: "15px"}}
+            inputProps={{ style: { paddingLeft: "10px" } }}
             onChange={formik.handleChange}
             endAdornment={
                 <IconButton

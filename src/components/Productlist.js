@@ -71,7 +71,7 @@ function Productlist() {
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{d.name}</TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Status(d.sold)}</TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{currentOwner(d.sold,d._id,d.newOwner)}</TableCell>
-                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}><button className='btn btn-success mt-1' style={{padding:'1.5% 10%',fontSize:'12px'}}>View Product</button></TableCell>
+                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}><button className='btn' style={{padding:'1.5% 10%',fontSize:'12px', color:"white", borderRadius:"5px", backgroundColor: "#58811c"}}>View Product</button></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
