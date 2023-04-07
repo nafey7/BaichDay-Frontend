@@ -234,10 +234,10 @@ function CustomerProfile() {
             <br></br>
             <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', alignItems: "auto"}}>
                 <div style={{textAlign: "left", margin: "-4% 0%"}}>
-                    <Button id='delete-button' variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "9px", fontWeight: "normal"}} onClick={handleClickOpen} >Delete Account</Button>
+                    <Button id='delete-button' variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "10px", fontWeight: "normal"}} onClick={handleClickOpen} >Delete Account</Button>
                 </div>
-                <div style={{textAlign: "right", margin: "-5% 0% 5%"}}>
-                    <Button id='apply-button' variant="contained" size='large' style={{margin: "0% 60%", fontSize: "13px", fontWeight: "bold",backgroundColor:"#58811c",color:"white"}} onClick={done} class="btn">Apply</Button>
+                <div style={{textAlign: "center", margin: "-5% 0% 5%"}}>
+                    <Button id='apply-button' variant="contained" size='large' style={{margin: "0% 65%", fontSize: "13px",backgroundColor:"#58811c",color:"white"}} onClick={done} class="btn">APPLY</Button>
                 </div>
             </div>
             {showAlert && (
