@@ -41,6 +41,15 @@ function Product() {
     let new_amount = parseInt(e);
     setAmount(new_amount);
   }
+
+  function isFormValid(){
+    if (!userID === true){
+      setShowAlert(true);
+      setAlertMessage('You need to be logged in to add a product');
+      return false;
+    }
+    return true;
+  }
   
   React.useEffect(()=> {
 
@@ -61,30 +70,32 @@ function Product() {
     },
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
-    if ((amount > prop.bid[prop.bid.length-1].bidCost) && (prop.bid.length > 1)){
-      axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
-          userID: userID,
-          productID: prop._id,
-          bidCost: amount
-        }
-        )
-        .then(function (response) {
-          console.log(response)
-          if(response.data.message === "success")
-          {
-            navigate('/');
+    if (isFormValid() === true){
+      if ((amount > prop.bid[prop.bid.length-1].bidCost) && (prop.bid.length > 1)){
+        axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
+            userID: userID,
+            productID: prop._id,
+            bidCost: amount
           }
-          
-        })
-        .catch(function (error) {
-          console.log(error);
-          setShowAlert(true);
-          setAlertMessage("Please make sure that you have sufficient funds in wallet and bid is greater than starting bid");
-        });
-    }
-    else{
-      setShowAlert(true);
-      setAlertMessage("Incorrect amount entered, plese bid over current bid");
+          )
+          .then(function (response) {
+            console.log(response)
+            if(response.data.message === "success")
+            {
+              navigate('/');
+            }
+            
+          })
+          .catch(function (error) {
+            console.log(error);
+            setShowAlert(true);
+            setAlertMessage("Please make sure that you have sufficient funds in wallet and bid is greater than starting bid");
+          });
+      }
+      else{
+        setShowAlert(true);
+        setAlertMessage("Incorrect amount entered, plese bid over current bid");
+      }
     }
     },
   });
