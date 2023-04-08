@@ -47,9 +47,22 @@ function UserHome(props) {
 
             <Box sx={{ display: 'flex', overflowY: 'auto' }}>
                 
-                {dataCheck && (
+                {dataCheck ? (
                     <DisplayCards test={dataprops}/>
 
+                ):(
+                    <div>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                    </div>
                 )} 
                 <div style={{backgroundSize: 'cover', width: '17%', height: '70%', position: 'fixed', top: '18%', right: '0px', }}>
                     <img style={{maxWidth: '100%', maxHeight: '100%', paddingRight: '5%'}} src="221.jpg" alt="advert" />
