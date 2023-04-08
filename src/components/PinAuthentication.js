@@ -8,6 +8,8 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 
 function PinAuthentication() {
   const [code, setCode] = useState("");
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState('');
 
   let navigate = useNavigate();
 
@@ -24,13 +26,11 @@ function PinAuthentication() {
         navigate('/');
       console.log(res.data.data)
       }
-      else{
-        console.log('Error');
-      }
   })
   .catch(function(err) {
       console.log(err);
-      alert("Wrong PIN");
+      setShowAlert(true);
+      setAlertMessage('Incorrect PIN entered, please try agains');
 })
   };
   
@@ -51,7 +51,11 @@ function PinAuthentication() {
 
           <Button type="submit" className='mt-5 btn' variant="contained" sx={{background: '#4BB543'}} size="large" style={{ fontSize: '1.5rem', padding: '1rem 2rem' }}>Enter</Button>
 
-
+          {showAlert && (
+              <div className='col' style={{marginTop: "20px", marginBottom: "10px" }}>
+                  <strong style={{fontSize: "1.2em", fontWeight: "bold", color: "red" }}>{alertMessage}</strong>
+              </div>
+          )}
         </form>
       </div>
     </div>
