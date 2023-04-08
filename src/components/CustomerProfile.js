@@ -177,12 +177,12 @@ function CustomerProfile() {
           {"Delete Account?"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText id="alert-dialog-description" style={{ fontSize: 15 }}>
             Are you sure you want to delete your account? You may have on-going auctioned products. Click Delete to confirm 
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" onClick={handleClose}>Cancel</Button>
+          <Button variant="outlined" color="success" style={{ borderWidth: 1.99 }} onClick={handleClose}>Cancel</Button>
           <Button id='confirm-button' variant="contained" color="error" onClick={deleteAccount} autoFocus>
             Delete
           </Button>
@@ -237,7 +237,7 @@ function CustomerProfile() {
                     <Button id='delete-button' variant="contained" size='small'  color="error" style={{margin: "0% 26.5%", fontSize: "10px", fontWeight: "normal"}} onClick={handleClickOpen} >Delete Account</Button>
                 </div>
                 <div style={{textAlign: "center", margin: "-5% 0% 5%"}}>
-                    <Button id='apply-button' variant="contained" size='large' style={{margin: "0% 65%", fontSize: "13px",backgroundColor:"#58811c",color:"white"}} onClick={done} class="btn">APPLY</Button>
+                    <Button id='apply-button' variant="contained" size='small' style={{margin: "0% 62%", fontSize: "12px", fontWeight: "normal",backgroundColor:"#58811c",color:"white"}} onClick={done} class="btn">APPLY</Button>
                 </div>
             </div>
             {showAlert && (

@@ -32,55 +32,7 @@ export default function AdminHome() {
   const [income, setIncome] = React.useState(0);
   const [products, setProducts] = React.useState(0);
   const [active_users, setActive] = React.useState(0);
-  const [alllabels, setAllLabels] = React.useState([]);
-  const [revenueCategory, setrevenueCategory] = React.useState([]);
-  const [itemsCategory, setitemsCategory] = React.useState([]);
   const userID = reactLocalStorage.get('adminID');
-
-  React.useEffect(()=> {
-
-    axios.post('https://pacific-sands-58031.herokuapp.com/admin/home', {adminID: userID, duration: "all time"}) //duration: all time, 7 days, 30 days, 3 months
-    .then(function(res) {
-
-      // console.log(res.data.data.itemsByCategory)
-      // console.log(res.data.data.revenueByCategory)
-      // console.log(res.data.data.labels)
-
-      // console.log(res.data.data);
-      if (res.data.message === 'success'){
-        setUsers(res.data.data.sales.NumberOfUsers)
-        setIncome(res.data.data.sales.income)
-        setProducts(res.data.data.sales.productsSold)
-        setActive(res.data.data.sales.ActiveUsers)
-        setitemsCategory(res.data.data.itemsByCategory)
-        setrevenueCategory(res.data.data.revenueByCategory)
-        setAllLabels(res.data.data.labels)
-
-        console.log(itemsCategory);
-        console.log(revenueCategory);
-        console.log(alllabels)
-      }
-
-        
-
-        
-
-        
-        // setChartData({
-        //   ...chartData,
-        //   series: res.data.data.sales.chart,
-        // });
-           
-    }, income)
-    .catch(function(err) {
-        console.log(err);
-    })
-  },[])
-
-  function renderBulletIcon(color) {
-    const styles = { color };
-    return <FiberManualRecord style={styles} />;
-  }
   const [chartData, setChartData] = React.useState({
     options: {
       chart: {
@@ -92,7 +44,7 @@ export default function AdminHome() {
         enabled: false,
         style: {
           fontSize: '10px',
-          // colors: ['#000'],
+          colors: ['#F44336', '#E91E63', '#9C27B0'],
         },
       },
       labels: ["Collectibles", 'Sporting', 'Electronics', 'Fashion', 'Toys','Music','Cars','Other'],
@@ -121,6 +73,7 @@ export default function AdminHome() {
     },
     series: [10, 10, 10, 10,10,10,10,30],
   });
+
   const [chartData2, setChartData2] = React.useState({
     options: {
       chart: {
@@ -132,7 +85,7 @@ export default function AdminHome() {
         enabled: false,
         style: {
           fontSize: '10px',
-          // colors: ['#000'],
+          colors: ['#F44336', '#E91E63', '#9C27B0'],
         },
       },
       labels: ['Collectibles', 'Sporting', 'Electronics', 'Fashion', 'Toys','Music','Cars','Other'],
@@ -143,6 +96,7 @@ export default function AdminHome() {
         textWrap: true,
         markers: {
           offsetY: 0,
+          fillColors: ['#FFC312','#C4E538','#12CBC4','#FDA7DF', '#ED4C67','#F79F1F', '#A3CB38','#1289A7']
         },
       },
       responsive: [{
@@ -154,6 +108,7 @@ export default function AdminHome() {
             height: 300,
             markers: {
               offsetY: 0,
+              fillColors: ['#FFC312','#C4E538','#12CBC4','#FDA7DF', '#ED4C67','#F79F1F', '#A3CB38','#1289A7']
             },
           }
         }
@@ -161,6 +116,127 @@ export default function AdminHome() {
     },
     series: [15, 7, 24, 3,21,5,9,16],
   });
+  
+
+  React.useEffect(()=> {
+
+    axios.post('https://pacific-sands-58031.herokuapp.com/admin/home', {adminID: userID, duration: "all time"}) //duration: all time, 7 days, 30 days, 3 months
+    .then(function(res) {
+
+      if (res.data.message === 'success'){
+        setUsers(res.data.data.sales.NumberOfUsers)
+        setIncome(res.data.data.sales.income)
+        setProducts(res.data.data.sales.productsSold)
+        setActive(res.data.data.sales.ActiveUsers)
+        // setitemsCategory(res.data.data.itemsByCategory)
+        // setrevenueCategory(res.data.data.revenueByCategory)
+        // setAllLabels(res.data.data.labels)
+
+        setChartData({
+          options: {
+            chart: {
+              background: 'transparent',
+              // foreColor: '#333',
+              type: 'donut',
+            },
+            fill: {
+              colors: ['#003f5c','#2f4b7c', '#665191','#a05195', '#d45087','#f95d6a', '#ff7c43','#ffa600']
+            },
+            dataLabels: {
+              enabled: false,
+              style: {
+                fontSize: '10px',
+                colors: ['#003f5c','#2f4b7c', '#665191','#a05195', '#d45087','#f95d6a', '#ff7c43','#ffa600'],
+              },
+            },
+            labels: res.data.data.labels,
+            legend: {
+              position: 'bottom',
+              offsetY: 0,
+              height: 20,
+              textWrap: true,
+              markers: {
+                offsetY: 0,
+                fillColors: ['#003f5c','#2f4b7c', '#665191','#a05195', '#d45087','#f95d6a', '#ff7c43','#ffa600']
+              },
+            },
+            responsive: [{
+              breakpoint: 480,
+              options: {
+                legend: {
+                  position: 'bottom',
+                  offsetY: 0,
+                  height: 300,
+                  markers: {
+                    offsetY: 0,
+                    fillColors: ['#003f5c','#2f4b7c', '#665191','#a05195', '#d45087','#f95d6a', '#ff7c43','#ffa600']
+                  },
+                }
+              }
+            }],
+          },
+          series: res.data.data.itemsByCategory,
+        })
+
+        setChartData2({
+          options: {
+            chart: {
+              background: 'transparent',
+              foreColor: '#333',
+              type: 'donut',
+            },
+            fill: {
+              colors: ['#003f5c','#2f4b7c', '#665191','#a05195', '#d45087','#f95d6a', '#ff7c43','#ffa600']
+            },
+            dataLabels: {
+              enabled: false,
+              style: {
+                fontSize: '10px',
+                // colors: ['#000'],
+              },
+            },
+            labels: res.data.data.labels,
+            legend: {
+              position: 'bottom',
+              offsetY: 0,
+              height: 20,
+              textWrap: true,
+              markers: {
+                offsetY: 0,
+                fillColors: ['#003f5c','#2f4b7c', '#665191','#a05195', '#d45087','#f95d6a', '#ff7c43','#ffa600']
+              },
+            },
+            responsive: [{
+              breakpoint: 480,
+              options: {
+                legend: {
+                  position: 'bottom',
+                  offsetY: 0,
+                  height: 300,
+                  markers: {
+                    offsetY: 0,
+                  },
+                }
+              }
+            }],
+          },
+          series: res.data.data.revenueByCategory,
+        });
+
+      }
+
+
+           
+    }, income)
+    .catch(function(err) {
+        console.log(err);
+    })
+  },[])
+
+  function renderBulletIcon(color) {
+    const styles = { color };
+    return <FiberManualRecord style={styles} />;
+  }
   
 
   return (

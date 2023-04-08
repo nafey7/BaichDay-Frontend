@@ -126,14 +126,15 @@ export default function AdminNavbar() {
           <Link to={{pathname: "/productlist"}} style={{backgroundColor:'black',textDecoration:"none",margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Products</Link>
           <Link to={{pathname: "/productlist"}} style={{backgroundColor:'black',textDecoration:"none",margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Banned</Link>
           
-          <FormControl sx={{backgroundColor: 'white', borderRadius:"15px", width: "40%", marginLeft: "45%"}} variant="standard">
+          <FormControl sx={{backgroundColor: 'white', borderRadius:"15px", width: "40%", marginLeft: "30%"}} variant="standard">
+          {/* <FormControl sx={{backgroundColor: 'white', borderRadius:"15px", }} variant="standard"> */}
           <Input
             type={'text'}
             id="name"
             disableUnderline = "false"
-            placeholder="Search Product"
+             placeholder="Search Product"
             style={{paddingLeft: "10px", fontSize: "15px"}}
-            inputProps={{ style: { paddingLeft: "10px" } }}
+            inputProps={{ style: { paddingLeft: "20px" } }}
             onChange={formik.handleChange}
             endAdornment={
                 <IconButton
