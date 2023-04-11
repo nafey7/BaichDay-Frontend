@@ -23,7 +23,7 @@ export default function Navbar() {
   let navigate = useNavigate();
   function logout(){
     let userID = reactLocalStorage.get('userID',);
-    axios.post('https://pacific-sands-58031.herokuapp.com/user/viewprofile', {
+    axios.post('https://pacific-sands-58031.herokuapp.com/user/logout', {
         userID: userID
     })
     .then(function (response) {
