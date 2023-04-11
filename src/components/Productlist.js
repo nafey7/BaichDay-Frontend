@@ -32,10 +32,13 @@ function Productlist() {
     function Status(sold) {
         if (sold === 'true') {
                 return 'Sold';
-            }
-            else {
-                return 'In Progress';
-            }
+        }
+        else if (sold === 'expired') {
+            return 'Not Sold';
+        }
+        else {
+            return 'In Progress';
+        }
         
     };
 
