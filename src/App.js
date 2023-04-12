@@ -16,13 +16,13 @@ import ChatBot from './components/ChatBot';
 import AdminNavbar from './components/AdminNavbar';
 import Payment from './components/Payment';
 import Wallet from './components/Wallet';
-import UserChat from './components/UserChat';
 import ChatList from './components/ChatList';
 import PinAuthentication from './components/PinAuthentication';
 import SellerHistory from './components/SellerHistory';
 import Userlist from './components/Userlist';
 import Productlist from './components/Productlist';
-import AlertDialog from './components/test'
+
+// import Test from './components/test'
 
 function App() {
   return (
@@ -52,10 +52,9 @@ function App() {
           <Route path='/myproducts' element={<><Navbar/><SellerHistory/><ChatBot/></>}/>
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
-          <Route path='/userchat' element={<><Navbar/><UserChat/></>}/>
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
 
-          {/* <Route path='/test' element={<><AlertDialog/></>}/> */}
+          {/* <Route path='/test' element={<><Navbar/><Test/></>}/> */}
 
         </Routes>
       </div>

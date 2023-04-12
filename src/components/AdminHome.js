@@ -128,15 +128,11 @@ export default function AdminHome() {
         setIncome(res.data.data.sales.income)
         setProducts(res.data.data.sales.productsSold)
         setActive(res.data.data.sales.ActiveUsers)
-        // setitemsCategory(res.data.data.itemsByCategory)
-        // setrevenueCategory(res.data.data.revenueByCategory)
-        // setAllLabels(res.data.data.labels)
 
         setChartData({
           options: {
             chart: {
               background: 'transparent',
-              // foreColor: '#333',
               type: 'donut',
             },
             fill: {
@@ -192,7 +188,6 @@ export default function AdminHome() {
               enabled: false,
               style: {
                 fontSize: '10px',
-                // colors: ['#000'],
               },
             },
             labels: res.data.data.labels,
