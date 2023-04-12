@@ -141,9 +141,9 @@ function ChatList() {
           </Typography>
         </Toolbar>
       </AppBar>
-          <List sx={{ width: '100%'}}>
+          <List sx={{ width: '100%', padding: '0'}}>
           {data.map((user) => (
-            <ListItem onClick={() => {handleItemClick(user._id, user.firstName, user.lastName, user.image); clickOnUser(user._id);}} style={{ fontSize: '20px', cursor: 'pointer', border: '0.5px solid grey', borderRight: 'none', background: '#F6F6F6'}}>
+            <ListItem onClick={() => {handleItemClick(user._id, user.firstName, user.lastName, user.image); clickOnUser(user._id);}} style={{ fontSize: '20px', cursor: 'pointer', border: '0.5px solid grey', borderRight: 'none', borderLeft: 'none', background: '#F6F6F6'}}>
               <ListItemAvatar>
               <Avatar alt={`${user.firstName}`} src={`${user.image}`} />
               </ListItemAvatar>
