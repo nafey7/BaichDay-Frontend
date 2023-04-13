@@ -21,7 +21,7 @@ const style = {
   p: 4,
 };
 
-function Product() {
+function Product(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -150,7 +150,7 @@ function Product() {
             </div>
           </div>
           <div>
-            {prop.userID === userID ? (
+            {(prop.userID === userID) || (props.check==="true") ? (
               <></>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: '50% 1fr', columnGap:"50px"}}>

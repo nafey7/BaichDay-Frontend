@@ -42,7 +42,7 @@ function App() {
           <Route path="/other" element={<> <Navbar/> <UserHome title="Other"/><ChatBot/><Footer/> </>}/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/wallet' element={<><Navbar/><Wallet/> <Footer/> </>}/>
-          <Route path='/product' element={<><Navbar/> <Product/><ChatBot/><Footer/> </>}/>
+          <Route path='/product' element={<><Navbar/> <Product check='false'/><ChatBot/><Footer/> </>}/>
           <Route path='/AddProduct' element={<><Navbar/> <AddProduct/><ChatBot/><Footer/> </>}/>
           <Route path='/AboutUs' element={<><Navbar/> <AboutUs/><ChatBot/><Footer/> </>}/>
           <Route path='/ContactUs' element={<><Navbar/> <ContactUs/><Footer/> </>}/>
@@ -57,6 +57,7 @@ function App() {
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
           <Route path='/Search' element={<><Navbar/><Search/></>}/>
           <Route path='/AdminSearch' element={<><AdminNavbar/><Search/></>}/>
+          <Route path='/AdminProduct' element={<><AdminNavbar/> <Product check='true'/> </>}/>
 
           {/* <Route path='/test' element={<><Navbar/><Test/></>}/> */}
 

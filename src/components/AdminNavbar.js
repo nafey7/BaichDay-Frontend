@@ -66,7 +66,7 @@ export default function AdminNavbar() {
         {
           console.log(response.data)
           
-          navigate('/AdminSearch', {state: response.data})
+          navigate('/AdminSearch', {state: {data: response.data, admin: true}})
           
         }
         else

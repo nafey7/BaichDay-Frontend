@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography } from '@mui/material';
+import {Typography } from '@mui/material';
 import {useNavigate, useLocation} from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
-import {Link} from 'react-router-dom';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@material-ui/core';
 
 
 
 export default function Search() {
     const location = useLocation();
-    const [results, setResults] = React.useState(location.state.data);
+    const [results, setResults] = useState(location.state.data);
     console.log(results)
     function Status(sold) {
       if (sold === 'true') {
@@ -48,7 +46,9 @@ export default function Search() {
                         </TableHead>
                         <TableBody>
                         {results.map((d) => (
-                                  <TableRow hover key={d.id} sx={{width:'100%'}} onClick={()=>{navigate('/product', { state:d})}}>
+                                  <TableRow hover key={d.id} sx={{width:'100%'}} onClick={()=>{
+                                    if(location.state.admin === true){navigate('/AdminProduct', { state:d})}else{
+                                    navigate('/product', { state:d})}}}>
                                       <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}><img style={{height:'50px', width:'50px'}} src={d.image}></img></TableCell>
                                       <TableCell align="center" style={{  fontSize: '12px' }}>{d.name}</TableCell>
                                       <TableCell align="center" style={{ fontSize: '12px' }}>{Status(d.sold)}</TableCell>

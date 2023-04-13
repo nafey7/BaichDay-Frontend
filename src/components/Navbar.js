@@ -91,7 +91,7 @@ export default function Navbar() {
           //   }})}
           console.log(response.data)
           
-          navigate('/Search', {state: response.data})
+          navigate('/Search', {state: response.data, admin: false})
           
         }
         else

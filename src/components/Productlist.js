@@ -9,9 +9,11 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import {useNavigate} from 'react-router-dom';
 
 
 function Productlist() {
+    let navigate = useNavigate();
     let userID = reactLocalStorage.get('userID', "", true);
     const [data, setData] = React.useState([]);
     React.useEffect(() => {
@@ -63,18 +65,20 @@ function Productlist() {
                                 <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Name</TableCell>
                                 <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Status</TableCell>
                                 <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Owner ID</TableCell>
-                                <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Details</TableCell>
+                                <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Date Posted</TableCell>
 
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {data.map((d) => (
-                                <TableRow key={d.id}>
+                                // <TableRow key={d.id}>
+                                <TableRow hover key={d.id} sx={{width:'100%'}} onClick={()=>{
+                                    navigate('/AdminProduct', { state:d})}}>
                                     <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}><img style={{height:'50px', width:'50px'}} src={d.image}></img></TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{d.name}</TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{Status(d.sold)}</TableCell>
                                     <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}>{currentOwner(d.sold,d._id,d.newOwner)}</TableCell>
-                                    <TableCell align="center" style={{ color: 'white', fontSize: '12px' }}><button className='btn' style={{padding:'1.5% 10%',fontSize:'12px', color:"white", borderRadius:"5px", backgroundColor: "#58811c"}}>View Product</button></TableCell>
+                                    <TableCell align="center" style={{color: 'white', fontSize: '12px' }}>{d.createdAt.slice(0, 10)}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
