@@ -62,6 +62,15 @@ function UserHome(props) {
                         <br></br>
                         <br></br>
                         <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+
                     </div>
                 )} 
                 <div style={{backgroundSize: 'cover', width: '17%', height: '70%', position: 'fixed', top: '18%', right: '0px', }}>

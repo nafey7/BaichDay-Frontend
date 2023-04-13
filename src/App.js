@@ -56,6 +56,7 @@ function App() {
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
           <Route path='/Search' element={<><Navbar/><Search/></>}/>
+          <Route path='/AdminSearch' element={<><AdminNavbar/><Search/></>}/>
 
           {/* <Route path='/test' element={<><Navbar/><Test/></>}/> */}
 

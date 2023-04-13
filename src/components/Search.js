@@ -6,6 +6,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import {Link} from 'react-router-dom';
 
 
+
 export default function Search() {
     const location = useLocation();
     const [results, setResults] = React.useState(location.state.data);
@@ -23,10 +24,17 @@ export default function Search() {
     
   return (
 
+
+
+
     <div style={{ margin: "0 auto", textAlign: "center" }}>
+      <Typography variant="h3" sx={{marginBottom:"1%"}}>Search Results</Typography>
+    
+
+      {results.length > 0 ? ( 
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-                <TableContainer className='m-4' component={Paper} style={{ maxHeight: "100vh"}}>
+                <TableContainer className='m-4' style={{ maxHeight: "100vh", backgroundColor:"white"}}>
                     <Table stickyHeader sx={{ overflowY: 'scroll', backgroundColor: '#3c3d3f' }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
@@ -34,7 +42,7 @@ export default function Search() {
                                 <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Name</TableCell>
                                 <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Status</TableCell>
                                 <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Owner ID</TableCell>
-                                <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Date Posted</TableCell>
+                                <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Details</TableCell>
 
                             </TableRow>
                         </TableHead>
@@ -52,6 +60,9 @@ export default function Search() {
                     </Table>
                 </TableContainer>
             </div>
+        ) : (
+          <Typography>No results found.</Typography>
+        )}
         </div>
   );
 }

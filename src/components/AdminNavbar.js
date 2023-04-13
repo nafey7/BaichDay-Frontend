@@ -64,18 +64,10 @@ export default function AdminNavbar() {
         console.log(response)
         if(response.data.message === "success")
         {
-          if(response.data.length===0){
-            alert("Item not Found")
-          }
-          else{
-            console.log(response.data)
-            navigate('/product',{ state: {
-              _id: response.data.data[0]._id,
-              name: response.data.data[0].name,
-              image: response.data.data[0].image,
-              bid: response.data.data[0].bid,
-            }})
-          }
+          console.log(response.data)
+          
+          navigate('/AdminSearch', {state: response.data})
+          
         }
         else
         {
