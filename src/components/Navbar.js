@@ -90,8 +90,7 @@ export default function Navbar() {
             //   bid: response.data.data[0].bid,
           //   }})}
           console.log(response.data)
-          
-          navigate('/Search', {state: response.data, admin: false})
+          navigate('/Search', {state: {data:response.data, admin: false}})
           
         }
         else

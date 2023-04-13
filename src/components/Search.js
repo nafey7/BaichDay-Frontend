@@ -7,7 +7,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from 
 
 export default function Search() {
     const location = useLocation();
-    const [results, setResults] = useState(location.state.data);
+    const [results, setResults] = useState(location.state.data.data);
     console.log(results)
     function Status(sold) {
       if (sold === 'true') {
@@ -39,7 +39,7 @@ export default function Search() {
                                 <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="left">Product</TableCell>
                                 <TableCell style={{backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Name</TableCell>
                                 <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Status</TableCell>
-                                <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Owner ID</TableCell>
+                                <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Highest Bid</TableCell>
                                 <TableCell style={{ backgroundColor: '#1e1e1e', color: 'white', fontSize: '18px', fontWeight: "bold" }} align="center">Details</TableCell>
 
                             </TableRow>
@@ -52,7 +52,7 @@ export default function Search() {
                                       <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}><img style={{height:'50px', width:'50px'}} src={d.image}></img></TableCell>
                                       <TableCell align="center" style={{  fontSize: '12px' }}>{d.name}</TableCell>
                                       <TableCell align="center" style={{ fontSize: '12px' }}>{Status(d.sold)}</TableCell>
-                                      <TableCell align="center" style={{fontSize: '12px' }}>{d.bid[d.bid.length-1].bidCost}</TableCell>
+                                      <TableCell align="center" style={{fontSize: '12px' }}>${d.bid[d.bid.length-1].bidCost}</TableCell>
                                       <TableCell align="center" style={{fontSize: '12px' }}>{d.createdAt.slice(0, 10)}</TableCell>
                                   </TableRow>
                             ))}
