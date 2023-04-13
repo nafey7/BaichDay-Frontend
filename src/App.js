@@ -23,6 +23,8 @@ import Userlist from './components/Userlist';
 import Productlist from './components/Productlist';
 
 // import Test from './components/test'
+import Search from './components/Search';
+import AlertDialog from './components/test'
 
 function App() {
   return (
@@ -53,6 +55,7 @@ function App() {
           <Route path='/payment' element={<><Navbar/><Payment/><Footer/></>}/>
           <Route path='/chatlist' element={<><Navbar/><ChatList/></>}/>
           <Route path='/pinauthentication' element={<><PinAuthentication/></>}/>
+          <Route path='/Search' element={<><Navbar/><Search/></>}/>
 
           {/* <Route path='/test' element={<><Navbar/><Test/></>}/> */}
 
