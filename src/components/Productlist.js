@@ -36,7 +36,7 @@ function Productlist() {
                 return 'Sold';
         }
         else if (sold === 'expired') {
-            return 'Not Sold';
+            return 'Expired';
         }
         else {
             return 'In Progress';
