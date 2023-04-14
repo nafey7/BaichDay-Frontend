@@ -156,14 +156,14 @@ export default function Navbar() {
             open={Boolean(anchorEl2)}
             onClose={handleClose}
           >
-            <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/collectibles"}}>Collectibles</Link></MenuItem>
-            <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/sporting"}}>Sporting</Link></MenuItem>
-            <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/electronics"}}>Electronics</Link></MenuItem>
-            <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/fashion"}}>Fashion</Link></MenuItem>
-            <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/toy"}}>Toys</Link></MenuItem>
-            <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/music"}}>Music</Link></MenuItem>
-            <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/cars"}}>Cars</Link></MenuItem>
-            <MenuItem ><Link reloadDocument style={{textDecoration:"none", color: "black"}} to={{pathname: "/other"}}>Others</Link></MenuItem>
+            <MenuItem ><Link style={{textDecoration:"none", color: "black"}} to={{pathname: "/collectibles"}}>Collectibles</Link></MenuItem>
+            <MenuItem ><Link style={{textDecoration:"none", color: "black"}} to={{pathname: "/sporting"}}>Sporting</Link></MenuItem>
+            <MenuItem ><Link style={{textDecoration:"none", color: "black"}} to={{pathname: "/electronics"}}>Electronics</Link></MenuItem>
+            <MenuItem ><Link style={{textDecoration:"none", color: "black"}} to={{pathname: "/fashion"}}>Fashion</Link></MenuItem>
+            <MenuItem ><Link style={{textDecoration:"none", color: "black"}} to={{pathname: "/toy"}}>Toys</Link></MenuItem>
+            <MenuItem ><Link style={{textDecoration:"none", color: "black"}} to={{pathname: "/music"}}>Music</Link></MenuItem>
+            <MenuItem ><Link style={{textDecoration:"none", color: "black"}} to={{pathname: "/cars"}}>Cars</Link></MenuItem>
+            <MenuItem ><Link style={{textDecoration:"none", color: "black"}} to={{pathname: "/other"}}>Others</Link></MenuItem>
 
           </Menu>
           <button className="btn" data-cy="sell-button" onClick={() =>{navigate("/AddProduct")}} style={{fontSize:"150%", marginLeft:"20px", borderRadius:"10px", backgroundColor: "#58811c", color:"white"}}>Sell With Us</button>

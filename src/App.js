@@ -17,6 +17,7 @@ import AdminNavbar from './components/AdminNavbar';
 import Payment from './components/Payment';
 import Wallet from './components/Wallet';
 import ChatList from './components/ChatList';
+import Category from './components/Category';
 import PinAuthentication from './components/PinAuthentication';
 import SellerHistory from './components/SellerHistory';
 import Userlist from './components/Userlist';
@@ -32,14 +33,14 @@ function App() {
       <div className="App" style={{backgroundColor:"#c8c8c8", backgroundRepeat: 'repeat', position:"relative", width:"100%", backgroundSize: "auto", minHeight: "100vh"}}>
         <Routes>
           <Route path="/" element={<> <Navbar/> <UserHome title="Featured Products"/><ChatBot/><Footer/> </>}/>
-          <Route path="/collectibles" element={<> <Navbar/> <UserHome title="Collectibles"/><ChatBot/><Footer/> </>}/>
-          <Route path="/sporting" element={<> <Navbar/> <UserHome title="Sporting"/><ChatBot/><Footer/> </>}/>
-          <Route path="/electronics" element={<> <Navbar/> <UserHome title="Electronics"/><ChatBot/><Footer/> </>}/>
-          <Route path="/fashion" element={<> <Navbar/> <UserHome title="Fashion"/><ChatBot/><Footer/> </>}/>
-          <Route path="/toy" element={<> <Navbar/> <UserHome title="Toy"/><ChatBot/><Footer/> </>}/>
-          <Route path="/music" element={<> <Navbar/> <UserHome title="Music"/><ChatBot/><Footer/> </>}/>
-          <Route path="/cars" element={<> <Navbar/> <UserHome title="Cars"/><ChatBot/><Footer/> </>}/>
-          <Route path="/other" element={<> <Navbar/> <UserHome title="Other"/><ChatBot/><Footer/> </>}/>
+          <Route path="/collectibles" element={<> <Navbar/> <Category title="Collectibles"/><ChatBot/><Footer/> </>}/>
+          <Route path="/sporting" element={<> <Navbar/> <Category title="Sporting"/><ChatBot/><Footer/> </>}/>
+          <Route path="/electronics" element={<> <Navbar/> <Category title="Electronics"/><ChatBot/><Footer/> </>}/>
+          <Route path="/fashion" element={<> <Navbar/> <Category title="Fashion"/><ChatBot/><Footer/> </>}/>
+          <Route path="/toy" element={<> <Navbar/> <Category title="Toy"/><ChatBot/><Footer/> </>}/>
+          <Route path="/music" element={<> <Navbar/> <Category title="Music"/><ChatBot/><Footer/> </>}/>
+          <Route path="/cars" element={<> <Navbar/> <Category title="Cars"/><ChatBot/><Footer/> </>}/>
+          <Route path="/other" element={<> <Navbar/> <Category title="Other"/><ChatBot/><Footer/> </>}/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/wallet' element={<><Navbar/><Wallet/> <Footer/> </>}/>
           <Route path='/product' element={<><Navbar/> <Product check='false'/><ChatBot/><Footer/> </>}/>
