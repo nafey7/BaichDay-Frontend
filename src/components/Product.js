@@ -45,7 +45,7 @@ function Product(props) {
   function isFormValid(){
     if (!userID === true){
       setShowAlert(true);
-      setAlertMessage('You need to be logged in to add a product');
+      setAlertMessage('You need to be logged in to bid on a product');
       return false;
     }
     return true;
