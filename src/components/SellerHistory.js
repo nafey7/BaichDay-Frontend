@@ -9,10 +9,12 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import {useNavigate} from 'react-router-dom';
 
 
 function SellerHistory() {
     let userID = reactLocalStorage.get('userID', "", true);
+    let navigate = useNavigate();
     const [data, setData] = React.useState([]);
     React.useEffect(() => {
         axios.post('https://pacific-sands-58031.herokuapp.com/user/viewmyproducts', {
@@ -74,7 +76,8 @@ function SellerHistory() {
                         </TableHead>
                         <TableBody>
                             {data.map((d) => (
-                                <TableRow key={d.id}>
+                                <TableRow hover key={d.id} sx={{width:'100%'}} onClick={()=>{
+                                    navigate('/product', { state:d})}}>
                                     <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}>{d._id} </TableCell>
                                     <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}>{d.name} </TableCell>
                                     <TableCell align="left" style={{ color: 'white', fontSize: '12px' }}><img style={{height:'50px', width:'50px'}} src={d.image}></img> </TableCell>

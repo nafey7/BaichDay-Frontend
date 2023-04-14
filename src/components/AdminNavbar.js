@@ -116,9 +116,9 @@ export default function AdminNavbar() {
           <Link to={{pathname: "/Admin"}} style={{margin:"0 15px",textDecoration:"none", fontSize:"18px", color: "#a7ac38"}}><Logo style={{width:"200px", height:"70px"}} className="d-inline-block"/></Link>
           <Link to={{pathname: "/userlist"}} style={{backgroundColor:'black',textDecoration:"none",margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Users</Link>
           <Link to={{pathname: "/productlist"}} style={{backgroundColor:'black',textDecoration:"none",margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Products</Link>
-          <Link to={{pathname: "/productlist"}} style={{backgroundColor:'black',textDecoration:"none",margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Banned</Link>
+          {/* <Link to={{pathname: "/productlist"}} style={{backgroundColor:'black',textDecoration:"none",margin:"0 15px",fontSize:"150%", marginLeft:"50px", color:"white"}}>Banned</Link> */}
           
-          <FormControl sx={{backgroundColor: 'white', borderRadius:"15px", width: "40%", marginLeft: "30%"}} variant="standard">
+          <FormControl sx={{backgroundColor: 'white', borderRadius:"15px", width: "30%", marginLeft: "50%"}} variant="standard">
           {/* <FormControl sx={{backgroundColor: 'white', borderRadius:"15px", }} variant="standard"> */}
           <Input
             type={'text'}
