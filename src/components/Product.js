@@ -71,7 +71,7 @@ function Product(props) {
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
     if (isFormValid() === true){
-      if ((amount > prop.bid[prop.bid.length-1].bidCost) && (prop.bid.length > 1)){
+      if ((amount > prop.bid[prop.bid.length-1].bidCost) && (prop.bid.length >= 1)){
         axios.post('https://pacific-sands-58031.herokuapp.com/user/bidonproduct', {
             userID: userID,
             productID: prop._id,
